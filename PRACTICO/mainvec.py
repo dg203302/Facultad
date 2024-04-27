@@ -1,0 +1,21 @@
+from vectores import matriz
+def test():
+     print('OPERACIONES DEL ALGEBRA LINEAL USANDO NUMPY')
+     A=matriz()
+     B=matriz()
+     A.desc_matriz()
+     B.desc_matriz()
+     print('OPERACIONES ENTRE LAS MATRICES')
+     print(f'suma de las matrices: \n {A+B}')
+     print(f'producto escalar entre las matrices: \n {A*B}')
+     print(f'resta de la matrices: \n {A-B}')
+     print('OPERACIONES SOBRE CADA MATRIZ')
+     print(f'inversa de la matriz A: \n {A.inver()} \n inversa de la matriz B: \n {B.inver()}')
+     print(f'traspuesta de la matriz A: \n {A.traspuesta()} \n traspuesta de la matriz B: \n {B.traspuesta()}')
+     print(f'determinante de la matriz A: \n {A.deter()} \n determinante de la matriz B: \n {B.deter()}')
+     print(f'norma de la matriz A: \n {A.norma()} \n norma de la matriz B: \n {B.norma()}')
+     print(f'traza de la matriz A: \n {A.traza()} \n traza de la matriz B: \n {B.traza()}')
+     print(f'minimo de la matriz A: {A.min()}, maximo de la matriz A: {A.max()}, minimo de la matriz B: {B.min()}, maximo de la matriz B: {B.max()}')
+     print(f'media de la matriz A: {A.media()}, media de la matriz B: {B.media()}')
+if __name__ == '__main__':
+    test()
