@@ -37,5 +37,3 @@ class matriz:
         return np.cos(self.__mat)
     def __str__(self):
         return f'{self.__mat}'
-    def getmat(self):
-        return self.__mat
