@@ -30,4 +30,16 @@ class gest_fech:
                     acpun+=gestore[i].getpunt()
                     print(f'{gestore[i].getgolesaf()} {gestore[i].getgolesec()} {gestore[i].getdifgol()} {gestore[i].getpunt()}')
             print(f'totales: {acgolafav} {acgolencon} {acdifgole} {acpun}')
-#faltan incisos d e f
+    def act(self,gestorequ):
+        fech=input('ingrese la fecha del partido disputado: ')
+        idl=input('ingrese el id del equipo local: ')
+        idv=input('ingrese el id del equipo visitante: ')
+        cgloc=int(input('ingrese la cantidad de goles del equipo local: '))
+        cgvisi=int(input('ingrese la cantidad de goles del equipo visitante: '))
+        gestorequ.actu(idl,idv,cgloc,cgvisi)
+        nfech=fecha(fech,idl,idv,cgloc,cgvisi)
+        self.__fechas.append(nfech)
+    def __del__(self):
+        for elem in self.__fechas:
+            del elem
+        print('gestor de fechas destruido!')

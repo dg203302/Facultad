@@ -16,7 +16,34 @@ class gest_equi:
         i=0
         while i < len(self.__equip):
             if self.__equip[i].getnom():
-                return i
-            else:
-                return None
+                break
             i+=1
+        if self.__equip[i].getnom == nom:
+            return i
+        else:
+            return None
+    def actu(self,idl,idv,cgloc,cgvisi):
+        for i in self.__equip:
+            if self.__equip[i].getid() == idl:
+                if cgloc == cgvisi:
+                    self.__equip[i].modificpun(1)
+                elif cgloc > cgvisi:
+                    self.__equip[i].modificpun(3)
+                    self.__equip[i].modificg(cgloc)
+                elif cgvisi > cgloc:
+                    self.__equip[i].modificgcon(cgvisi)
+            elif self.__equip[i].getid() == idv:
+                if cgvisi == cgloc:
+                    self.__equip[i].modificpun(1)
+                elif cgvisi > cgloc:
+                    self.__equip[i].modificpun(3)
+                    self.__equip[i].modificg(cgvisi)
+    def ordenyalmacen(self):
+        self.__equip.sort()
+        arc=open('punto 5\equipos2024.csv')
+        writer=csv.writer(arc,delimiter=';')
+        writer.writerows(self.__equip)
+    def __del__(self):
+        for elem in self.__equip:
+            del elem
+        print('gestor de equipos destruido!')

@@ -13,4 +13,8 @@ class fecha:
     def getidvisi(self):
         return self.__id_eq_visit
     def getidloc(self):
-        return self._
+        return self.__id_eq_local
+    def getidvisi(self):
+        return self.__id_eq_visit
+    def __del__(self):
+        print('fecha borrada!')
