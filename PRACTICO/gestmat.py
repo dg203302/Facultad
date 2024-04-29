@@ -19,11 +19,11 @@ class gestormat:
         if i <= len(self.__gest) and j <= len(self.__gest):
             sop=int(input('OPERACIONES DISPONIBLES: \n 1 suma, 2 multiplicacion, 3 resta \n -'))
             if sop == 1:
-                print(f'suma de las matrices: {self.__gest[i-1]+self.__gest[j-1]}')
+                print(f'suma de las matrices: \n {self.__gest[i-1]+self.__gest[j-1]}')
             elif sop == 2:
-                print(f'multiplicacion de las matrices: {self.__gest[i-1]*self.__gest[j-1]}')
+                print(f'multiplicacion de las matrices: \n {self.__gest[i-1]*self.__gest[j-1]}')
             elif sop == 3:
-                print(f'resta de las matrices: {self.__gest[i-1]*self.__gest[j-1]}')
+                print(f'resta de las matrices: \n {self.__gest[i-1]*self.__gest[j-1]}')
             else:
                 print('opcion incorrecta')
         else: 
