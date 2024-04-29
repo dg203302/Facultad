@@ -25,7 +25,7 @@ class gestormat:
             elif sop == 3:
                 print(f'resta de las matrices: \n {self.__gest[i-1]*self.__gest[j-1]}')
             else:
-                print('opcion incorrecta')
+                print('opcion incorrecta!')
         else: 
              print('matrices/matriz incorrecta')
     def op_en_d_m(self):
@@ -52,9 +52,9 @@ class gestormat:
                 print(f'{self.__gest[i-1].seno()}')
             elif opu == 10:
                 print(f'{self.__gest[i-1].coseno()}')
+            else:
+                print("opcion incorrecta!")
         else:
             print('matriz incorrecta')
     def getlen(self):
         return len(self.__gest)
-    def __str__(self):
-        return self.__gest
