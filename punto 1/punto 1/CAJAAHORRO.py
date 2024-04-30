@@ -56,3 +56,11 @@ class caja_ahorro:
             else:
                 print(f'{resto}, {mul}, {cui}, {valid}') #para ver que estaba mal
                 print('cuil invalido')
+    def getcuil(self):
+        return self.__cuil
+    def getnom(self):
+        return self.__nom
+    def getap(self):
+        return self.__apell
+    def getsal(self):
+        return self.__sald
