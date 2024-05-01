@@ -40,16 +40,6 @@ class gestorped:
             print(sum(tiem)/len(tiem))
         else:
             print('no tiene horas registradas')
-    '''def getpate(self,i):
-        return self.__pedidos[i].getpat()
-    def getid(self,i):
-        return self.__pedidos[i].getid()
-    def gettest(self,i):
-        return self.__pedidos[i].gettest()
-    def gettreal(self,i):
-        return self.__pedidos[i].gettreal()
-    def getpre(self,i):
-        return self.__pedidos[i].getpre()'''
     def dat(self,pate):
         tot=0
         print('Identificador de pedido Tiempo estimado Tiempo Real Precio')
