@@ -26,3 +26,14 @@ class gestormoto:
             if self.__motos[i].getpat() == pate:
                 print(self.__motos[i])
             i+=1
+    def listado(self,gestp):
+        for moto in self.__motos:  
+            print(f'Patente de Moto: {moto.getpat()} \n Conductor: {moto.getnya()}')
+            gestp.dat(moto.getpat())
+            '''tot=0
+            print('Identificador de pedido Tiempo estimado Tiempo Real Precio')
+            for j in range(0,len(gestp)):
+                if gestp.getpate(j) == self.__motos[i].getpat():
+                    print(f'{gestp.getid(j)} {gestp.gettest(j)} {gestp.gettreal(j)} {gestp.getpre(j)}')
+                    tot+=gestp.getpre(j)
+            print(f'total: {tot} \n comision: {(tot*20)/100}')'''

@@ -8,9 +8,8 @@ class gestorped:
         arch=open('C:/Users/Lolma/Documents/Codigos/Python/punto 4/pedidos.csv')
         reader=csv.reader(arch,delimiter=';')
         for fila in reader:
-            if len(fila) == 4:
-                patente,id,comi,tiest=fila
-                ped=pedido(patente,id,comi,tiest)
+                patente,id,comi,tiest,precio=fila
+                ped=pedido(patente,id,comi,tiest,precio)
                 print(ped)
                 self.__pedidos.append(ped)
         self.__pedidos.sort()
@@ -41,3 +40,23 @@ class gestorped:
             print(sum(tiem)/len(tiem))
         else:
             print('no tiene horas registradas')
+    '''def getpate(self,i):
+        return self.__pedidos[i].getpat()
+    def getid(self,i):
+        return self.__pedidos[i].getid()
+    def gettest(self,i):
+        return self.__pedidos[i].gettest()
+    def gettreal(self,i):
+        return self.__pedidos[i].gettreal()
+    def getpre(self,i):
+        return self.__pedidos[i].getpre()'''
+    def dat(self,pate):
+        tot=0
+        print('Identificador de pedido Tiempo estimado Tiempo Real Precio')
+        i=0
+        for pedido in self.__pedidos:
+            if pedido.getpat() == pate:
+                print(f'{pedido.getid()} {pedido.gettest()} {pedido.gettreal()} {pedido.getpre()}')
+                tot+=pedido.getpre()
+            i+=1
+        print(f'total: {tot} \n comision: {(tot*20)/100}')

@@ -17,6 +17,8 @@ def test():
         elif op == 'mostrar datos y tiempo promedio':
             pate=input('ingrese la patente que desee: ')
             gp.datprod(gm,pate)
+        elif op == 'listar':
+            gm.listado(gp)
         op=input('ingrese la opcion que desee: ')
 if __name__ == '__main__':
     test()
