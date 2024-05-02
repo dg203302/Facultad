@@ -9,8 +9,8 @@ class reparacion:
         self.__pate_rep=pate
         self.__repa=rep
         self.__repuesto=repu
-        self.__prec_rep=preci
-        self.__prec_manobra=preci2
+        self.__prec_rep=float(preci)
+        self.__prec_manobra=float(preci2)
         self.__est_rep=esta
     def getpate(self):
         return self.__pate_rep
