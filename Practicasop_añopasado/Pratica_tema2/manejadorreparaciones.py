@@ -8,7 +8,7 @@ class gestrep:
         a=open('Practicasop_añopasado/Pratica_tema2/reparaciones.csv')
         lec=csv.reader(a,delimiter=';')
         for fila in lec:
-            paten,repa,rep,precio,precio2,estado=lec
+            paten,repa,rep,precio,precio2,estado=fila
             repa=reparacion(paten,repa,rep,precio,precio2,estado)
             self.__gestorrep.append(repa)
     def reparac(self,patente):

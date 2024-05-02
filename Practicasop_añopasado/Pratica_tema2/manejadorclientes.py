@@ -8,7 +8,7 @@ class gestcli:
         a=open('Practicasop_añopasado/Pratica_tema2/clientes.csv')
         lec=csv.reader(a,delimiter=';')
         for fila in lec:
-            dni,nom,ape,tele,paten,vehi,est=lec
+            dni,nom,ape,tele,paten,vehi,est=fila
             clie=cliente(dni,nom,ape,tele,paten,vehi,est)
             self.__gestorc.append(clie)
     def a(self,gestrep):
