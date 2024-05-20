@@ -3,14 +3,14 @@ from ladrillo import Ladrillo
 from gstmat import gestor_materiales
 class gestor_ladrillo:
     __ladr:list
-    def __init__(self,gslad):
+    def __init__(self,gsmat):
         self.__ladr=[]
         a=open('practica 3/punto 2/ladrillos.csv',mode='r')
         rd=csv.reader(a,delimiter=';')
         for fil in rd:
             if fil[0]!=fil[1]:
                 ladr=Ladrillo(fil[0],fil[1],fil[2],fil[3])
-                gslad.agreg(ladr)
+                gsmat.agreg(ladr)
                 self.__ladr.append(ladr)
         a.close()
     def incisoa(self):
