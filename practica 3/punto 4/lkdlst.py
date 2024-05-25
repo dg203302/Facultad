@@ -26,7 +26,47 @@ class lkdlist:
             elif len(fil) == 6:
                 lib=libroimp(fil[0],fil[1],fil[2],fil[3],fil[4],fil[5])
                 self.agreg(lib)
-    def mostrar(self):
+    def a(self):
+        op=int(input('ingrese la publicacion que desee agregar. 1 para cd, 2 para libro\n-'))
+        if op==1:
+            tit=input('ingrese el titulo del cd: ')
+            cate=input('ingrese la categoria del cd: ')
+            pre=float(input('ingrese el precio base del cd: '))
+            tiem=int(input('ingrese el tiempo del cd: '))
+            narrat=input('ingrese la narrativa del cd: ')
+            Cd=cd(tit,cate,pre,tiem,narrat)
+            self.agreg(Cd)
+        elif op==2:
+            tit=input('ingrese el titulo del libro: ')
+            cate=input('ingrese la categoria del libro: ')
+            pre=float(input('ingrese el precio base del libro: '))
+            naut=input('ingrese el nombre del autor del libro: ')
+            feedi=input('ingrese la fecha de edicion del libro: ')
+            cantpag=input('ingrese la cantidad de paginas del libro: ')
+            lib=libroimp(tit,cate,pre,naut,feedi,cantpag)
+            self.agreg(lib)
+    def b(self):
+        j=int(input('ingrese la posicion que desee saber: '))
+        i=0
+        while self.__ini!=None and i<(j-1):
+            i+=1
+            self.__ini=self.__ini.getsig()
+        if i==(j-1):
+            if isinstance(self.__ini.getdat(),cd):
+                print('es un CD')
+            elif isinstance(self.__ini.getdat(),libroimp):
+                print('es un Libro impreso')
+    def c(self):
+        ca=0 #contador de cds
+        cb=0 #contador de libros
+        while self.__ini!=None:
+            if isinstance(self.__ini.getdat(),cd):
+                ca+=1
+            elif isinstance(self.__ini.getdat(),libroimp):
+                cb+=1
+            self.__ini=self.__ini.getsig()
+        print(f'cantidad de cds: {ca}\ncantidad de libros: {cb}')
+    def d(self):
         while self.__ini!=None:
             print(self.__ini)
             self.__ini=self.__ini.getsig()

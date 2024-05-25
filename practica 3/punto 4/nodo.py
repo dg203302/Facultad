@@ -8,5 +8,7 @@ class nodo:
         return self.__sig
     def agregsig(self,nodo):
         self.__sig=nodo
+    def getdat(self):
+        return self.__dat
     def __str__(self):
-        return f'{self.__dat}'
+        return f' {self.__dat.gettit()} {self.__dat.getcate()} {self.__dat.importe()} '
