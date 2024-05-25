@@ -4,7 +4,7 @@ class gestorvisua:
     __gestorvi:list
     def __init__(self):
         self.__gestorvi=[]
-        a=open('Practica_operativa/Visualizaciones.csv',mode='r') #esto cambialo
+        a=open('Python/Practicasop_añopasado/practica operativa recu/Visualizaciones.csv',mode='r') #esto cambialo
         red=csv.reader(a,delimiter=';')
         for fil in red:
             visua=visualiz(fil[0],fil[1],fil[2],fil[3],fil[4])
@@ -16,16 +16,13 @@ class gestorvisua:
             if viz.getidmiem()==idmiem:
                 ac+=viz.getmin()
         print(f'minutos totales del usuario {idmiem}: {ac}')
-    def mostrr(self,visua,miem):
-        band=False
-        for vis in self.__gestorvi:
-            if vis==visua:
-                band=True
-        if band == True:
-            print(f'{miem.getapnom()}{miem.getcorreo()}')
-    def mostrep(self,miem):
-        i=0
-        while self.__gestorvi[i].getidmiem()!=miem.getid():
-            i+=1
-        if self.__gestorvi[i].getidmiem()==miem.getid():
-            self.mostrr(self.__gestorvi[i],miem)
+    def b(self,gstmi):
+        for i in range(0,len(self.__gestorvi)):
+            band=False
+            j=i+1
+            while j<(len(self.__gestorvi)):
+                if self.__gestorvi[i]==self.__gestorvi[j] and i!=j:
+                    band=True
+                j+=1
+            if band==True:
+                gstmi.most(self.__gestorvi[i].getidmiem())

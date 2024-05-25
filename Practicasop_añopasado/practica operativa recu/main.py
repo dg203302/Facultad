@@ -10,7 +10,7 @@ def test():
         elif op==1:
             gstmi.a(gstvi)
         elif op==2:
-            gstmi.b(gstvi)
+            gstvi.b(gstmi)
         op=int(input('-'))
 if __name__ == '__main__':
     test()
