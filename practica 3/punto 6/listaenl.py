@@ -14,6 +14,7 @@ class lkdlist(): #agregar la interfaz
         self.__indi=0
         self.__tope=0
         self.carga()
+#sobrecarga de iter
     def __iter__(self):
         return self
     def __next__(self):
@@ -26,6 +27,8 @@ class lkdlist(): #agregar la interfaz
             dat=self.__actual.getdat()
             self.__actual=self.__actual.getsig()
             return dat
+#sobrecarga de iter
+#lectura correcta de json
     def agreg(self, objt):
         nueno=nodo(objt)
         nueno.actsig(self.__cab)
@@ -49,13 +52,16 @@ class lkdlist(): #agregar la interfaz
                     self.agreg(calgas)
             except KeyError:
                 print('claves no existentes!',obje)
+#lectura correcta de json
+#guardado correcto de json
     def guardarjson(self,dge):
         with open('Python/practica 3/punto 6/calefactoresguard.json',mode='a') as guard:
-            json.dump(dge,guard)
+            json.dump(dge,guard,indent=4)
             guard.close()
     def tojson(self):
         d=dict(calefactores=[cale.tojson() for cale in self])
         self.guardarjson(d)
+#guardado correcto de json
     def mostrar(self):
         for ele in self:
             print(ele)
