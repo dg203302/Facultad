@@ -1,19 +1,19 @@
 from electrico import *
 from gas import *
 from nodo import *
+from encoderjson import *
 from interfacep5 import *
-import json
 class lkdlist(): #agregar la interfaz
     __cab:nodo
     __actual:nodo
     __indi:int
     __tope:int
-    def __init__(self):
+    def __init__(self,encjson):
         self.__cab=None
         self.__actual=None
         self.__indi=0
         self.__tope=0
-        self.carga()
+        self.carga(encjson)
 #sobrecarga de iter
     def __iter__(self):
         return self
@@ -35,13 +35,8 @@ class lkdlist(): #agregar la interfaz
         self.__cab=nueno
         self.__actual=nueno
         self.__tope+=1
-    def leerjson(self):
-        with open('Python/practica 3/punto 6/calefactores.json',mode='r') as arc:
-            da=json.load(arc)
-            arc.close()
-            return da
-    def carga(self):
-        dic=self.leerjson()
+    def carga(self,encdjson):
+        dic=encdjson.leerjson()
         for obje in dic['calefactores']:
             try:
                 if obje['tipo'] == 'electrico':
@@ -54,13 +49,9 @@ class lkdlist(): #agregar la interfaz
                 print('claves no existentes!',obje)
 #lectura correcta de json
 #guardado correcto de json
-    def guardarjson(self,dge):
-        with open('Python/practica 3/punto 6/calefactoresguard.json',mode='a') as guard:
-            json.dump(dge,guard,indent=4)
-            guard.close()
-    def tojson(self):
+    def tojson(self,encdjson):
         d=dict(calefactores=[cale.tojson() for cale in self])
-        self.guardarjson(d)
+        encdjson.guardarjson(d)
 #guardado correcto de json
     def mostrar(self):
         for ele in self:

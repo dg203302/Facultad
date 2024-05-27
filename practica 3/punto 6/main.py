@@ -1,5 +1,7 @@
 from listaenl import *
+from encoderjson import *
 if __name__=='__main__':
-    lista=lkdlist()
+    encjson=encoderjson()
+    lista=lkdlist(encjson)
     lista.mostrar()
-    lista.tojson()
+    lista.tojson(encjson)
