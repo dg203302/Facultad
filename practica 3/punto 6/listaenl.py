@@ -43,11 +43,9 @@ class lkdlist(): #agregar la interfaz
             try:
                 if obje['tipo'] == 'electrico':
                     calele=electrico(**obje["atributos"])
-                    print(calele)
                     self.agreg(calele)
                 elif obje['tipo'] == 'gas':
                     calgas=gas(**obje["atributos"])
-                    print(calgas)
                     self.agreg(calgas)
             except KeyError:
                 print('claves no existentes!',obje)
