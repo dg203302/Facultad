@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from tkinter import ttk
-from pydub import AudioSegment
-from pydub.playback import play 
+from tkinter import ttk 
 def valida(tex):
     return tex.isdecimal()
 def chiwenwen(n):
@@ -41,17 +39,6 @@ def multiplic():
     messagebox.showinfo(message=n, title='RESULTADO DE LA MULTIPLICACION')
     chiwenwen(n)
     return
-def gemidos():
-    s_ven=tk.Toplevel()
-    s_ven.title("TROLFACE CARAJO")
-    s_ven.geometry("500x500")
-    son=AudioSegment.from_wav("C:/Users/Lolma/Downloads/gemidos.wav")
-    img=tk.PhotoImage(file="C:/Users/Lolma/Documents/Codigos/Python/trolface.gif")
-    imag=tk.Label(s_ven,image=img).pack()
-    play(son)
-    bcr=ttk.Button(s_ven,text="Cerrar ventana",command=s_ven.destroy)
-    bcr.grid(row=1,column=1)
-    return
 def cierre():
     ven.destroy()
 #DECLARACION DE LA VENTANA
@@ -77,9 +64,6 @@ mul=tk.Button(ven,text="MULTIPLICACION", command=multiplic, bg="grey")
 sum.grid(row=5,column=1)
 res.grid(row=6,column=1)
 mul.grid(row=7,column=1)
-#OPERACIONES TROLL
-gem=tk.Button(ven,text="ALGO ESPECIAL", command=gemidos)
-gem.grid(row=10, column=1)
 #BOTON DE CIERRE
 cier=tk.Button(text="SALIR", command=cierre)
 cier.grid(row= 13,column= 1)

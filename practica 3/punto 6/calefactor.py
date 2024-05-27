@@ -15,9 +15,23 @@ class calefactor(ABC):
         self.__form_pago=fo
         self.__cant_cuot=int(can)
         self.__prom=pr
+    def getprec(self):
+        return self.__pre_lista
+    def getmarc(self):
+        return self.__marca
+    def getmode(self):
+        return self.__modelo
+    def getprec(self):
+        return self.__pre_lista
+    def getprom(self):
+        return self.__prom
+    def getpais(self):
+        return self.__paisfabri
     def getimpo(self):
         pass
     def tojson(self):
         pass
-    def __str__(self):
-        pass
+    def __lt__(self,otr):
+        return self.__pre_lista<otr.__pre_lista
+    def __eq__(self,otr):
+        return self.__pre_lista==otr.__pre_lista
