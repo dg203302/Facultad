@@ -62,9 +62,9 @@ class lkdlist(interface):
                     nodaux=nodaux.getsig()
                     i+=1
                 if i==(pos-1):
-                    nueno.actsig(nodaux)
-                    nodoaux=nueno
-                    self.__actual=nueno
+                    nueno.actsig(nodaux.getsig())
+                    nodaux.actsig(nueno)
+                    self.__actual=nodaux
                     self.__tope+=1
         except IndexError:
             print('indice fuera de rango!')
