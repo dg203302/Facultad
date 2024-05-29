@@ -8,5 +8,15 @@ class personal:
         self.__cuil=cuil
         self.__ape=apellido
         self.__nom=nombre
-        self.__sueld_bas=sueldo_basico
+        self.__sueld_bas=float(sueldo_basico)
         self.__antig=antiguedad
+    def __lt__(self,otr):
+        return self.__ape>otr.__ape
+    def getnom(self):
+        return self.__nom
+    def getape(self):
+        return self.__ape
+    def gettip(self):
+        return self.__class__.__name__
+    def getsuba(self):
+        return self.__sueld_bas

@@ -9,7 +9,7 @@
         "sueldo_basico": 50000,
         "antiguedad": 5,
         "carrera": "Ingeniería Informática",
-        "cargo": "Profesor",
+        "cargo": "exclusivo",
         "catedra": "Programación Avanzada"
       }
     },
@@ -21,7 +21,7 @@
         "nombre": "Juan",
         "sueldo_basico": 35000,
         "antiguedad": 3,
-        "categoria": "Administrativo"
+        "categoria": "5"
       }
     },
     {
@@ -45,7 +45,7 @@
         "sueldo_basico": 55000,
         "antiguedad": 6,
         "carrera": "Ciencias de la Computación",
-        "cargo": "Profesora",
+        "cargo": "semiexclusivo",
         "catedra": "Algoritmos Avanzados",
         "area_investigacion": "Redes Neuronales",
         "tipo_investigacion": "Experimental",

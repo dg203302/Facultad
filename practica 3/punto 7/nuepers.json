@@ -54,4 +54,60 @@
             }
         }
     ]
+}{
+    "personal": [
+        {
+            "tipo": "docenteinvest",
+            "datos": {
+                "cuil": "987612345",
+                "apellido": "Mart\u00c3\u00adnez",
+                "nombre": "Laura",
+                "sueldo_basico": 55000,
+                "antiguedad": 6,
+                "carrera": "Redes Neuronales",
+                "cargo": "Experimental",
+                "catedra": "A",
+                "area_investigacion": "Ciencias de la Computaci\u00c3\u00b3n",
+                "tipo_investigacion": "Profesora",
+                "categoria_incentivos": "A",
+                "importe_extra": 2000
+            }
+        },
+        {
+            "tipo": "investigador",
+            "datos": {
+                "cuil": "543216789",
+                "apellido": "L\u00c3\u00b3pez",
+                "nombre": "Carlos",
+                "sueldo_basico": 60000,
+                "antiguedad": 8,
+                "area_investigacion": "Inteligencia Artificial",
+                "tipo_investigacion": "Aplicada"
+            }
+        },
+        {
+            "tipo": "personalapoyo",
+            "datos": {
+                "cuil": "987654321",
+                "apellido": "Rodr\u00c3\u00adguez",
+                "nombre": "Juan",
+                "sueldo_basico": 35000,
+                "antiguedad": 3,
+                "categoria": "Administrativo"
+            }
+        },
+        {
+            "tipo": "docente",
+            "datos": {
+                "cuil": "123456789",
+                "apellido": "G\u00c3\u00b3mez",
+                "nombre": "Mar\u00c3\u00ada",
+                "sueldo_basico": 50000,
+                "antiguedad": 5,
+                "carrera": "Ingenier\u00c3\u00ada Inform\u00c3\u00a1tica",
+                "cargo": "Profesor",
+                "catedra": "Programaci\u00c3\u00b3n Avanzada"
+            }
+        }
+    ]
 }
