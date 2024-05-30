@@ -1,0 +1,19 @@
+{
+    "tipo": "gestorservicios",
+    "servicios": [
+        {
+            "tipo": "transporte",
+            "atributos": {
+                "nome": "Mudanzas Rapidas",
+                "nomc": "Sofia Perez",
+                "direc": "Calle 123",
+                "fec": "2023/05/15",
+                "comi": 10.0,
+                "precxhora": 50.0,
+                "pesocar": 800,
+                "direcdes": "Calle Principal",
+                "canthora": 8
+            }
+        }
+    ]
+}
