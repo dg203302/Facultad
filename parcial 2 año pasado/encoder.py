@@ -10,7 +10,7 @@ class encoderjson:
             lect.close()
             return d
     def savejson(self,d):
-        with open('nuevehiculos.json',mode='r') as guard:
+        with open('parcial 2 año pasado/nuevehiculos.json',mode='a') as guard:
             json.dump(d,guard,indent=4)
     def carga(self,gestorvehi):
         d=self.loadjson()

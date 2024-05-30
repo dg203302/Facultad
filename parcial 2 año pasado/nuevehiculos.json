@@ -1,0 +1,38 @@
+{
+    "clase": "gestorvehiculos",
+    "vehiculos": [
+        {
+            "tipo": "carga",
+            "atributos": {
+                "marca": "312312",
+                "modelo": "42342",
+                "patente": "4234",
+                "importebasico": 34243.0,
+                "cantidadkm": 43.0,
+                "pesocarga": 434
+            }
+        },
+        {
+            "tipo": "pasajeros",
+            "atributos": {
+                "marca": "312321312",
+                "modelo": "42213342",
+                "patente": "423234",
+                "importebasico": 3424333.0,
+                "cantidadkm": 423.0,
+                "cantidadasientos": 4
+            }
+        },
+        {
+            "tipo": "carga",
+            "atributos": {
+                "marca": "ford",
+                "modelo": "2020",
+                "patente": "sexo2391",
+                "importebasico": 1000.3,
+                "cantidadkm": 5.0,
+                "pesocarga": 60.0
+            }
+        }
+    ]
+}

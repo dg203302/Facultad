@@ -51,3 +51,25 @@ class gestorvehiculos:
         print('MARCA   MODELO   TIPO DE VEHICULO   KILOMETROS A RECORRER   TOTAL ALQUILER')
         for vehi in self:
             print(f'{vehi.getmarca()}   {vehi.getmodelo()}   {type(vehi).__name__}#importante!!!!!!   {vehi.getkm()}   {vehi.getimportealquiler()}')
+    def tojson(self,encdr):
+        d=dict(clase=__class__.__name__,vehiculos=[vehi.tojson() for vehi in self])
+        encdr.savejson(d)
+    def elimin(self):
+        pos=int(input('ingrese la posicion que desee eliminar'))
+        if pos==1:
+            nodelim=self.__cab
+            self.__cab=self.__cab.getsig()
+            self.__act=self.__cab
+            del nodelim
+            self.__tope-=1
+        else:
+            nodelim=self.__act
+            while nodelim!=None and self.__indi<(pos-1):
+                nodant=nodelim
+                nodelim=nodelim.getsig()
+                self.__indi+=1
+            if self.__indi==(pos-1):
+                nodant.actsig(nodelim.getsig())
+                self.__indi=0
+                self.__tope-=1
+                del nodelim

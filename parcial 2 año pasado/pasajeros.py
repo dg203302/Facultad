@@ -16,5 +16,8 @@ class pasajeros(vehiculos):
                 return imp
         else:
             return self._vehiculos__impor_bas
+    def tojson(self):
+        d=dict(tipo=__class__.__name__,atributos=dict(marca=self._vehiculos__marca,modelo=self._vehiculos__modelo,patente=self._vehiculos__patente,importebasico=self._vehiculos__impor_bas,cantidadkm=self._vehiculos__cant_km,cantidadasientos=self.__cant_asientos))
+        return d
     def __str__(self):
         return f'{self._vehiculos__marca}{self._vehiculos__modelo}{self._vehiculos__patente}{self._vehiculos__impor_bas}{self._vehiculos__cant_km}{self.__cant_asientos}'
