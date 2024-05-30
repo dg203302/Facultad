@@ -127,18 +127,21 @@ class gestorservicios:
             self.__tope-=1
             del nodelimin
         else:
-            nodaux=self.__cab
-            while nodaux!=None and self.__indi<(pos-1):
-                nodoant=nodaux
-                nodaux=nodaux.getsig()
-                self.__indi+=1
-            if self.__indi==(pos-1):
-                nodelimin=nodaux
-                nodoant.actsig(nodaux.getsig())
-                self.__actu=self.__cab
-                self.__tope-=1
-                self.__indi=0
-                del nodelimin
+            try:
+                nodaux=self.__cab
+                while nodaux!=None and self.__indi<(pos-1):
+                    nodoant=nodaux
+                    nodaux=nodaux.getsig()
+                    self.__indi+=1
+                if self.__indi==(pos-1):
+                    nodelimin=nodaux
+                    nodoant.actsig(nodaux.getsig())
+                    self.__actu=self.__cab
+                    self.__tope-=1
+                    self.__indi=0
+                    del nodelimin
+            except AttributeError as att:
+                print(f'error en el indice: {att}')
     def insertarmanual(self):
         nomemp=input('ingrese el nombre de la empresa: ')
         nomcont=input('ingrese el nombre del contratante: ')
