@@ -7,7 +7,7 @@ class gas(calefactor):
         self.__matri=matricula
         self.__calori=calorias
     def tojson(self):
-        d=dict(tipo=__class__.__name__,atributos=dict(tipo=__class__.__name__,modelo=self._calefactor__modelo,paisfabric=self._calefactor__paisfabri,precio=self._calefactor__pre_lista,formpago=self._calefactor__form_pago,cantcout=self._calefactor__cant_cuot,promo=self._calefactor__prom,matricu=self.__matri,calorias=self.__calori))
+        d=dict(tipo=__class__.__name__,atributos=dict(modelo=self._calefactor__modelo,paisfabric=self._calefactor__paisfabri,precio=self._calefactor__pre_lista,formpago=self._calefactor__form_pago,cantcout=self._calefactor__cant_cuot,promo=self._calefactor__prom,matricu=self.__matri,calorias=self.__calori))
         return d
     def getkilocalo(self):
         return self.__calori

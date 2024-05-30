@@ -55,16 +55,19 @@ class lkdlist(interface):
             if pos==0:
                 nueno.actsig(self.__cab)
                 self.__cab=nueno
+                self.__actual=nueno
+                self.__tope+=1
             else:
-                i=0
+                self.__indi=0
                 nodaux=self.__cab
-                while nodaux != None and i<(pos-1):
+                while nodaux != None and self.__indi<(pos-1):
                     nodaux=nodaux.getsig()
-                    i+=1
-                if i==(pos-1):
+                    self.__indi+=1
+                if self.__indi==(pos-1):
                     nueno.actsig(nodaux.getsig())
                     nodaux.actsig(nueno)
-                    self.__actual=nodaux
+                    self.__actual=self.__cab
+                    self.__indi=0
                     self.__tope+=1
         except IndexError:
             print('indice fuera de rango!')

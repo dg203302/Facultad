@@ -17,6 +17,19 @@
         {
             "tipo": "electrico",
             "atributos": {
+                "marca": "pija",
+                "modelo": "caca",
+                "paisfabric": "mexico",
+                "precio": 5000.0,
+                "formpago": "efectivo",
+                "cantcout": 1,
+                "promo": true,
+                "maxpote": "4000"
+            }
+        },
+        {
+            "tipo": "electrico",
+            "atributos": {
                 "marca": "Samsung",
                 "modelo": "SAM3000",
                 "paisfabric": "Chile",
