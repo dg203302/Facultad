@@ -1,0 +1,27 @@
+{
+    "clase": "gestorvehiculos",
+    "vehiculos": [
+        {
+            "tipo": "pasajeros",
+            "atributos": {
+                "marca": "renault",
+                "modelo": "2001",
+                "patente": "53xxx23",
+                "importebasico": 5009.8,
+                "cantidadkm": 100.0,
+                "cantidadasientos": 8
+            }
+        },
+        {
+            "tipo": "carga",
+            "atributos": {
+                "marca": "ford",
+                "modelo": "2020",
+                "patente": "sexo2391",
+                "importebasico": 1000.3,
+                "cantidadkm": 5.0,
+                "pesocarga": 60.0
+            }
+        }
+    ]
+}
