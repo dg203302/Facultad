@@ -73,3 +73,10 @@ class gestorvehiculos:
                 self.__indi=0
                 self.__tope-=1
                 del nodelim
+    #para unitest#
+    def getuldat(self):
+        nodau=self.__act
+        while nodau.getsig()!=None:
+            nodau=nodau.getsig()
+        if nodau.getsig()==None:
+            return nodau.getdat()
