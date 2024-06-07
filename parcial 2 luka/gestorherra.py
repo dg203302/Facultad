@@ -38,7 +38,7 @@ class gestorherra:
                 nodau.actsig(nueno)
                 self.__tope+=1
     def carga(self):
-        a=open('parcial 2 luka/gestorherra.py',mode='r')
+        a=open('parcial 2 luka/equipos.csv',mode='r')
         re=csv.reader(a,delimiter=';')
         for fil in re:
             if fil[0]=='M':
@@ -54,10 +54,10 @@ class gestorherra:
         ind=int(input('ingrese el indice: '))
         try:
             nodoac=self.__actu
-            while self.__indice!=ind:
+            while self.__indice!=(ind-1):
                 nodoac=nodoac.getsig()
                 self.__indice+=1
-            if self.__indice==ind:
+            if self.__indice==(ind-1):
                 if isinstance(nodoac.getdat(),pesadas):
                     print('es una herramienta pesada!')
                 elif isinstance(nodoac.getdat(),electricas):

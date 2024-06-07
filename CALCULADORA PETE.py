@@ -10,7 +10,7 @@ def chiwenwen(n):
         messagebox.showinfo(message="te ponen", title="chinwenwencheada")
     elif n == 5:
         messagebox.showinfo(message="por el culo te la hinco", title="chinwenwencheada")
-    elif n == 7 | n == 20:
+    elif n == 7 or n == 20:
         messagebox.showinfo(message="en el culo la siente", title="chinwenwencheada")
     elif n == 8:
         messagebox.showinfo(message="el culo te abrocho", title="chinwenwencheada")
