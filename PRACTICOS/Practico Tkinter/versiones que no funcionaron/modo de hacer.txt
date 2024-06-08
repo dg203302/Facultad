@@ -1,0 +1,35 @@
+Aquí tienes los pasos para hacerlo:
+
+-Generar una secuencia aleatoria de colores: Cuando el juego comienza,
+crea una lista que almacene la secuencia de colores que el jugador debe seguir.
+Puedes usar random.choice() para seleccionar un color aleatorio
+(por ejemplo, ‘teal’, ‘red’, ‘yellow’ o ‘blue’) y agregarlo a la lista.
+
+-Mostrar la secuencia al jugador: Ilumina los botones en la secuencia generada.
+Puedes hacer esto cambiando el color de fondo de los botones durante un breve período de tiempo
+(por ejemplo, 1 segundo) para que el jugador vea la secuencia.
+
+-Registrar la entrada del jugador: Cuando el jugador hace clic en un botón,
+verifica si coincide con el siguiente color en la secuencia.
+Si es correcto, aumenta el puntaje y muestra la siguiente parte de la secuencia.
+Si es incorrecto, muestra un mensaje de error y reinicia el juego.
+
+--Repetir el proceso: Continúa mostrando la secuencia y
+registrando las entradas del jugador hasta que cometa un error o decida salir.
+
+        self.__boton1=self.crearboton('teal',1,0,1)
+        self.__boton2=self.crearboton('red',1,1,2)
+        self.__boton3=self.crearboton('yellow',2,0,3)
+        self.__boton4=self.crearboton('blue',2,1,4)
+
+
+
+
+Aquí hay algunas sugerencias para implementar cada paso:
+Crea una lista para almacenar la secuencia de colores generada aleatoriamente.
+Utiliza una variable para rastrear la posición actual en la secuencia.
+Asocia una función (por ejemplo, verificar_color()) con cada botón para registrar la entrada del jugador y verificar si coincide con el siguiente color en la secuencia.
+Muestra la secuencia utilizando un temporizador (por ejemplo, after() en tkinter) para cambiar los colores de los botones durante un breve período.
+A medida que el jugador hace clic en los botones, verifica si la entrada coincide con el color esperado en la secuencia.
+Si el jugador comete un error, muestra un mensaje y reinicia el juego.
+¡Buena suerte con tu implementación! Si tienes alguna pregunta específica o necesitas más detalles, no dudes en preguntar. 😊
