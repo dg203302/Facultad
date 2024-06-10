@@ -1,15 +1,24 @@
 import tkinter as tk
 from tkinter import messagebox
+from jugador import *
+from gestorjugadores import *
 import random
+import datetime
 class simondice(tk.Tk):
+    #atributos para botones
     __colores:list
-    __botones:list
     __secuencia:list
+    __botones:list
+    #atributos para botones
+    #atributos para funcionalidad
     __indice:int
     __indiceverifi:int
     __puntaje:object
     __contador:int
-    __canvas:object
+    #atributos para funcionalidad
+    #atributos para el jugador
+    __jugadoractual:jugador
+    __gestorjugadores:gestorjugadores
     def __init__(self):
         super().__init__()
         self.title('Simon Dice')
@@ -24,10 +33,40 @@ class simondice(tk.Tk):
         self.__secuencia=[]
         self.__contador=0
         self.resizable(width=False,height=False)
+        self.__gestorjugadores=gestorjugadores()
+        self.registrarjugador()
         self.crearbotones()
-        self.__puntaje=self.crearpuntaje()
         botonini=self.crearbotonincio()
         botoncierre=self.crearbotoncierre()
+#registrar jugador
+    def salir(self):
+        self.destroy()
+    def registrar(self,nombre,ventana):
+        if nombre.get()=='':
+            messagebox.showinfo(message='ingrese su nombre',title='nombre no ingresado')
+            return
+        else:
+            self.__jugadoractual=jugador(nombre.get())
+            self.__puntaje=self.crearpuntaje()
+            ventana.destroy()
+    def registrarjugador(self):
+        ventanaregistro=tk.Toplevel(self)
+        ventanaregistro.title('registro')
+        ventanaregistro.geometry('200x100')
+        ventanaregistro.resizable(width=False,height=False)
+        ventanaregistro.lift(self)
+        ventanaregistro.grab_set()
+        ventanaregistro.protocol("WM_DELETE_WINDOW", self.salir)
+        textonombre=tk.Label(ventanaregistro,text='datos del jugador')
+        textonombre.place(x=2,y=2)
+        nombrejuga=tk.Label(ventanaregistro,text='jugador:')
+        nombrejuga.place(x=2,y=40)
+        nombre=tk.StringVar()
+        ingreso=tk.Entry(ventanaregistro,textvariable=nombre)
+        ingreso.place(x=50,y=40)
+        botonini=tk.Button(ventanaregistro,text='iniciar juego',command=lambda: self.registrar(nombre,ventanaregistro))
+        botonini.place(x=60,y=70)
+#registrar jugador
 #boton de inicio
     def crearbotonincio(self):
         boton=tk.Button(text='INICIAR JUEGO',bg='yellow', command=self.iniciarjuego)
@@ -43,17 +82,21 @@ class simondice(tk.Tk):
 #puntaje
     def crearpuntaje(self):
         puntaje=tk.Label(self,fg="black")
-        puntaje.config(text=f'puntaje: {self.__contador}')
+        puntaje.config(text=f'{self.__jugadoractual.getnombre()}: {self.__contador}')
         self.__canvas.create_window(400,25,anchor='center',window=puntaje)
         return puntaje
 #puntaje
 #aumentar puntaje
     def aumentar(self):
         self.__contador+=1
-        self.__puntaje.config(text=f'puntaje:{self.__contador}')
+        self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__contador}')
 #aumentar puntaje
 #reiniciar puntaje
     def reiniciarpunta(self):
+        fecha=str(datetime.date.today())
+        hora=str(datetime.datetime.now().time())
+        self.__jugadoractual.actpuntj(fecha,hora,self.__contador)
+        self.__gestorjugadores.registrarpuntaje(self.__jugadoractual)
         self.__contador=0
         self.__puntaje.config(text=f'puntaje:{self.__contador}')
 #reiniciar puntaje

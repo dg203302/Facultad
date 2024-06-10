@@ -50,6 +50,7 @@ class simondice(tk.Tk):
         ventanaregistro.title('registro')
         ventanaregistro.geometry('200x100')
         ventanaregistro.resizable(width=False,height=False)
+        ventanaregistro.lift(self)
         ventanaregistro.grab_set()
         ventanaregistro.protocol("WM_DELETE_WINDOW", self.salir)
         textonombre=tk.Label(ventanaregistro,text='datos del jugador')

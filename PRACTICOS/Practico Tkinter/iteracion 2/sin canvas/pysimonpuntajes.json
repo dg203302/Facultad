@@ -1,0 +1,37 @@
+{
+    "jugador": [
+        {
+            "nombre": "dg203",
+            "fecha": "2024-06-09",
+            "hora": "23:24:32.368427",
+            "puntaje": 5
+        }
+    ]
+}{
+    "jugador": [
+        {
+            "nombre": "jose",
+            "fecha": "2024-06-09",
+            "hora": "23:25:00.986583",
+            "puntaje": 1
+        }
+    ]
+}{
+    "jugador": [
+        {
+            "nombre": "jolian",
+            "fecha": "2024-06-09",
+            "hora": "23:25:16.973435",
+            "puntaje": 1
+        }
+    ]
+}{
+    "jugador": [
+        {
+            "nombre": "dg203",
+            "fecha": "2024-06-09",
+            "hora": "23:26:19.892190",
+            "puntaje": 1
+        }
+    ]
+}
