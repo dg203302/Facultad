@@ -1,0 +1,52 @@
+{
+    "jugadores": [
+        {
+            "jugador": {
+                "nombre": "yolo123",
+                "fecha": "2024-06-10",
+                "hora": "12:45:46.861793",
+                "puntaje": 4
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dg203",
+                "fecha": "2024-06-10",
+                "hora": "12:45:18.569797",
+                "puntaje": 1
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "jose",
+                "fecha": "2024-06-10",
+                "hora": "12:45:27.931545",
+                "puntaje": 0
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "cacas123",
+                "fecha": "2024-06-10",
+                "hora": "12:46:21.620410",
+                "puntaje": 1
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "sdsdsdasd",
+                "fecha": "2024-06-10",
+                "hora": "13:59:44.750402",
+                "puntaje": 6
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "maspicado",
+                "fecha": "2024-06-10",
+                "hora": "14:00:53.032480",
+                "puntaje": 5
+            }
+        }
+    ]
+}

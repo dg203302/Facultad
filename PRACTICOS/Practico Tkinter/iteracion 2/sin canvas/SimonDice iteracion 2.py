@@ -14,7 +14,6 @@ class simondice(tk.Tk):
     __indice:int
     __indiceverifi:int
     __puntaje:object
-    __contador:int
     #atributos para funcionalidad
     #atributos para el jugador
     __jugadoractual:jugador
@@ -78,23 +77,23 @@ class simondice(tk.Tk):
 #puntaje
     def crearpuntaje(self):
         puntaje=tk.Label(self,fg="black")
-        puntaje.config(text=f'{self.__jugadoractual.getnombre()}: {self.__contador}')
+        puntaje.config(text=f'{self.__jugadoractual.getnombre()}: {self.__jugadoractual.getpuntaje()}')
         puntaje.grid(row=3, column=1, columnspan=1)
         return puntaje
 #puntaje
 #aumentar puntaje
     def aumentar(self):
-        self.__contador+=1
-        self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__contador}')
+        self.__jugadoractual.actpuntaje()
+        self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__jugadoractual.getpuntaje()}')
 #aumentar puntaje
 #reiniciar puntaje
     def reiniciarpunta(self):
         fecha=str(datetime.date.today())
         hora=str(datetime.datetime.now().time())
-        self.__jugadoractual.actpuntj(fecha,hora,self.__contador)
+        self.__jugadoractual.registrarjugada(fecha,hora)
         self.__gestorjugadores.registrarpuntaje(self.__jugadoractual)
-        self.__contador=0
-        self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__contador}')
+        self.__jugadoractual.reiniciarpuntaje()
+        self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__jugadoractual.getpuntaje()}')
 #reiniciar puntaje
 #creacion de botones
     def crearbotones(self):

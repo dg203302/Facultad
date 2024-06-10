@@ -34,4 +34,28 @@
             "puntaje": 1
         }
     ]
+}{
+    "jugador": [
+        {
+            "nombre": "dg203",
+            "fecha": "2024-06-10",
+            "hora": "11:36:17.147851",
+            "puntaje": 3
+        }
+    ]
+}{
+    "tipo": "datos"
+}{
+    "tipo": "datos"
+}{
+    "tipo": "datos"
+}{
+    "jugador": [
+        {
+            "nombre": "dg203",
+            "fecha": "2024-06-10",
+            "hora": "11:54:03.113807",
+            "puntaje": 1
+        }
+    ]
 }
