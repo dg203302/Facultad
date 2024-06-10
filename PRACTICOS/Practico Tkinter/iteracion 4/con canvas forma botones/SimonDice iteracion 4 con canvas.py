@@ -39,7 +39,14 @@ class simondice(tk.Tk):
         self.registrarjugador()
         self.crearbotones()
         self.crearmenu()
+        self.crearboxdenivel()
         botonini=self.crearbotonincio()
+        self.bind('<Escape>', lambda event: self.destroy())
+#creacion del box de menu
+    def crearboxdenivel(self):
+        self.__box=ttk.Combobox(self,values=('Principiante','Experto','SuperExperto'))
+        self.__box.place(x=640,y=552)
+#creacion del box de menu
 #creacion del menu
     def mostrarpuntajes(self):
         if self.__gestorjugadores.verificjson()==False:
@@ -103,7 +110,8 @@ class simondice(tk.Tk):
         nombre=tk.StringVar()
         ingreso=tk.Entry(ventanaregistro,textvariable=nombre)
         ingreso.place(x=50,y=40)
-        botonini=tk.Button(ventanaregistro,text='iniciar juego',command=lambda: self.registrar(nombre,ventanaregistro))
+        botonini=tk.Button(ventanaregistro,text='iniciar juego',bg='white',command=lambda: self.registrar(nombre,ventanaregistro))
+        ventanaregistro.bind('<Return>', lambda event: self.registrar(nombre,ventanaregistro))
         botonini.place(x=60,y=70)
 #registrar jugador
 #boton de inicio
@@ -151,31 +159,71 @@ class simondice(tk.Tk):
                 boton = self.__canvas.create_arc(20, 100, 780, 580, start=270, extent=90, fill=self.__colores[i], outline='black')
                 self.__canvas.tag_bind(boton, '<Button-1>', lambda event, i=i: self.verificarcolor(i))
             self.__botones.append(boton)
+#temporizador
+    def fueradetiempo(self):
+        messagebox.showinfo(title='GAME OVER', message='perdiste por tiempo!')
+        self.__indice=0
+        self.__indiceverifi=0
+        self.reiniciarpunta()
+        self.__secuencia=[]
+        self.temporizar(True)
+    def temporizar(self, toque):
+        if toque=='iniciar':
+            self.__idafter=self.after(5000,self.fueradetiempo)
+        elif toque=='toque':
+            self.after_cancel(self.__idafter)
+            self.__idafter=self.after(5000,self.fueradetiempo)
+        elif toque=='perder':
+            self.after_cancel(self.__idafter)
+#temporizador
 #verificar colores
     def verificarcolor(self,botontocado):
         if self.__secuencia==[]:
             messagebox.showinfo(title='juego no iniciado', message='debe iniciar el juego')
         else:
-            colortoca=self.__colores[botontocado]
-            if colortoca==self.__secuencia[self.__indiceverifi]:
-                self.__indiceverifi+=1
-                if self.__indiceverifi==len(self.__secuencia):
-                    self.__secuencia.append(random.choice(self.__colores))
+            if self.__jugadoractual.getnivel()=='Experto' or self.__jugadoractual.getnivel()=='SuperExperto':
+                colortoca=self.__colores[botontocado]
+                if colortoca==self.__secuencia[self.__indiceverifi]:
+                    self.__indiceverifi+=1
+                    if self.__indiceverifi==len(self.__secuencia):
+                        self.__secuencia.append(random.choice(self.__colores))
+                        self.__indiceverifi=0
+                        self.aumentar()
+                        self.iluminar()
+                        self.temporizar('toque')
+                else:
+                    messagebox.showinfo(title='GAME OVER', message='perdiste!')
+                    self.__indice=0
                     self.__indiceverifi=0
-                    self.aumentar()
-                    self.iluminar()
-            else:
-                messagebox.showinfo(title='GAME OVER', message='perdiste!')
-                self.__indice=0
-                self.reiniciarpunta()
-                self.__secuencia=[]
+                    self.reiniciarpunta()
+                    self.__secuencia=[]
+                    self.temporizar('perder')
+            elif self.__jugadoractual.getnivel()=='Principiante':
+                colortoca=self.__colores[botontocado]
+                if colortoca==self.__secuencia[self.__indiceverifi]:
+                    self.__indiceverifi+=1
+                    if self.__indiceverifi==len(self.__secuencia):
+                        self.__secuencia.append(random.choice(self.__colores))
+                        self.__indiceverifi=0
+                        self.aumentar()
+                        self.iluminar()
+                else:
+                    messagebox.showinfo(title='GAME OVER', message='perdiste!')
+                    self.__indice=0
+                    self.__indiceverifi=0
+                    self.reiniciarpunta()
+                    self.__secuencia=[]
 #verificar colores
 #creacion de botones
 #implementacion
 #generacion de secuencia de colores
     def generarsecuencia(self):
-        self.__secuencia=[random.choice(self.__colores) for _ in range(1)]
-        self.__indice=0
+        if self.__jugadoractual.getnivel()=='Principiante' or self.__jugadoractual.getnivel()== 'Experto':
+            self.__secuencia=[random.choice(self.__colores) for _ in range(1)]
+            self.__indice=0
+        else:
+            self.__secuencia=[random.choice(self.__colores) for _ in range(2)]
+            self.__indice=0
 #generacion de secuencia de colores
 #iluminar y ocultar colores
     def iluminar(self):
@@ -190,8 +238,18 @@ class simondice(tk.Tk):
             self.iluminar()
 #iluminar y ocultar colores
     def iniciarjuego(self):
-        self.generarsecuencia()
-        self.iluminar()
+        if self.__box.get()=='':
+            messagebox.showinfo(title='error', message='debe seleccionar una dificultad')
+            return
+        else:
+            self.__jugadoractual.actnivel(self.__box.get())
+            if self.__jugadoractual.getnivel()=='Principiante':
+                self.generarsecuencia()
+                self.iluminar()
+            elif self.__jugadoractual.getnivel()=='Experto' or self.__jugadoractual.getnivel()=='SuperExperto':
+                self.temporizar('iniciar')
+                self.generarsecuencia()
+                self.iluminar()
 #implementacion
 if __name__=='__main__':
     ven=simondice()

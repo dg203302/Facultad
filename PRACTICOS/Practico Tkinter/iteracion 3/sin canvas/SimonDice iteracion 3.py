@@ -36,6 +36,7 @@ class simondice(tk.Tk):
         self.crearbotones()
         self.crearmenu()
         botonini=self.crearbotonincio()
+        self.bind('<Escape>', lambda event: self.destroy())
 #creacion del menu
     def mostrarpuntajes(self):
         if self.__gestorjugadores.verificjson()==False:
@@ -100,6 +101,7 @@ class simondice(tk.Tk):
         ingreso=tk.Entry(ventanaregistro,textvariable=nombre)
         ingreso.place(x=50,y=40)
         botonini=tk.Button(ventanaregistro,text='iniciar juego',bg='white',command=lambda: self.registrar(nombre,ventanaregistro))
+        ventanaregistro.bind('<Return>', lambda event: self.registrar(nombre,ventanaregistro))
         botonini.place(x=60,y=70)
 #registrar jugador
 #boton de inicio
@@ -154,6 +156,7 @@ class simondice(tk.Tk):
             else:
                 messagebox.showinfo(title='GAME OVER', message='perdiste!')
                 self.__indice=0
+                self.__indiceverifi=0
                 self.reiniciarpunta()
                 self.__secuencia=[]
 #verificar colores

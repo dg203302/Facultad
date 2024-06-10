@@ -2,128 +2,26 @@
     "jugadores": [
         {
             "jugador": {
-                "nombre": "sdsdsdasd",
+                "nombre": "dg203",
                 "fecha": "2024-06-10",
-                "hora": "13:59:44.750402",
-                "puntaje": 6,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "maspicado",
-                "fecha": "2024-06-10",
-                "hora": "14:00:53.032480",
-                "puntaje": 5,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "yolo123",
-                "fecha": "2024-06-10",
-                "hora": "12:45:46.861793",
-                "puntaje": 4,
-                "niveldificultad": ""
+                "hora": "17:01:14.654028",
+                "puntaje": 2
             }
         },
         {
             "jugador": {
                 "nombre": "dg203",
                 "fecha": "2024-06-10",
-                "hora": "12:45:18.569797",
-                "puntaje": 1,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "cacas123",
-                "fecha": "2024-06-10",
-                "hora": "12:46:21.620410",
-                "puntaje": 1,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "jose",
-                "fecha": "2024-06-10",
-                "hora": "12:45:27.931545",
-                "puntaje": 0,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "dsiego",
-                "fecha": "2024-06-10",
-                "hora": "14:49:02.735509",
-                "puntaje": 7,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "asd",
-                "fecha": "2024-06-10",
-                "hora": "15:02:06.692451",
-                "puntaje": 2,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "asd",
-                "fecha": "2024-06-10",
-                "hora": "15:02:06.692451",
-                "puntaje": 2,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "asdd",
-                "fecha": "2024-06-10",
-                "hora": "15:04:02.627588",
-                "puntaje": 2,
-                "niveldificultad": ""
+                "hora": "17:01:14.654028",
+                "puntaje": 2
             }
         },
         {
             "jugador": {
                 "nombre": "dg203",
                 "fecha": "2024-06-10",
-                "hora": "15:21:02.390929",
-                "puntaje": 3,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "asd",
-                "fecha": "2024-06-10",
-                "hora": "15:23:36.687422",
-                "puntaje": 2,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "asdads",
-                "fecha": "2024-06-10",
-                "hora": "15:24:03.676614",
-                "puntaje": 3,
-                "niveldificultad": ""
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "asddas",
-                "fecha": "2024-06-10",
-                "hora": "15:28:32.685387",
-                "puntaje": 3,
-                "niveldificultad": "Experto"
+                "hora": "17:01:14.654028",
+                "puntaje": 2
             }
         }
     ]
