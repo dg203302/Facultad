@@ -1,0 +1,85 @@
+{
+    "jugadores": [
+        {
+            "jugador": {
+                "nombre": "dasd",
+                "fecha": "2024-06-10",
+                "hora": "15:30:35.250630",
+                "puntaje": 4,
+                "niveldificultad": "SuperExperto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dasdas",
+                "fecha": "2024-06-10",
+                "hora": "15:57:45.670675",
+                "puntaje": 1,
+                "niveldificultad": "SuperExperto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dsads",
+                "fecha": "2024-06-10",
+                "hora": "15:59:52.489666",
+                "puntaje": 1,
+                "niveldificultad": "SuperExperto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dsads",
+                "fecha": "2024-06-10",
+                "hora": "15:59:52.489666",
+                "puntaje": 1,
+                "niveldificultad": "SuperExperto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dsads",
+                "fecha": "2024-06-10",
+                "hora": "15:59:52.489666",
+                "puntaje": 1,
+                "niveldificultad": "SuperExperto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dsads",
+                "fecha": "2024-06-10",
+                "hora": "15:59:52.489666",
+                "puntaje": 1,
+                "niveldificultad": "SuperExperto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dsads",
+                "fecha": "2024-06-10",
+                "hora": "15:59:52.489666",
+                "puntaje": 1,
+                "niveldificultad": "SuperExperto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "asdasd",
+                "fecha": "2024-06-10",
+                "hora": "16:01:42.452495",
+                "puntaje": 3,
+                "niveldificultad": "SuperExperto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "asdasd",
+                "fecha": "2024-06-10",
+                "hora": "16:01:42.452495",
+                "puntaje": 3,
+                "niveldificultad": "SuperExperto"
+            }
+        }
+    ]
+}

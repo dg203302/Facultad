@@ -32,7 +32,7 @@ Asocia una función (por ejemplo, verificar_color()) con cada botón para regist
 Muestra la secuencia utilizando un temporizador (por ejemplo, after() en tkinter) para cambiar los colores de los botones durante un breve período.
 A medida que el jugador hace clic en los botones, verifica si la entrada coincide con el color esperado en la secuencia.
 Si el jugador comete un error, muestra un mensaje y reinicia el juego.
-¡Buena suerte con tu implementación! Si tienes alguna pregunta específica o necesitas más detalles, no dudes en preguntar. 😊
+
 
 
 En un Canvas de tkinter, las posiciones y atributos se refieren a cómo se dibujan y posicionan los elementos en el lienzo. Aquí tienes una descripción de algunos de los conceptos clave:

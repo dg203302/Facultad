@@ -58,4 +58,13 @@
             "puntaje": 1
         }
     ]
+}{
+    "jugador": [
+        {
+            "nombre": "jose",
+            "fecha": "2024-06-10",
+            "hora": "14:48:03.855786",
+            "puntaje": 3
+        }
+    ]
 }
