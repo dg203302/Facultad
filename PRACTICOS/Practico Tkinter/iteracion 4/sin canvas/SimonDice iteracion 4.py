@@ -22,6 +22,7 @@ class simondice(tk.Tk):
 #atributos para el jugador
 #menu
     __menu:object
+    __jugadores:list
 #menu
 #box de nivel
     __box:object
@@ -37,6 +38,7 @@ class simondice(tk.Tk):
         self.__indiceverifi=0
         self.__colores=['teal','red','yellow','blue']
         self.__secuencia=[]
+        self.__jugadores=[]
         self.resizable(width=False,height=False)
         self.__gestorjugadores=gestorjugadores()
         self.registrarjugador()
@@ -62,8 +64,8 @@ class simondice(tk.Tk):
             ventanamuestra.lift(self)
             texto=tk.Label(ventanamuestra,text='Galeria de Puntajes')
             texto.place(x=150,y=5)
-            jugadores=self.__gestorjugadores.getjugadores()
-            jugadores.sort()
+            self.__jugadores=self.__gestorjugadores.getjugadores()
+            self.__jugadores.sort()
             menucontextual = ttk.Treeview(ventanamuestra, columns=("Jugador", "Fecha", "Hora", "Puntaje", "Dificultad"), show='headings')
             menucontextual.place(x=0,y=25)
             menucontextual.heading('#1',text='Jugador')
@@ -71,7 +73,7 @@ class simondice(tk.Tk):
             menucontextual.heading('#3',text='hora')
             menucontextual.heading('#4',text='puntaje')
             menucontextual.heading('#5',text='dificultad')
-            for jugador in jugadores:
+            for jugador in self.__jugadores:
                 menucontextual.insert('','end',values=(jugador.getnombre(),jugador.getfecha(),jugador.gethora(),jugador.getpuntaje(),jugador.getnivel()))
             menucontextual.column('#1',width=100)
             menucontextual.column('#2',width=100)
@@ -143,6 +145,8 @@ class simondice(tk.Tk):
         self.__jugadoractual.registrarjugada(fecha,hora)
         self.__gestorjugadores.agregarjugada(self.__jugadoractual)
         self.__gestorjugadores.guardarjson()
+        self.__jugadores=self.__gestorjugadores.getjugadores()
+        self.__jugadores.sort()
         self.__jugadoractual.reiniciarpuntaje()
         self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__jugadoractual.getpuntaje()}')
 #reiniciar puntaje

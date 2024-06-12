@@ -74,6 +74,51 @@
         },
         {
             "jugador": {
+                "nombre": "dfsdfsd",
+                "fecha": "2024-06-10",
+                "hora": "19:32:52.920533",
+                "puntaje": 3,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dfsdfsd",
+                "fecha": "2024-06-10",
+                "hora": "19:32:52.920533",
+                "puntaje": 3,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dfsdfsd",
+                "fecha": "2024-06-10",
+                "hora": "19:32:52.920533",
+                "puntaje": 3,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dqwqw",
+                "fecha": "2024-06-10",
+                "hora": "19:48:33.277924",
+                "puntaje": 3,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dqwqw",
+                "fecha": "2024-06-10",
+                "hora": "19:48:33.277924",
+                "puntaje": 3,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
                 "nombre": "dg203",
                 "fecha": "2024-06-10",
                 "hora": "17:02:15.628400",
@@ -149,6 +194,15 @@
                 "nombre": "fsaf",
                 "fecha": "2024-06-10",
                 "hora": "18:49:58.386918",
+                "puntaje": 2,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dsadas",
+                "fecha": "2024-06-10",
+                "hora": "19:31:50.899078",
                 "puntaje": 2,
                 "niveldificultad": "Experto"
             }
@@ -304,6 +358,15 @@
                 "hora": "18:39:33.485120",
                 "puntaje": 1,
                 "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "PRUEBA",
+                "fecha": "2024-06-12",
+                "hora": "10:36:21.141543",
+                "puntaje": 2,
+                "niveldificultad": "Principiante"
             }
         },
         {
@@ -839,56 +902,20 @@
         },
         {
             "jugador": {
-                "nombre": "dsadas",
-                "fecha": "2024-06-10",
-                "hora": "19:31:50.899078",
+                "nombre": "PRUEBA",
+                "fecha": "2024-06-12",
+                "hora": "10:36:21.141543",
                 "puntaje": 2,
-                "niveldificultad": "Experto"
+                "niveldificultad": "Principiante"
             }
         },
         {
             "jugador": {
-                "nombre": "dfsdfsd",
-                "fecha": "2024-06-10",
-                "hora": "19:32:52.920533",
-                "puntaje": 3,
-                "niveldificultad": "Experto"
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "dfsdfsd",
-                "fecha": "2024-06-10",
-                "hora": "19:32:52.920533",
-                "puntaje": 3,
-                "niveldificultad": "Experto"
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "dfsdfsd",
-                "fecha": "2024-06-10",
-                "hora": "19:32:52.920533",
-                "puntaje": 3,
-                "niveldificultad": "Experto"
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "dqwqw",
-                "fecha": "2024-06-10",
-                "hora": "19:48:33.277924",
-                "puntaje": 3,
-                "niveldificultad": "Experto"
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "dqwqw",
-                "fecha": "2024-06-10",
-                "hora": "19:48:33.277924",
-                "puntaje": 3,
-                "niveldificultad": "Experto"
+                "nombre": "putogay",
+                "fecha": "2024-06-12",
+                "hora": "10:43:23.877040",
+                "puntaje": 2,
+                "niveldificultad": "Principiante"
             }
         }
     ]

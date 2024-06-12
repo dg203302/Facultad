@@ -16,7 +16,8 @@ class gestorjugadores:
         else:
             return True
     def cargarjugadores(self,jugador):
-        self.__jugadores.append(jugador)
+        jugadorn=jugador
+        self.__jugadores.append(jugadorn)
     def agregarjugada(self,jugador):
         self.__jugadores.append(jugador)
     def guardarjson(self):
