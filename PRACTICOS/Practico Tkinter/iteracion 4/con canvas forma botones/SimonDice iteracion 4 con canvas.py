@@ -149,7 +149,7 @@ class simondice(tk.Tk):
         self.__gestorjugadores.guardarjson()
         self.__jugadores=self.__gestorjugadores.getjugadores()
         self.__jugadores.sort()
-        self.__jugadoractual.reiniciarpuntaje()
+        self.__jugadoractual=jugador(self.__jugadoractual.getnombre())
         self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__jugadoractual.getpuntaje()}')
 #reiniciar puntaje
 #creacion de puntaje

@@ -24,8 +24,6 @@ class jugador:
         return self.__hora
     def actpuntaje(self):
         self.__puntaje+=1
-    def reiniciarpuntaje(self):
-        self.__puntaje=0
     def actnomb(self,nombre):
         self.__nombre=nombre
     def registrarjugada(self,fecha,hora):
