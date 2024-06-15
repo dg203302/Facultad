@@ -1,4 +1,3 @@
-import multiprocessing.process
 import tkinter as tk
 from tkinter import messagebox,ttk
 from jugador import *
