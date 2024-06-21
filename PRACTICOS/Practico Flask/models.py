@@ -2,6 +2,7 @@ from appweb import db
 class Paquete(db.Model):
     __tablename__='paquete'
     id=db.Column(db.Integer, primary_key=True)
+    numeroenvio=db.Column(db.Integer, primary_key=False, nullable=False)
     peso=db.Column(db.Float, nullable=False)
     nomdestino=db.Column(db.String(120), nullable=False)
     dirdestino=db.Column(db.String(120), nullable=False)
@@ -13,6 +14,7 @@ class Paquete(db.Model):
 class Transporte(db.Model):
     __tablename__='transporte'
     id=db.Column(db.Integer, primary_key=True)
+    numerotransporte=db.Column(db.Integer, primary_key=False, nullable=False)
     fechahorasalida=db.Column(db.DateTime, nullable=False)
     fechahorallegada=db.Column(db.DateTime, nullable=False)
     idsucursal=db.Column(db.Integer, db.ForeignKey('sucursal.id'))
