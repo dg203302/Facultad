@@ -1,22 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
 from appweb import db
-class Sucursal(db.Model):
-    __tablename__='sucursal'
-    id=db.Column(db.Integer, primary_key=True)
-    numero=db.Column(db.String(120), nullable=False, unique=True)
-    provincia=db.Column(db.String(120), nullable=False)
-    localidad=db.Column(db.String(120), nullable=False)
-    direccion=db.Column(db.String(120), nullable=False, unique=True)
-    paquetes=db.relationship('paquete', backref='sucursal', cascade='all, delete-orphan')
-    transportes=db.relationship('transporte', backref='sucursal', cascade='all, delete-orphan')
-    repartidores=db.relationship('repartidor', backref='sucursal', cascade='all, delete-orphan')
-class Repartidor(db.Model):
-    __tablename__='repartidor'
-    id=db.Column(db.Integer, primary_key=True)
-    nombre=db.Column(db.String(120), nullable=False)
-    dni=db.Column(db.String(120), nullable=False, unique=True)
-    idsucursal=db.Column(db.Integer, db.ForeignKey('sucursal.id'))
-    paquetes=db.relationship('paquete', backref='repartidor', cascade='all, delete-orphan')
 class Paquete(db.Model):
     __tablename__='paquete'
     id=db.Column(db.Integer, primary_key=True)
@@ -34,4 +16,21 @@ class Transporte(db.Model):
     fechahorasalida=db.Column(db.DateTime, nullable=False)
     fechahorallegada=db.Column(db.DateTime, nullable=False)
     idsucursal=db.Column(db.Integer, db.ForeignKey('sucursal.id'))
-    paquetes=db.relationship('paquete', backref='transporte', cascade='all, delete-orphan')
+    paquetes=db.relationship('Paquete', backref='transporte', cascade='all, delete-orphan')
+class Repartidor(db.Model):
+    __tablename__='repartidor'
+    id=db.Column(db.Integer, primary_key=True)
+    nombre=db.Column(db.String(120), nullable=False)
+    dni=db.Column(db.String(120), nullable=False, unique=True)
+    idsucursal=db.Column(db.Integer, db.ForeignKey('sucursal.id'))
+    paquetes=db.relationship('Paquete', backref='repartidor', cascade='all, delete-orphan')
+class Sucursal(db.Model):
+    __tablename__='sucursal'
+    id=db.Column(db.Integer, primary_key=True)
+    numero=db.Column(db.String(120), nullable=False, unique=True)
+    provincia=db.Column(db.String(120), nullable=False)
+    localidad=db.Column(db.String(120), nullable=False)
+    direccion=db.Column(db.String(120), nullable=False, unique=True)
+    paquetes=db.relationship('Paquete', backref='sucursal', cascade='all, delete-orphan')
+    transportes=db.relationship('Transporte', backref='sucursal', cascade='all, delete-orphan')
+    repartidores=db.relationship('Repartidor', backref='sucursal', cascade='all, delete-orphan')
