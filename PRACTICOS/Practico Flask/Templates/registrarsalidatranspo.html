@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+{% block title %}Salida de Transportes{% endblock %}
+{% block content %}
+<form action="{{request.path}}" method="POST">
+    <h1>Sucursales de Destino</h1><br>
+    <select name="sucursal_dest" id="sucursal_dest">
+        {%for sucursal in sucursalesdest | sort(attribute="id")%}
+            <option value="{{sucursal.id}}">{{sucursal.id}} {{sucursal.provincia}} {{sucursal.localidad}}</option>
+        {%endfor%}
+    </select>
+    <br>
+    <input type="submit" value="seleccionar sucursal">
+</form>
+{% endblock %}

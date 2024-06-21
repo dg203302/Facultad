@@ -1,0 +1,14 @@
+{%extends "base.html"%}
+{%block title%}SELECCION DE SUCURSAL{%endblock%}
+{%block content%}
+<form action="{{request.path}}" method="POST">
+    <h1>Paquetes</h1><br>
+    <select name="paquetes" multiple>
+        {%for paquete in paquetes %}
+            <option value="{{paquete.id}}">{{paquete.numeroenvio}} {{paquete.dirdestinatario}}</option>
+        {%endfor%}
+    </select>
+    <br>
+    <input type="submit" value="registrar transporte">
+</form>
+{%endblock%}

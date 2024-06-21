@@ -18,7 +18,7 @@ class Transporte(db.Model):
     fechahorasalida=db.Column(db.DateTime, nullable=False)
     fechahorallegada=db.Column(db.DateTime, nullable=False)
     idsucursal=db.Column(db.Integer, db.ForeignKey('sucursal.id'))
-    paquetes=db.relationship('Paquete', backref='transporte', cascade='all, delete-orphan')
+    paquetes=db.relationship('Paquete', backref='transporte', cascade='all, delete-orphan', lazy=True)
 class Repartidor(db.Model):
     __tablename__='repartidor'
     id=db.Column(db.Integer, primary_key=True)
