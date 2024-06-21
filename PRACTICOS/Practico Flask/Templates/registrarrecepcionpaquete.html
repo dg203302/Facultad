@@ -1,0 +1,15 @@
+{%extends "base.html"%}
+{%block title%}REGISTRO DE PAQUETE{%endblock%}
+{%block content%}
+<h1>RECEPCION DE PAQUETE | {{sucu.id}} {{sucu.provincia}} {{sucu.localidad}}</h1>
+<form action="{{request.path}}" method="post">
+    <label for="peso">Peso del paquete:</label>
+    <input type="text" id="peso" name="peso" required><br>
+    <label for="nombre">nombre del destinatario: </label>
+    <input type="text" id="nombre" name="nombre" required><br>
+    <label for="direccion">direccion del destinatario: </label>
+    <input type="text" id="direccion" name="direccion" required><br>
+    <input type="submit" value="registrar recepcion!">
+</form>
+<a href="{{url_for('accesodesp')}}">Volver a seleccion</a>
+{%endblock%}

@@ -2,7 +2,6 @@
 {%block title%}SELECCION DE SUCURSAL{%endblock%}
 {%block content%}
 <form action="{{request.path}}" method="POST">
-{%if sucursales is not none%}
     <label for="SUCURSALES">SUCURSALES</label><br>
     <select name="sucursales" id="sucursales">
         {%for sucursales in sucursales | sort(attribute="id")%}
@@ -11,6 +10,5 @@
     </select>
     <br>
     <input type="submit" value="seleccionar sucursal">
-{%endif%}
 </form>
 {%endblock%}
