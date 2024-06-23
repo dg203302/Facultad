@@ -1,0 +1,7 @@
+{%extends "base.html"%}
+{%block title%}PAQUETE REGISTRADO{%endblock%}
+{%block content%}
+<h1>transporte: {{transp.numerotransporte}}, con fecha de salida: {{transp.fechahorasalida}}, fecha de llegada: {{transp.fechahorallegada}}</h1>
+<a href="{{url_for('funcionesdespachante')}}">volver a pantalla de seleccion de operacion</a>
+<a href="{{url_for('accesodesp')}}">Volver a seleccion de sucursal</a>
+{%endblock%}

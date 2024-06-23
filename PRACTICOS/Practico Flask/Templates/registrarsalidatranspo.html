@@ -5,10 +5,11 @@
     <h1>Sucursales de Destino</h1><br>
     <select name="sucursal_dest" id="sucursal_dest">
         {%for sucursal in sucursalesdest | sort(attribute="id")%}
-            <option value="{{sucursal.id}}">{{sucursal.id}} {{sucursal.provincia}} {{sucursal.localidad}}</option>
+            <option value="{{sucursal.id}}">sucursal numero {{sucursal.id}},provincia: {{sucursal.provincia}}, localidad: {{sucursal.localidad}}</option>
         {%endfor%}
     </select>
     <br>
     <input type="submit" value="seleccionar sucursal">
 </form>
+<a href="{{url_for('funcionesdespachante')}}">volver a pantalla de seleccion de operacion</a>
 {% endblock %}

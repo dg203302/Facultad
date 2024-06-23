@@ -1,14 +1,15 @@
 {%extends "base.html"%}
 {%block title%}SELECCION DE SUCURSAL{%endblock%}
 {%block content%}
+<h2>Sucursales</h2><br>
 <form action="{{request.path}}" method="POST">
-    <h1>Sucursales</h1><br>
     <select name="sucursal">
         {%for sucursal in sucursales | sort(attribute="id")%}
-            <option value="{{sucursal.id}}">{{sucursal.id}} {{sucursal.provincia}} {{sucursal.localidad}}</option>
+            <option value="{{sucursal.id}}">sucursal numero {{sucursal.id}}, provincia: {{sucursal.provincia}}, localidad: {{sucursal.localidad}}</option>
         {%endfor%}
     </select>
     <br>
     <input type="submit" value="seleccionar sucursal">
 </form>
+<a href="{{url_for('inicio')}}">Volver al inicio</a>
 {%endblock%}

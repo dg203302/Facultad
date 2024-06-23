@@ -5,7 +5,9 @@
     <h1>Paquetes</h1><br>
     <select name="paquetes" multiple>
         {%for paquete in paquetes %}
-            <option value="{{paquete.id}}">{{paquete.numeroenvio}} {{paquete.dirdestinatario}}</option>
+            {%if paquete.idtransporte==none%}
+                <option value="{{paquete.id}}">numero de paquete: {{paquete.numeroenvio}}, direccion de destino:{{paquete.dirdestinatario}}</option>
+            {%endif%}
         {%endfor%}
     </select>
     <br>

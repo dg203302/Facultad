@@ -36,8 +36,18 @@ def registrarsalida():
     if request.method=='POST':
         session['sucursal_seleccionada_destino']=request.form.get('sucursal_dest')
         return redirect(url_for('seleccionarpaquete'))
-    else:  
-        return render_template('registrarsalidatranspo.html', sucursalesdest=db.session.query(Sucursal).all())
+    else:
+        paquetes=db.session.query(Paquete).all()
+        i=0
+        while i<len(paquetes):
+            if paquetes[i].entregado!=False or paquetes[i].idtransporte!=None:
+                i+=1
+            else:
+                break
+        if i==len(paquetes):
+            return render_template('sinpaquetesdisponibles.html')
+        else:
+            return render_template('registrarsalidatranspo.html', sucursalesdest=db.session.query(Sucursal).all())
 @app.route('/seleccionarpaquete', methods=['GET','POST'])
 def seleccionarpaquete():
     if request.method=='POST':
@@ -45,7 +55,7 @@ def seleccionarpaquete():
         numetr=random.randint(0,100)
         fechasal=datetime.datetime.now()
         sucu=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada_destino']).first()
-        nuevotranspo=Transporte(numerotransporte=numetr, fechahorasalida=fechasal, idsucursal=sucu.id)
+        nuevotranspo=Transporte(numerotransporte=numetr, fechahorasalida=fechasal, fechahorallegada=None, idsucursal=sucu.id)
         for ids in session['paquetes_seleccionados']:
             paq=db.session.query(Paquete).filter(Paquete.id==ids).first()
             if paq:
@@ -55,7 +65,30 @@ def seleccionarpaquete():
         return render_template('transporteregistrado.html', transp=nuevotranspo)
     else:
         return render_template('seleccionarpaquete.html', paquetes=db.session.query(Paquete).filter(Paquete.entregado==False and Paquete.idrepartidor==None))
-#@app.route('/regsitrarllegada')
+@app.route('/registrarllegada', methods=['GET','POST'])
+def registrarllegada():
+    if request.method=='POST':
+        session['transporte_llegado']=request.form.get('transporte_llegado')
+        transporte_lleg=db.session.query(Transporte).filter(Transporte.id==session['transporte_llegado']).first()
+        transporte_lleg.fechahorallegada=datetime.datetime.now()
+        paquetes=transporte_lleg.paquetes
+        for paquete in paquetes:
+            paquete.entregado=True
+        db.session.commit()
+        return render_template('exitoregistrollegada.html', transp=db.session.query(Transporte).filter(Transporte.id==transporte_lleg.id).first())
+    else:
+        #en caso de que no hayan transportes muestra una pagina aparte
+        transports=db.session.query(Transporte).filter(Transporte.idsucursal==session['sucursal_seleccionada']).all()
+        i=0
+        while i<len(transports):
+            if transports[i].fechahorallegada!=None:
+                i+=1
+            else:
+                break
+        if len(transports)==i:
+            return render_template('sintransportesdisponibles.html', sucu=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada']).first())
+        else:
+            return render_template('registrodellegada.html', transportes=db.session.query(Transporte).filter(Transporte.idsucursal==session['sucursal_seleccionada']).all())
 if __name__=='__main__':
     with app.app_context():
         from models import Paquete,Transporte,Repartidor,Sucursal
