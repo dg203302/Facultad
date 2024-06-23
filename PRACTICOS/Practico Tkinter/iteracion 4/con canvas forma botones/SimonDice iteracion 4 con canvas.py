@@ -176,7 +176,6 @@ class simondice(tk.Tk):
         self.__indiceverifi=0
         self.reiniciarpunta()
         self.__secuencia=[]
-        self.temporizar(True)
     def temporizar(self, toque):
         if toque=='iniciar':
             self.__idafter=self.after(5000,self.fueradetiempo)
