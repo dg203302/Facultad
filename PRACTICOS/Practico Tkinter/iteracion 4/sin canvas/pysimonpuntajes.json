@@ -245,15 +245,6 @@
         },
         {
             "jugador": {
-                "nombre": "putogay",
-                "fecha": "2024-06-12",
-                "hora": "10:43:23.877040",
-                "puntaje": 2,
-                "niveldificultad": "Principiante"
-            }
-        },
-        {
-            "jugador": {
                 "nombre": "diegoooo",
                 "fecha": "2024-06-23",
                 "hora": "16:32:16.914048",
@@ -978,6 +969,33 @@
                 "fecha": "2024-06-24",
                 "hora": "14:10:15.274676",
                 "puntaje": 0,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dg203",
+                "fecha": "2024-06-24",
+                "hora": "16:48:51.860732",
+                "puntaje": 2,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "josecapo123",
+                "fecha": "2024-06-24",
+                "hora": "16:49:46.311164",
+                "puntaje": 2,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "diego203",
+                "fecha": "2024-06-24",
+                "hora": "17:42:31.942104",
+                "puntaje": 5,
                 "niveldificultad": "Principiante"
             }
         }

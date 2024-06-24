@@ -239,7 +239,7 @@ class simondice(tk.Tk):
         if self.__indice<len(self.__secuencia):
             coloract=self.__secuencia[self.__indice]
             self.__canvas.itemconfig(self.__botones[self.__colores.index(coloract)], fill="white")
-            self.after(1500,self.ocultarcolor)
+            self.after(750,self.ocultarcolor)
     def ocultarcolor(self):
             coloract=self.__secuencia[self.__indice]
             self.__canvas.itemconfig((self.__botones[self.__colores.index(coloract)]), fill=coloract)
