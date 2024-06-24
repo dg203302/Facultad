@@ -47,7 +47,7 @@ def registrarsalida():
         if i==len(paquetes):
             return render_template('sinpaquetesdisponibles.html')
         else:
-            return render_template('registrarsalidatranspo.html', sucursalesdest=db.session.query(Sucursal).all())
+            return render_template('registrarsalidatranspo.html', sucursalesdest=db.session.query(Sucursal).filter(Sucursal.id!=session['sucursal_seleccionada']).all())
 @app.route('/seleccionarpaquete', methods=['GET','POST'])
 def seleccionarpaquete():
     if request.method=='POST':
