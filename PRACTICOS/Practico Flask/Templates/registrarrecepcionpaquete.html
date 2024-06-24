@@ -1,15 +1,15 @@
 {%extends "base.html"%}
 {%block title%}REGISTRO DE PAQUETE{%endblock%}
 {%block content%}
-<h1>RECEPCION DE PAQUETE | {{sucu.id}} {{sucu.provincia}} {{sucu.localidad}}</h1>
+<h1 id="titulos">RECEPCION DE PAQUETE | {{sucu.id}} {{sucu.provincia}} {{sucu.localidad}}</h1>
 <form action="{{request.path}}" method="post">
-    <label for="peso">Peso del paquete:</label>
-    <input type="text" id="peso" name="peso" required><br>
-    <label for="nombre">nombre del destinatario: </label>
-    <input type="text" id="nombre" name="nombre" required><br>
-    <label for="direccion">direccion del destinatario: </label>
-    <input type="text" id="direccion" name="direccion" required><br>
-    <input type="submit" value="registrar recepcion!">
+    <label for="peso" id="textos_inputs">Peso del paquete</label>
+    <input type="text" id="inputs" name="peso" required placeholder="PESO EN KG"><br>
+    <label for="nombre" id="textos_inputs">Nombre del destinatario</label>
+    <input type="text" id="inputs" name="nombre" required placeholder="NOMBRE Y APELLIDO"><br>
+    <label for="direccion" id="textos_inputs">Direccion del destinatario</label>
+    <input type="text" id="inputs" name="direccion" required placeholder="DIRECCION"><br>
+    <input type="submit" value="registrar recepcion!" id="boton_seleccion_paquete">
 </form>
-<a href="{{url_for('funcionesdespachante')}}">volver a pantalla de seleccion de operacion</a>
+<a href="{{url_for('funcionesdespachante')}}" id="botones_volver">volver a pantalla de seleccion de operacion</a>
 {%endblock%}

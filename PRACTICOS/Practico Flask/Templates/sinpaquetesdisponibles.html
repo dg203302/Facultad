@@ -1,7 +1,8 @@
 {%extends "base.html"%}
-{%block title%}SELECCION DE SUCURSAL{%endblock%}
+{%block title%}SIN PAQUETES DISPONIBLES{%endblock%}
 {%block content%}
-<h1>no hay paquetes disponibles</h1><br>
-<a href="{{url_for('funcionesdespachante')}}">volver a pantalla de seleccion de operacion</a>
-<a href="{{url_for('accesodesp')}}">Volver a seleccion de sucursal</a>
+<img src="..//static/image/logofracaso.png" alt="fracaso" id="logoexito_fracaso">
+<h1 id="titulos_fracaso">no hay paquetes disponibles</h1><br>
+<a href="{{url_for('funcionesdespachante')}}" id="botones_volver">volver a pantalla de seleccion de operacion</a>
+<a href="{{url_for('accesodesp')}}" id="botones_volver">Volver a seleccion de sucursal</a>
 {%endblock%}

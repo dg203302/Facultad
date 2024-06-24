@@ -1,8 +1,6 @@
 {% extends "base.html"%}
 {% block title %}LogiPack Envios{% endblock %}
 {% block content %}
-<h1>BIENVENIDO A LOGIPACK ENVIOS!</h1>
-<ul>
-    <a href="{{url_for('accesodesp')}}">acceder como despachante</a>
-</ul>
+<h1 id="titulos">BIENVENIDO A LOGIPACK ENVIOS!</h1>
+<a href="{{url_for('accesodesp')}}" id="botones_volver">acceder como despachante</a>
 {% endblock %}
