@@ -32,7 +32,7 @@ class simondice(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title('Simon Dice')
-        self.geometry('800x605')
+        self.geometry('800x700')
         self.__canvas=tk.Canvas(self,width=800,height=600,confine=True)
         self.__canvas.grid(column=0,row=0)
         self.__canvas.columnconfigure(0,weight=1)
@@ -53,7 +53,7 @@ class simondice(tk.Tk):
 #creacion del box de menu
     def crearboxdenivel(self):
         self.__box=ttk.Combobox(self,values=('Principiante','Experto','SuperExperto'))
-        self.__box.place(x=640,y=552)
+        self.__box.place(x=640,y=615)
 #creacion del box de menu
 #creacion del menu
     def mostrarpuntajes(self):
@@ -125,14 +125,14 @@ class simondice(tk.Tk):
 #boton de inicio
     def crearbotonincio(self):
         boton=tk.Button(text='INICIAR JUEGO',bg='yellow', command=self.iniciarjuego)
-        self.__canvas.create_window(400,328,anchor='center',window=boton)
+        self.__canvas.create_window(400,615,anchor='center',window=boton)
         return boton
 #boton de inicio
 #puntaje
     def crearpuntaje(self):
         puntaje=tk.Label(self,fg="black")
-        puntaje.config(text=f'{self.__jugadoractual.getnombre()}: {self.__jugadoractual.getpuntaje()}',font=('Arial',20))
-        self.__canvas.create_window(400,25,anchor='center',window=puntaje)
+        puntaje.config(text=f'{self.__jugadoractual.getnombre()}: {self.__jugadoractual.getpuntaje()}',font=('Arial',15))
+        self.__canvas.create_window(100,615,anchor='center',window=puntaje)
         return puntaje
 #puntaje
 #aumentar puntaje
@@ -157,16 +157,16 @@ class simondice(tk.Tk):
     def crearbotones(self):
         for i in range(4):
             if i==0:
-                boton = self.__canvas.create_arc(20, 50, 750, 580, start=90, extent=90, fill=self.__colores[i], outline='black')
+                boton = self.__canvas.create_rectangle(20, 20, 400, 300, fill=self.__colores[i], outline='black')
                 self.__canvas.tag_bind(boton, '<Button-1>', lambda event, i=i: self.verificarcolor(i))
             if i==1:
-                boton = self.__canvas.create_arc(20, 50, 780, 580, start=0, extent=90, fill=self.__colores[i], outline='black')
+                boton = self.__canvas.create_rectangle(780, 20, 400, 300, fill=self.__colores[i], outline='black')
                 self.__canvas.tag_bind(boton, '<Button-1>', lambda event, i=i: self.verificarcolor(i))
             if i==2:
-                boton = self.__canvas.create_arc(20, 100, 750, 580, start=180, extent=90, fill=self.__colores[i], outline='black')
+                boton = self.__canvas.create_rectangle(20, 300, 400, 580, fill=self.__colores[i], outline='black')
                 self.__canvas.tag_bind(boton, '<Button-1>', lambda event, i=i: self.verificarcolor(i))
             if i==3:
-                boton = self.__canvas.create_arc(20, 100, 780, 580, start=270, extent=90, fill=self.__colores[i], outline='black')
+                boton = self.__canvas.create_rectangle(780, 300, 400, 580, fill=self.__colores[i], outline='black')
                 self.__canvas.tag_bind(boton, '<Button-1>', lambda event, i=i: self.verificarcolor(i))
             self.__botones.append(boton)
 #temporizador
@@ -238,11 +238,11 @@ class simondice(tk.Tk):
     def iluminar(self):
         if self.__indice<len(self.__secuencia):
             coloract=self.__secuencia[self.__indice]
-            self.__canvas.itemconfig(self.__botones[self.__colores.index(coloract)],width=5)
+            self.__canvas.itemconfig(self.__botones[self.__colores.index(coloract)], fill="white")
             self.after(1500,self.ocultarcolor)
     def ocultarcolor(self):
             coloract=self.__secuencia[self.__indice]
-            self.__canvas.itemconfig((self.__botones[self.__colores.index(coloract)]),width=0)
+            self.__canvas.itemconfig((self.__botones[self.__colores.index(coloract)]), fill=coloract)
             self.__indice+=1
             self.iluminar()
 #iluminar y ocultar colores

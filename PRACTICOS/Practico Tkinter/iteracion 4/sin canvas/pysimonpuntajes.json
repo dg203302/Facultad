@@ -962,6 +962,24 @@
                 "puntaje": 3,
                 "niveldificultad": "Experto"
             }
+        },
+        {
+            "jugador": {
+                "nombre": "dsd",
+                "fecha": "2024-06-24",
+                "hora": "14:06:43.056707",
+                "puntaje": 4,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "df234",
+                "fecha": "2024-06-24",
+                "hora": "14:10:15.274676",
+                "puntaje": 0,
+                "niveldificultad": "Principiante"
+            }
         }
     ]
 }
