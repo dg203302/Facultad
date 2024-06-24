@@ -11,6 +11,8 @@ class Paquete(db.Model):
     idsucursal=db.Column(db.Integer, db.ForeignKey('sucursal.id'))
     idtransporte=db.Column(db.Integer, db.ForeignKey('transporte.id'))
     idrepartidor=db.Column(db.Integer, db.ForeignKey('repartidor.id'))
+    def __repr__(self):
+        return f'{self.numeroenvio}'
 class Transporte(db.Model):
     __tablename__='transporte'
     id=db.Column(db.Integer, primary_key=True)
