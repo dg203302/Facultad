@@ -2,6 +2,15 @@
     "jugadores": [
         {
             "jugador": {
+                "nombre": "diegoooo",
+                "fecha": "2024-06-23",
+                "hora": "16:32:52.050291",
+                "puntaje": 8,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
                 "nombre": "crak",
                 "fecha": "2024-06-12",
                 "hora": "11:23:13.060040",
@@ -14,6 +23,15 @@
                 "nombre": "cracken",
                 "fecha": "2024-06-12",
                 "hora": "11:22:27.679996",
+                "puntaje": 5,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "diego203",
+                "fecha": "2024-06-24",
+                "hora": "17:42:31.942104",
                 "puntaje": 5,
                 "niveldificultad": "Principiante"
             }
@@ -34,6 +52,15 @@
                 "hora": "18:42:21.701724",
                 "puntaje": 4,
                 "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dsd",
+                "fecha": "2024-06-24",
+                "hora": "14:06:43.056707",
+                "puntaje": 4,
+                "niveldificultad": "Principiante"
             }
         },
         {
@@ -131,6 +158,15 @@
                 "nombre": "dqwqw",
                 "fecha": "2024-06-10",
                 "hora": "19:48:33.277924",
+                "puntaje": 3,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "diegogarc",
+                "fecha": "2024-06-23",
+                "hora": "16:41:53.869815",
                 "puntaje": 3,
                 "niveldificultad": "Experto"
             }
@@ -250,6 +286,24 @@
                 "hora": "16:32:16.914048",
                 "puntaje": 2,
                 "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dg203",
+                "fecha": "2024-06-24",
+                "hora": "16:48:51.860732",
+                "puntaje": 2,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "josecapo123",
+                "fecha": "2024-06-24",
+                "hora": "16:49:46.311164",
+                "puntaje": 2,
+                "niveldificultad": "Experto"
             }
         },
         {
@@ -401,6 +455,15 @@
                 "nombre": "dasd",
                 "fecha": "2024-06-10",
                 "hora": "18:39:33.485120",
+                "puntaje": 1,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dieogcrackennn",
+                "fecha": "2024-06-24",
+                "hora": "19:32:58.581059",
                 "puntaje": 1,
                 "niveldificultad": "Experto"
             }
@@ -938,33 +1001,6 @@
         },
         {
             "jugador": {
-                "nombre": "diegoooo",
-                "fecha": "2024-06-23",
-                "hora": "16:32:52.050291",
-                "puntaje": 8,
-                "niveldificultad": "Principiante"
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "diegogarc",
-                "fecha": "2024-06-23",
-                "hora": "16:41:53.869815",
-                "puntaje": 3,
-                "niveldificultad": "Experto"
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "dsd",
-                "fecha": "2024-06-24",
-                "hora": "14:06:43.056707",
-                "puntaje": 4,
-                "niveldificultad": "Principiante"
-            }
-        },
-        {
-            "jugador": {
                 "nombre": "df234",
                 "fecha": "2024-06-24",
                 "hora": "14:10:15.274676",
@@ -974,29 +1010,20 @@
         },
         {
             "jugador": {
-                "nombre": "dg203",
+                "nombre": "dieogcrackennn",
                 "fecha": "2024-06-24",
-                "hora": "16:48:51.860732",
-                "puntaje": 2,
-                "niveldificultad": "Principiante"
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "josecapo123",
-                "fecha": "2024-06-24",
-                "hora": "16:49:46.311164",
-                "puntaje": 2,
+                "hora": "19:33:17.145044",
+                "puntaje": 6,
                 "niveldificultad": "Experto"
             }
         },
         {
             "jugador": {
-                "nombre": "diego203",
+                "nombre": "dg203",
                 "fecha": "2024-06-24",
-                "hora": "17:42:31.942104",
-                "puntaje": 5,
-                "niveldificultad": "Principiante"
+                "hora": "19:47:57.757103",
+                "puntaje": 1,
+                "niveldificultad": "Experto"
             }
         }
     ]
