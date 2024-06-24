@@ -71,6 +71,15 @@
                 "puntaje": 3,
                 "niveldificultad": "Principiante"
             }
+        },
+        {
+            "jugador": {
+                "nombre": "dg3'23",
+                "fecha": "2024-06-24",
+                "hora": "13:50:26.889401",
+                "puntaje": 3,
+                "niveldificultad": "Principiante"
+            }
         }
     ]
 }
