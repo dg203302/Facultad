@@ -20,6 +20,24 @@
         },
         {
             "jugador": {
+                "nombre": "dieogcrackennn",
+                "fecha": "2024-06-24",
+                "hora": "19:33:17.145044",
+                "puntaje": 6,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dg23",
+                "fecha": "2024-06-24",
+                "hora": "20:13:58.851046",
+                "puntaje": 6,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
                 "nombre": "cracken",
                 "fecha": "2024-06-12",
                 "hora": "11:22:27.679996",
@@ -59,6 +77,15 @@
                 "nombre": "dsd",
                 "fecha": "2024-06-24",
                 "hora": "14:06:43.056707",
+                "puntaje": 4,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dg2'3",
+                "fecha": "2024-06-24",
+                "hora": "20:25:53.260301",
                 "puntaje": 4,
                 "niveldificultad": "Principiante"
             }
@@ -464,6 +491,15 @@
                 "nombre": "dieogcrackennn",
                 "fecha": "2024-06-24",
                 "hora": "19:32:58.581059",
+                "puntaje": 1,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dg203",
+                "fecha": "2024-06-24",
+                "hora": "19:47:57.757103",
                 "puntaje": 1,
                 "niveldificultad": "Experto"
             }
@@ -1010,19 +1046,10 @@
         },
         {
             "jugador": {
-                "nombre": "dieogcrackennn",
+                "nombre": "dg2'3",
                 "fecha": "2024-06-24",
-                "hora": "19:33:17.145044",
-                "puntaje": 6,
-                "niveldificultad": "Experto"
-            }
-        },
-        {
-            "jugador": {
-                "nombre": "dg203",
-                "fecha": "2024-06-24",
-                "hora": "19:47:57.757103",
-                "puntaje": 1,
+                "hora": "20:26:03.923334",
+                "puntaje": 4,
                 "niveldificultad": "Experto"
             }
         }

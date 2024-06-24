@@ -236,10 +236,14 @@ class simondice(tk.Tk):
 #generacion de secuencia de colores
 #iluminar y ocultar colores
     def iluminar(self):
-        if self.__indice<len(self.__secuencia):
-            coloract=self.__secuencia[self.__indice]
-            self.__canvas.itemconfig(self.__botones[self.__colores.index(coloract)], fill="white")
-            self.after(750,self.ocultarcolor)
+        if self.__indice<len(self.__secuencia) and self.__jugadoractual.getnivel()=='Principiante':
+                coloract=self.__secuencia[self.__indice]
+                self.__canvas.itemconfig(self.__botones[self.__colores.index(coloract)], fill="white")
+                self.after(750,self.ocultarcolor)
+        elif self.__indice<len(self.__secuencia) and (self.__jugadoractual.getnivel()=='Experto' or self.__jugadoractual.getnivel()=='SuperExperto'):
+                coloract=self.__secuencia[self.__indice]
+                self.__canvas.itemconfig(self.__botones[self.__colores.index(coloract)], fill="white")
+                self.after(300,self.ocultarcolor)
     def ocultarcolor(self):
             coloract=self.__secuencia[self.__indice]
             self.__canvas.itemconfig((self.__botones[self.__colores.index(coloract)]), fill=coloract)
