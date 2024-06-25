@@ -92,6 +92,24 @@
         },
         {
             "jugador": {
+                "nombre": "dg2'3",
+                "fecha": "2024-06-24",
+                "hora": "20:26:03.923334",
+                "puntaje": 4,
+                "niveldificultad": "Experto"
+            }
+        },
+        {
+            "jugador": {
+                "nombre": "dg",
+                "fecha": "2024-06-24",
+                "hora": "20:46:33.907500",
+                "puntaje": 4,
+                "niveldificultad": "Principiante"
+            }
+        },
+        {
+            "jugador": {
                 "nombre": "asdasd",
                 "fecha": "2024-06-10",
                 "hora": "16:01:42.452495",
@@ -1046,10 +1064,10 @@
         },
         {
             "jugador": {
-                "nombre": "dg2'3",
+                "nombre": "dg",
                 "fecha": "2024-06-24",
-                "hora": "20:26:03.923334",
-                "puntaje": 4,
+                "hora": "20:46:55.653767",
+                "puntaje": 2,
                 "niveldificultad": "Experto"
             }
         }

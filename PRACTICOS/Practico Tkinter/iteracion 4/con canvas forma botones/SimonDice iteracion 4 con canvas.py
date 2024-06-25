@@ -48,7 +48,7 @@ class simondice(tk.Tk):
         self.crearbotones()
         self.crearmenu()
         self.crearboxdenivel()
-        botonini=self.crearbotonincio()
+        self.crearbotonincio()
         self.bind('<Escape>', lambda event: self.destroy())
 #creacion del box de menu
     def crearboxdenivel(self):
