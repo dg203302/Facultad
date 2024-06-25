@@ -1,0 +1,14 @@
+{%extends "base.html"%}
+{%block title%}SELECCION DE SUCURSAL{%endblock%}
+{%block content%}
+<h1 id="titulos">Sucursales</h1>
+<form action="{{request.path}}" method="POST">
+    <select name="sucursal" id="selects">
+        {%for sucursal in sucursales | sort(attribute="id")%}
+            <option value="{{sucursal.id}}">sucursal numero {{sucursal.getnumero()}}, provincia: {{sucursal.getprovincia()}}, localidad: {{sucursal.getlocalidad()}}</option>
+        {%endfor%}
+    </select>
+    <input type="submit" value="seleccionar sucursal" id="botones_seleccion">
+</form>
+<a href="{{url_for('inicio')}}" id="botones_volver">Volver al inicio</a>
+{%endblock%}

@@ -1,0 +1,9 @@
+{%extends "base.html"%}
+{%block title%}LLEGADA DE TRANSPORTE REGISTRADA{%endblock%}
+{%block content%}
+<img src="..//static/image/logoexito.png" alt="exito" id="logoexito_fracaso">
+<h1 id="titulos_exitos">LLEGADA DE TRANSPORTE: {{transp.numerotransporte}} REGISTRADA!</h1>
+<sub id="informacion_exito">transporte con fecha de salida: {{transp.fechahorasalida}} y  fecha de llegada: {{transp.fechahorallegada}}</sub>
+<a href="{{url_for('funcionesdespachante')}}" id="botones_volver">volver a pantalla de seleccion de operacion</a>
+<a href="{{url_for('accesodesp')}}" id="botones_volver">Volver a seleccion de sucursal</a>
+{%endblock%}
