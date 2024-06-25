@@ -267,5 +267,3 @@ class simondice(tk.Tk):
 if __name__=='__main__':
     ven=simondice()
     ven.mainloop()
-
-    #hacer gestor para guardar puntajes, crear json y todo
