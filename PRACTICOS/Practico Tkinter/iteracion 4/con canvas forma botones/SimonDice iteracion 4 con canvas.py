@@ -5,6 +5,9 @@ from gestorjugadores import *
 import random
 import datetime
 class simondice(tk.Tk):
+#atributos para ventan de registro
+    __ventanaregistro:object
+#atributos para ventan de registro
 #atributos para botones
     __colores:list
     __secuencia:list
@@ -20,6 +23,9 @@ class simondice(tk.Tk):
     __gestorjugadores:gestorjugadores
 #atributos para el jugador
 #menu
+    __ventanamuestra:object
+    __menucontextual:object
+    __menupuntajes:object
     __menu:object
     __jugadores:list
 #menu
@@ -32,7 +38,7 @@ class simondice(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title('Simon Dice')
-        self.geometry('800x700')
+        self.geometry('800x680')
         self.__canvas=tk.Canvas(self,width=800,height=600,confine=True)
         self.__canvas.grid(column=0,row=0)
         self.__canvas.columnconfigure(0,weight=1)
@@ -60,37 +66,37 @@ class simondice(tk.Tk):
         if self.__gestorjugadores.verificjson()==False:
             messagebox.showinfo(message='no hay jugadores registrados',title='error')
         else:
-            ventanamuestra=tk.Toplevel(self)
-            ventanamuestra.geometry('405x285')
-            ventanamuestra.resizable(width=False,height=False)
-            ventanamuestra.grab_set()
-            ventanamuestra.lift(self)
-            texto=tk.Label(ventanamuestra,text='Galeria de Puntajes')
+            self.__ventanamuestra=tk.Toplevel(self)
+            self.__ventanamuestra.geometry('405x285')
+            self.__ventanamuestra.resizable(width=False,height=False)
+            self.__ventanamuestra.grab_set()
+            self.__ventanamuestra.lift(self)
+            texto=tk.Label(self.__ventanamuestra,text='Galeria de Puntajes')
             texto.place(x=150,y=5)
             self.__jugadores=self.__gestorjugadores.getjugadores()
             self.__jugadores.sort()
-            menucontextual = ttk.Treeview(ventanamuestra, columns=("Jugador", "Fecha", "Hora", "Puntaje"), show='headings')
-            menucontextual.place(x=0,y=25)
-            menucontextual.heading('#1',text='Jugador')
-            menucontextual.heading('#2',text='fecha')
-            menucontextual.heading('#3',text='hora')
-            menucontextual.heading('#4',text='puntaje')
+            self.__menucontextual = ttk.Treeview(self.__ventanamuestra, columns=("Jugador", "Fecha", "Hora", "Puntaje"), show='headings')
+            self.__menucontextual.place(x=0,y=25)
+            self.__menucontextual.heading('#1',text='Jugador')
+            self.__menucontextual.heading('#2',text='fecha')
+            self.__menucontextual.heading('#3',text='hora')
+            self.__menucontextual.heading('#4',text='puntaje')
             for jugador in self.__jugadores:
-                menucontextual.insert('','end',values=(jugador.getnombre(),jugador.getfecha(),jugador.gethora(),jugador.getpuntaje()))
-            menucontextual.column('#1',width=100)
-            menucontextual.column('#2',width=100)
-            menucontextual.column('#3',width=100)
-            menucontextual.column('#4',width=100)
-            botoncierre=tk.Button(ventanamuestra,text='Cerrar',bg='red',command=ventanamuestra.destroy)
+                self.__menucontextual.insert('','end',values=(jugador.getnombre(),jugador.getfecha(),jugador.gethora(),jugador.getpuntaje()))
+            self.__menucontextual.column('#1',width=100)
+            self.__menucontextual.column('#2',width=100)
+            self.__menucontextual.column('#3',width=100)
+            self.__menucontextual.column('#4',width=100)
+            botoncierre=tk.Button(self.__ventanamuestra,text='Cerrar',bg='red',command=self.__ventanamuestra.destroy)
             botoncierre.place(x=180,y=257)
     def crearmenu(self):
         self.__menu=tk.Menu(self)
         self.config(menu=self.__menu)
-        menupuntajes=tk.Menu(self.__menu)
-        self.__menu.add_cascade(menu=menupuntajes,label='Puntajes')
-        menupuntajes.add_command(label='Ver Puntajes',command=self.mostrarpuntajes)
-        menupuntajes.add_separator()
-        menupuntajes.add_command(label='Salir',command=self.destroy)
+        self.__menupuntajes=tk.Menu(self.__menu)
+        self.__menu.add_cascade(menu=self.__menupuntajes,label='Puntajes')
+        self.__menupuntajes.add_command(label='Ver Puntajes',command=self.mostrarpuntajes)
+        self.__menupuntajes.add_separator()
+        self.__menupuntajes.add_command(label='Salir',command=self.destroy)
 #creacion del menu
 #registrar jugador
     def salir(self):
@@ -104,22 +110,22 @@ class simondice(tk.Tk):
             self.__puntaje=self.crearpuntaje()
             ventana.destroy()
     def registrarjugador(self):
-        ventanaregistro=tk.Toplevel(self)
-        ventanaregistro.title('registro')
-        ventanaregistro.geometry('200x100')
-        ventanaregistro.resizable(width=False,height=False)
-        ventanaregistro.lift(self)
-        ventanaregistro.grab_set()
-        ventanaregistro.protocol("WM_DELETE_WINDOW", self.salir)
-        textonombre=tk.Label(ventanaregistro,text='datos del jugador')
+        self.__ventanaregistro=tk.Toplevel(self)
+        self.__ventanaregistro.title('registro')
+        self.__ventanaregistro.geometry('200x100')
+        self.__ventanaregistro.resizable(width=False,height=False)
+        self.__ventanaregistro.lift(self)
+        self.__ventanaregistro.grab_set()
+        self.__ventanaregistro.protocol("WM_DELETE_WINDOW", self.salir)
+        textonombre=tk.Label(self.__ventanaregistro,text='datos del jugador')
         textonombre.place(x=2,y=2)
-        nombrejuga=tk.Label(ventanaregistro,text='jugador:')
+        nombrejuga=tk.Label(self.__ventanaregistro,text='jugador:')
         nombrejuga.place(x=2,y=40)
         nombre=tk.StringVar()
-        ingreso=tk.Entry(ventanaregistro,textvariable=nombre)
+        ingreso=tk.Entry(self.__ventanaregistro,textvariable=nombre)
         ingreso.place(x=50,y=40)
-        botonini=tk.Button(ventanaregistro,text='iniciar juego',bg='white',command=lambda: self.registrar(nombre,ventanaregistro))
-        ventanaregistro.bind('<Return>', lambda event: self.registrar(nombre,ventanaregistro))
+        botonini=tk.Button(self.__ventanaregistro,text='iniciar juego',bg='white',command=lambda: self.registrar(nombre,self.__ventanaregistro))
+        self.__ventanaregistro.bind('<Return>', lambda event: self.registrar(nombre,self.__ventanaregistro))
         botonini.place(x=60,y=70)
 #registrar jugador
 #boton de inicio

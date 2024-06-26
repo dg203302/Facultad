@@ -179,13 +179,13 @@ footer{
     background-color: gray;
 }
 #boton_seleccion_paquete:hover{
-    background-color: white;
+    background-color: grey;
 }
 #botones_seleccion:hover{
     background-color: gray;
 }
 #opcion_despachante:hover{
-    background-color: white;
+    background-color: grey;
 }
 #selects:hover{
     background-color: black;

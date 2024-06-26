@@ -3,7 +3,7 @@
 {%block content%}
 <img src="..//static/image/logoexito.png" alt="exito" id="logoexito_fracaso">
 <h1 id="titulos_exitos">PAQUETE: {{paquete.numeroenvio}} REGISTRADO!</h1>
-<sub id="informacion_exito">paquete con direccion: {{paquete.dirdestinatario}}.<br>destinatario: {{paquete.nomdestinatario}}.<br>sucursal de destino: {{paquete.idsucursal}}</sub>
+<sub id="informacion_exito">Direccion: {{paquete.dirdestinatario}}.<br>Destinatario: {{paquete.nomdestinatario}}.<br>Sucursal de llegada: {{paquete.idsucursal}}</sub>
 <a href="{{url_for('funcionesdespachante')}}" id="botones_volver">volver a pantalla de seleccion de operacion</a>
 <a href="{{url_for('accesodesp')}}" id="botones_volver">Volver a seleccion de sucursal</a>
 {%endblock%}
