@@ -7,7 +7,7 @@
         {%for sucursal in sucursalesdest | sort(attribute="id")%}
             <option value="{{sucursal.id}}">sucursal numero {{sucursal.id}},provincia: {{sucursal.provincia}}, localidad: {{sucursal.localidad}}</option>
         {%endfor%}
-    </select>
+    </select><br>
     <input type="submit" value="seleccionar sucursal" id="botones_seleccion">
 </form>
 <a href="{{url_for('funcionesdespachante')}}" id="botones_volver">volver a pantalla de seleccion de operacion</a>

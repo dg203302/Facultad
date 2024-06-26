@@ -3,13 +3,14 @@
 {%block content%}
 <form action="{{request.path}}" method="POST">
     <h1 id="titulos">Paquetes</h1>
-    <select name="paquetes" multiple id="selects" required>
+    <select name="paquetes" multiple id="selects_paquetes" required>
         {%for paquete in paquetes %}
             {%if paquete.idtransporte==none%}
                 <option value="{{paquete.id}}">numero de paquete: {{paquete.numeroenvio}}, direccion de destino:{{paquete.dirdestinatario}}</option>
             {%endif%}
         {%endfor%}
-    </select>
-    <input type="submit" value="registrar transporte" id="botones_seleccion">
+    </select><br>
+    <input type="submit" value="registrar transporte" id="botones_seleccion_paquetes">
 </form>
+<a href="{{url_for('funcionesdespachante')}}" id="botones_volver">volver a pantalla de seleccion de operacion</a>
 {%endblock%}

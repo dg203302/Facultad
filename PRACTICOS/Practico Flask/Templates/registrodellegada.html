@@ -9,7 +9,7 @@
                 <option value="{{transporte.id}}">numero de transporte: {{transporte.numerotransporte}}, fecha y hora de salida: {{transporte.fechahorasalida}}</option>
             {%endif%}
         {%endfor%}
-    </select>
+    </select><br>
     <input type="submit" value="Registrar llegada" id="botones_seleccion">
 </form>
 <a href="{{url_for('funcionesdespachante')}}" id="botones_volver">volver a pantalla de seleccion de operacion</a>
