@@ -1088,6 +1088,15 @@
                 "puntaje": 4,
                 "niveldificultad": "Experto"
             }
+        },
+        {
+            "jugador": {
+                "nombre": "dg203",
+                "fecha": "2024-06-26",
+                "hora": "20:32:40.659207",
+                "puntaje": 3,
+                "niveldificultad": "Principiante"
+            }
         }
     ]
 }

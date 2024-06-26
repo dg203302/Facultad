@@ -5,36 +5,22 @@ from gestorjugadores import *
 import random
 import datetime
 class simondice(tk.Tk):
-#atributos para ventan de registro
     __ventanaregistro:object
-#atributos para ventan de registro
-#atributos para botones
     __colores:list
     __secuencia:list
     __botones:list
-#atributos para botones
-#atributos para funcionalidad
     __indice:int
     __indiceverifi:int
     __puntaje:object
-#atributos para funcionalidad
-#atributos para el jugador
     __jugadoractual:jugador
     __gestorjugadores:gestorjugadores
-#atributos para el jugador
-#menu
     __ventanamuestra:object
     __menucontextual:object
     __menupuntajes:object
     __menu:object
     __jugadores:list
-#menu
-#box de nivel
     __box:object
-#box de nivel
-#idafter
     __idafter:object
-#idafter
     def __init__(self):
         super().__init__()
         self.title('Simon Dice')
@@ -56,12 +42,9 @@ class simondice(tk.Tk):
         self.crearboxdenivel()
         self.crearbotonincio()
         self.bind('<Escape>', lambda event: self.destroy())
-#creacion del box de menu
     def crearboxdenivel(self):
         self.__box=ttk.Combobox(self,values=('Principiante','Experto','SuperExperto'))
         self.__box.place(x=640,y=615)
-#creacion del box de menu
-#creacion del menu
     def mostrarpuntajes(self):
         if self.__gestorjugadores.verificjson()==False:
             messagebox.showinfo(message='no hay jugadores registrados',title='error')
@@ -97,8 +80,6 @@ class simondice(tk.Tk):
         self.__menupuntajes.add_command(label='Ver Puntajes',command=self.mostrarpuntajes)
         self.__menupuntajes.add_separator()
         self.__menupuntajes.add_command(label='Salir',command=self.destroy)
-#creacion del menu
-#registrar jugador
     def salir(self):
         self.destroy()
     def registrar(self,nombre,ventana):
@@ -127,26 +108,18 @@ class simondice(tk.Tk):
         botonini=tk.Button(self.__ventanaregistro,text='iniciar juego',bg='white',command=lambda: self.registrar(nombre,self.__ventanaregistro))
         self.__ventanaregistro.bind('<Return>', lambda event: self.registrar(nombre,self.__ventanaregistro))
         botonini.place(x=60,y=70)
-#registrar jugador
-#boton de inicio
     def crearbotonincio(self):
         boton=tk.Button(text='INICIAR JUEGO',bg='yellow', command=self.iniciarjuego)
         self.__canvas.create_window(400,615,anchor='center',window=boton)
         return boton
-#boton de inicio
-#puntaje
     def crearpuntaje(self):
         puntaje=tk.Label(self,fg="black")
         puntaje.config(text=f'{self.__jugadoractual.getnombre()}: {self.__jugadoractual.getpuntaje()}',font=('Arial',15))
         self.__canvas.create_window(100,615,anchor='center',window=puntaje)
         return puntaje
-#puntaje
-#aumentar puntaje
     def aumentar(self):
         self.__jugadoractual.actpuntaje()
         self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__jugadoractual.getpuntaje()}')
-#aumentar puntaje
-#reiniciar puntaje
     def reiniciarpunta(self):
         fecha=str(datetime.date.today())
         hora=str(datetime.datetime.now().time())
@@ -157,9 +130,6 @@ class simondice(tk.Tk):
         self.__jugadores.sort()
         self.__jugadoractual=jugador(self.__jugadoractual.getnombre())
         self.__puntaje.config(text=f'{self.__jugadoractual.getnombre()}:{self.__jugadoractual.getpuntaje()}')
-#reiniciar puntaje
-#creacion de puntaje
-#creacion de botones
     def crearbotones(self):
         for i in range(4):
             if i==0:
@@ -175,7 +145,6 @@ class simondice(tk.Tk):
                 boton = self.__canvas.create_rectangle(780, 300, 400, 580, fill=self.__colores[i], outline='black')
                 self.__canvas.tag_bind(boton, '<Button-1>', lambda event, i=i: self.verificarcolor(i))
             self.__botones.append(boton)
-#temporizador
     def fueradetiempo(self):
         messagebox.showinfo(title='GAME OVER', message='perdiste por tiempo!')
         self.__indice=0
@@ -190,8 +159,6 @@ class simondice(tk.Tk):
             self.__idafter=self.after(5000,self.fueradetiempo)
         elif toque=='perder':
             self.after_cancel(self.__idafter)
-#temporizador
-#verificar colores
     def verificarcolor(self,botontocado):
         if self.__secuencia==[]:
             messagebox.showinfo(title='juego no iniciado', message='debe iniciar el juego')
@@ -228,10 +195,6 @@ class simondice(tk.Tk):
                     self.__indiceverifi=0
                     self.reiniciarpunta()
                     self.__secuencia=[]
-#verificar colores
-#creacion de botones
-#implementacion
-#generacion de secuencia de colores
     def generarsecuencia(self):
         if self.__jugadoractual.getnivel()=='Principiante' or self.__jugadoractual.getnivel()== 'Experto':
             self.__secuencia=[random.choice(self.__colores) for _ in range(1)]
@@ -239,8 +202,6 @@ class simondice(tk.Tk):
         else:
             self.__secuencia=[random.choice(self.__colores) for _ in range(2)]
             self.__indice=0
-#generacion de secuencia de colores
-#iluminar y ocultar colores
     def iluminar(self):
         if self.__indice<len(self.__secuencia) and self.__jugadoractual.getnivel()=='Principiante':
                 coloract=self.__secuencia[self.__indice]
@@ -255,7 +216,6 @@ class simondice(tk.Tk):
             self.__canvas.itemconfig((self.__botones[self.__colores.index(coloract)]), fill=coloract)
             self.__indice+=1
             self.iluminar()
-#iluminar y ocultar colores
     def iniciarjuego(self):
         if self.__box.get()=='':
             messagebox.showinfo(title='error', message='debe seleccionar una dificultad')
@@ -269,7 +229,6 @@ class simondice(tk.Tk):
                 self.temporizar('iniciar')
                 self.generarsecuencia()
                 self.iluminar()
-#implementacion
 if __name__=='__main__':
     ven=simondice()
     ven.mainloop()
