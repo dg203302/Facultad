@@ -16,7 +16,7 @@ def accesodesp():
         return render_template('accesodesp.html', sucursales=db.session.query(Sucursal).all())
 @app.route('/funcionesdespachante')
 def funcionesdespachante():
-    return render_template('funcionesdespachante.html', sucursal=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada']).first()) #ineficiente
+    return render_template('funcionesdespachante.html', sucursal=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada']).first())
 @app.route('/registrarrecepcion', methods=['GET','POST'])
 def registrarrecepcion():
     if request.method=='POST':
@@ -24,7 +24,7 @@ def registrarrecepcion():
         peso=request.form.get('peso')
         nombre=request.form.get('nombre')
         direccion=request.form.get('direccion')
-        sucu=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada']).first() #ineficiente
+        sucu=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada']).first()
         nuevopaquete=Paquete(numeroenvio=numerodeenvio,peso=peso,nomdestinatario=nombre,dirdestinatario=direccion,observaciones='',idsucursal=sucu.id)
         db.session.add(nuevopaquete)
         db.session.commit()
@@ -75,7 +75,7 @@ def registrarllegada():
         for paquete in paquetes:
             paquete.entregado=True
         db.session.commit()
-        return render_template('exitoregistrollegada.html', transp=db.session.query(Transporte).filter(Transporte.id==transporte_lleg.id).first())
+        return render_template('exitoregistrollegada.html', transp=transporte_lleg)
     else:
         transports=db.session.query(Transporte).filter(Transporte.idsucursal==session['sucursal_seleccionada']).all()
         i=0
