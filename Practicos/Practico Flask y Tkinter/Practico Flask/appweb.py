@@ -21,7 +21,7 @@ def funcionesdespachante():
 def registrarrecepcion():
     if request.method=='POST':
         numerodeenvio=random.randint(0,1000)
-        if int(request.form.get('peso'))>=0:
+        if int(request.form.get('peso'))>0:
             peso=request.form.get('peso')
             nombre=request.form.get('nombre')
             direccion=request.form.get('direccion')
