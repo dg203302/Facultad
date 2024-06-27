@@ -21,14 +21,17 @@ def funcionesdespachante():
 def registrarrecepcion():
     if request.method=='POST':
         numerodeenvio=random.randint(0,1000)
-        peso=request.form.get('peso')
-        nombre=request.form.get('nombre')
-        direccion=request.form.get('direccion')
-        sucu=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada']).first()
-        nuevopaquete=Paquete(numeroenvio=numerodeenvio,peso=peso,nomdestinatario=nombre,dirdestinatario=direccion,observaciones='',idsucursal=sucu.id)
-        db.session.add(nuevopaquete)
-        db.session.commit()
-        return render_template('registrocorrecto.html', paquete=nuevopaquete)
+        if int(request.form.get('peso'))>=0:
+            peso=request.form.get('peso')
+            nombre=request.form.get('nombre')
+            direccion=request.form.get('direccion')
+            sucu=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada']).first()
+            nuevopaquete=Paquete(numeroenvio=numerodeenvio,peso=peso,nomdestinatario=nombre,dirdestinatario=direccion,observaciones='',idsucursal=sucu.id)
+            db.session.add(nuevopaquete)
+            db.session.commit()
+            return render_template('registrocorrecto.html', paquete=nuevopaquete)
+        else:
+            return render_template('error_ingreso_datos.html')
     else:
         return render_template('registrarrecepcionpaquete.html', sucu=db.session.query(Sucursal).filter(Sucursal.id==session['sucursal_seleccionada']).first())
 @app.route('/registrarsalida', methods=['POST','GET'])
