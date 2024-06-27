@@ -77,7 +77,6 @@ def registrarllegada():
         db.session.commit()
         return render_template('exitoregistrollegada.html', transp=db.session.query(Transporte).filter(Transporte.id==transporte_lleg.id).first())
     else:
-        #en caso de que no hayan transportes muestra una pagina aparte
         transports=db.session.query(Transporte).filter(Transporte.idsucursal==session['sucursal_seleccionada']).all()
         i=0
         while i<len(transports):
