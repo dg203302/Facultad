@@ -1097,6 +1097,15 @@
                 "puntaje": 3,
                 "niveldificultad": "Principiante"
             }
+        },
+        {
+            "jugador": {
+                "nombre": "dg1203",
+                "fecha": "2024-06-27",
+                "hora": "09:18:20.493755",
+                "puntaje": 5,
+                "niveldificultad": "Principiante"
+            }
         }
     ]
 }
