@@ -4,7 +4,7 @@
 <h1 id="titulos">RECEPCION DE PAQUETE | {{sucu.id}} {{sucu.provincia}} {{sucu.localidad}}</h1>
 <form action="{{request.path}}" method="post">
     <label for="peso" id="textos_inputs">Peso paquete</label><br>
-    <input type="text" id="inputs" name="peso" required placeholder="Peso, Kg"><br>
+    <input type="text" id="inputs" name="peso" required placeholder="Peso, Kg" pattern="[0-9]+"><br>
     <label for="nombre" id="textos_inputs">Nombre destinatario</label><br>
     <input type="text" id="inputs" name="nombre" required placeholder="Nombre, Apellido" pattern="[a-zA-Z ]+"><br>
     <label for="direccion" id="textos_inputs">Direccion destinatario</label><br>
