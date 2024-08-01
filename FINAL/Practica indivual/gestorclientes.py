@@ -62,15 +62,22 @@ class lista_gestor:
             if isinstance(cliente,nacionales):
                 print(f'nombre del cliente: {cliente.get_nombre()} \nprovincia del cliente: {cliente.get_provincia()}')
     def inciso3(self):
-        posicion=int(input('ingrese la posicion que desee saber: '))
         try:
-            while self.__indice!=self.__tope and self.__indice!=(posicion-1):
+            posicion=int(input('ingrese la posicion que desee saber: '))
+            while self.__indice<self.__tope and self.__indice!=(posicion-1):
                 self.__actual=self.__actual.obtener_siguiente()
                 self.__indice+=1
             if self.__indice==(posicion-1):
-                print(f'{type(self.__actual.obtener_datos())}')
+                if isinstance(self.__actual.obtener_datos(),locales):
+                    print('el cliente es un cliente local!')
+                elif isinstance(self.__actual.obtener_datos(),nacionales):
+                    print(f'el cliente es un cliente nacional!')
+                self.__indice=0
+                self.__actual=self.__cabeza
+            else:
+                raise IndexError
         except IndexError:
-            print('indice ingresado incorrecto!')
+            print('posicion no encontrada!')
     def gestor_a_json(self):
         diccionario_gestor=dict(gestorclientes=[cliente.a_json() for cliente in self])
         encoder.guardar_json(diccionario_gestor)
