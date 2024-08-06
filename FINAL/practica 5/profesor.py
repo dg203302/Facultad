@@ -4,7 +4,7 @@ class docente(persona):
     __sueldo:float
     __anos_experiencia:int
     def __init__(self, nombre,apellido,dni,materiacargo,sueldo,anosexp,area='',horas_asignadas=0,porcentajeextra=0,horasextra=0):
-        super().__init__(nombre,apellido,dni,materiacargo,sueldo,anosexp,area,horas_asignadas,porcentajeextra,horasextra)
+        super().__init__(nombre,apellido,dni,area,horas_asignadas,materiacargo,sueldo,anosexp,porcentajeextra,horasextra)
         self.__materia_a_cargo=materiacargo
         self.__sueldo=float(sueldo)
         self.__anos_experiencia=(anosexp)

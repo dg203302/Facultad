@@ -1,6 +1,6 @@
 from profesor import *
 from investigador import *
-class docente_investigador(investigador,docente):
+class docente_investigador(docente,investigador):
     __porcentaje_extra:float
     __horas_extra:int
     def __init__(self,nombre,apellido,dni,materiacargo,sueldo,anosexp,area,horas_asignadas,porcentajeextra,horasextra):
