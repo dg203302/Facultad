@@ -10,5 +10,7 @@ class trabajdor(persona):
         return self.__sueldo
     def get_id(self):
         return self.__numero_de_id
+    def to_json(self):
+        return dict(tipo="trabajador", atributos=dict(nombre=self.get_nombre(), apellido=self.get_apellido(), dni=self.get_dni(), sueldo=self.__sueldo, numeroid=self.__numero_de_id))
     def __str__(self):
         return f'{self.get_nombre()} {self.get_apellido()} {self.get_dni()} {self.__sueldo} {self.__numero_de_id}'

@@ -1,4 +1,5 @@
 from nodo import *
+from encoder_json import *
 class gestor_personal:
     __inicio:nodo
     __actual:nodo
@@ -9,6 +10,7 @@ class gestor_personal:
         self.__actual=actual
         self.__indice=indice
         self.__tope=tope
+        encoderjson.carga_por_json(self)
     def __iter__(self):
         return self
     def __next__(self):
@@ -54,17 +56,19 @@ class gestor_personal:
                 self.__tope+=1
                 self.__indice=0
                 self.__actual=self.__inicio
-    def carga_ejemplo(self):
-        personal1=persona('julian','jose','44991308')
-        self.insercion_al_final(personal1)
-        personal2=trabajdor('marcos','jose','2342425',400323,23)
-        self.insercion_al_final(personal2)
-        personal3=persona('diego','jose','44991307')
-        self.insercion_al_final(personal3)
     def mostrar(self):
         for personal in self:
             print(personal)
     def insertar_posicion_ejemplo(self):
         personalinsertar=trabajdor('JULIETA','ROSALES','422324242',324242,93)
         self.insercion_en_posicion(personalinsertar)
-    #agregar json
+    def to_json(self):
+        diccionario_clase=dict(gestor_personal=[personal.to_json() for personal in self])
+        encoderjson.to_json(diccionario_clase)
+'''    def carga_ejemplo(self):
+        personal1=persona('julian','jose','44991308')
+        self.insercion_al_final(personal1)
+        personal2=trabajdor('marcos','jose','2342425',400323,23)
+        self.insercion_al_final(personal2)
+        personal3=persona('diego','jose','44991307')
+        self.insercion_al_final(personal3)'''
