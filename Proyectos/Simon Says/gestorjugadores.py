@@ -22,3 +22,6 @@ class gestorjugadores:
     def guardarjson(self):
         jugadas=dict(jugadores=[jugadores.tojson() for jugadores in self.__jugadores])
         self.__encoder.agregarajson(jugadas)
+    def limpiarjson(self):
+        self.__jugadores=[]
+        self.__encoder.limpiar_jugadas()

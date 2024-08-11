@@ -1,8 +1,10 @@
-import json
+import json, os
 from jugador import *
 class encoder:
     def cargarjson(self):
-        with open('Practicos/Practico Flask y Tkinter/Practico Tkinter/Version Final/pysimonpuntajes.json',mode='r') as lect:
+        ruta_base=os.path.dirname(os.path.abspath(__file__))
+        nombre_json='pysimonpuntajes.json'
+        with open(os.path.join(ruta_base, nombre_json),mode='r') as lect:
             try:
                 diccio=json.load(lect)
             except json.decoder.JSONDecodeError:
@@ -19,7 +21,13 @@ class encoder:
                 player=jugador(**jugad['jugador'])
                 gestor.cargarjugadores(player)
     def agregarajson(self,jugadores):
-        with open('Practicos/Practico Flask y Tkinter/Practico Tkinter/Version Final/pysimonpuntajes.json', mode='w') as guard:
+        ruta_base=os.path.dirname(os.path.abspath(__file__))
+        nombre_json='pysimonpuntajes.json'
+        with open(os.path.join(ruta_base, nombre_json),mode='w') as guard:
             json.dump(jugadores,guard,indent=4)
             guard.close()
-    
+    def limpiar_jugadas(self):
+        ruta_base=os.path.dirname(os.path.abspath(__file__))
+        nombre_json='pysimonpuntajes.json'
+        with open(os.path.join(ruta_base, nombre_json),mode='w') as limpiar:
+            limpiar.close()

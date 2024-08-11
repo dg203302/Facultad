@@ -38,16 +38,24 @@ class gestor_fechas:
                 self.__tope+=1
                 self.__indice=0
                 self.__actual=self.__inicio
-    def to_json(self):
-        diccionario_a_guardar=dict(gestor_fechas=[fecha.to_json() for fecha in self])
-        enconder_json.guardar_json(diccionario_a_guardar)
-    def mostrar(self):
+    def get_fechas(self):
+        lista_de_fechas=[]
+        for fecha in self:
+            lista_de_fechas.append(fecha)
+        lista_de_fechas.sort()
+        return lista_de_fechas
+    def verificar(self):
         if self.__inicio==None:
-            print('no hay fechas registradas')
+            return False
         else:
-            for fecha in self:
-                print(fecha)
-if __name__=='__main__':
-    gestor=gestor_fechas()
-    gestor.mostrar()
-    gestor.to_json()
+            return True
+    def limpiar(self):
+        for fecha in self:
+            del fecha
+        enconder_json.guardar_json()
+    def to_json(self):
+        if self.__inicio==None:
+            return
+        else:
+            diccionario_a_guardar=dict(gestor_fechas=[fecha.to_json() for fecha in self])
+            enconder_json.guardar_json(diccionario_a_guardar)
