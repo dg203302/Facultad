@@ -1,3 +1,5 @@
+import csv
+from encoder import *
 from nodo import *
 class lista_enlazada:
     __inicio:nodo
@@ -9,6 +11,7 @@ class lista_enlazada:
         self.__actual=actual
         self.__indice=indice
         self.__tope=tope
+        self.cargar_muestras()
     def __iter__(self):
         return self
     def __next__(self):
@@ -21,6 +24,26 @@ class lista_enlazada:
             self.__actual=self.__actual.get_siguiente()
             self.__indice+=1
             return dato
+    def carga_csv(self):
+        try:
+            archivo=open('FINAL/ejemplos relaciones/muestras.csv', mode='r')
+            reader=csv.reader(archivo,delimiter=';')
+            for fila in reader:
+                muestra=wachin(fila[0],fila[1],fila[2])
+                self.insercion_al_final(muestra)
+            archivo.close()
+        except FileNotFoundError:
+            print('archivo no encontrado')
+            return
+    def cargar_muestras(self):
+       op=input('1 csv, 2 json')
+       while True:
+           if op==0:
+               break
+           elif op==1:
+               self.carga_csv()
+           elif op==2:
+               encoder_json.abrir_json(self)
     def insercion_al_principio(self,objeto_dato):
         nuevo_nodo=nodo(objeto_dato)
         nuevo_nodo.set_siguiente(self.__inicio)
@@ -83,19 +106,9 @@ class lista_enlazada:
             objeto_dato=self.solicitar_datos()
             self.insercion_en_posicion(objeto_dato)
             self.mostrar()
-    def cargar_muestras(self):
-        muestra1=wachin('diego','garcia','44991307')
-        self.insercion_al_final(muestra1)
-        muestra2=wachin('julieta','mogolica','23242442')
-        self.insercion_al_final(muestra2)
-        muestra3=wachin('jose','jose','1234567890')
-        self.insercion_al_final(muestra3)
-        muestra4=wachin('caca','pedo','214325232')
-        self.insercion_al_final(muestra4)
 if __name__=='__main__':
     gestor=lista_enlazada()
     while True:
-        gestor.cargar_muestras() #cambiar por carga a traves de csv y json
         gestor.probar_cargas()
         eleccion=input('0 para salir')
         if eleccion=='0':
