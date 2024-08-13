@@ -41,7 +41,7 @@ class lista:
                 self.__indice=0
                 self.__actual=self.__inicio
     def cargar_csv(self):
-        archivo_csv=open('FINAL GARCIA DIEGO/pacientes.csv',mode='r')
+        archivo_csv=open('pacientes.csv',mode='r')
         reader_csv=csv.reader(archivo_csv,delimiter=';')
         for fila in reader_csv:
             if fila[0]=='P':
@@ -84,8 +84,7 @@ class lista:
             self.__indice=0
             raise IndexError
     def inciso_e(self,nuevo_valor_consulta):
-        for paciente in self:
-            paciente.set_nuevo_valor_consulta(nuevo_valor_consulta)
+        paciente.set_nuevo_valor_consulta(nuevo_valor_consulta)
     def prueba(self):
         for paciente in self:
             print(f'{paciente.get_nombre()}')

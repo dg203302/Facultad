@@ -10,8 +10,8 @@ class paciente_ambulatorio(paciente):
         self.__obra_social=obrasocial
     def calculo_importe_cobrado(self):
         if self.__obra_social=='Obra Social Provincia':
-            return ((super().calculo_importe_cobrado())-1500)+5000
+            return ((super().calculo_importe_cobrado())-15000)+5000
         elif self.__obra_social=='OSDE':
-            return ((super().calculo_importe_cobrado())-1500)+2000
+            return ((super().calculo_importe_cobrado())-15000)+2000
         else:
-            return ((super().calculo_importe_cobrado())-1500)+10000
+            return ((super().calculo_importe_cobrado())-15000)+10000
