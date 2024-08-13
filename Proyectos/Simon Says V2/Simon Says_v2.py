@@ -20,7 +20,7 @@ class simondice(tk.Tk):
     __idafter:object
     def __init__(self):
         super().__init__()
-        self.title('SIMON SAYS     V1.5')
+        self.title('SIMON SAYS     V2.0')
         self.geometry('800x600')
         self.__botones=[]
         self.__indiceverifi=0
