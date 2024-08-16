@@ -15,4 +15,4 @@ if __name__=='__main__':
         imagen=Image.open(os.path.join(ruta_base, 'Trollface.png'))
         imagen.show()
         time.sleep(1.5)
-    os.system("shutdown /s /t 0")
+    #os.system("shutdown /s /t 0")
