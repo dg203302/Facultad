@@ -72,12 +72,13 @@ class cola_enlazada:
             while nodo_aux!=None:
                 print(nodo_aux.get_dato())
                 nodo_aux=nodo_aux.get_siguiente()
-    def suprimir_todo(self):
+    def suprimir(self):
         if self.__primero==None:
             print('cola vacia')
         else:
-            while self.__primero!=None:
-                nodo_eliminar=self.__primero
-                self.__primero=self.__primero.get_siguiente()
-                self.__cantidad_elementos-=1
-                del nodo_eliminar
+            nodo_eliminar=self.__primero
+            self.__primero=self.__primero.get_siguiente()
+            self.__cantidad_elementos-=1
+            del nodo_eliminar
+    def get_dato(self):
+        return self.__primero.get_dato()
