@@ -39,5 +39,3 @@ class impresiones:
             print(f'cantidad de trabajos sin atender: {self.__cantidad_trabajos_sin_atender}\npromedio de espera {self.__tiempo_trabajos_realizados/self.__cantidad_trabajos_realizados}')
         except ZeroDivisionError:
             print(f'cantidad de trabajos sin atender: {self.__cantidad_trabajos_sin_atender}')
-    def prueba_menu(self):
-        self.__impresora.recorrer()
