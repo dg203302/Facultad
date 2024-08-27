@@ -22,7 +22,7 @@ class pila_secuencial:
     def mostrar(self):
         if not(self.verificar_pila()):
             for i in range(self.__tope,-1,-1):
-                print(self.__items[i])
+                print(f'{self.__items[i]}')
         else:
             print('pila no cargada')
     def suprimir(self):
@@ -31,7 +31,10 @@ class pila_secuencial:
                 self.__items[i]=0
     def suprimir_tope(self):
         self.__items[self.__tope]=0
+        self.__cantidad_elementos-=1
         self.__tope-=1
+    def ubicar(self,i):
+        return self.__items[i]
 ############################################################################################
 class nodo:
     __datos:object
