@@ -4,6 +4,7 @@ class hanoi:
     __torre2:pila_secuencial
     __torre3:pila_secuencial
     __dimension:int
+    __movimientos_realizados=0
     def __init__(self, dimension):
         self.__dimension=dimension
         self.__torre1=pila_secuencial(self.__dimension)
@@ -52,6 +53,7 @@ class hanoi:
                 if posicion_destino==2:
                     self.__torre2.insertar(ficha_tope)
                     self.__torre3.suprimir_tope()
+        self.__movimientos_realizados+=1
         self.mostrar_torres()
     def mostrar_torres(self):
         print('torre 1: ')
@@ -69,6 +71,9 @@ class hanoi:
                     raise StopIteration
                 comparador+=1
                 i-=1
+            print(f'GANASTE! \n movimientos realizados: {self.__movimientos_realizados} \n movimientos minimos para completar: {pow(2,self.__dimension)-1}')
+            if self.__movimientos_realizados==(pow(2,self.__dimension)-1):
+                print('jugada excelente!')
             return True
         except StopIteration:
             return False

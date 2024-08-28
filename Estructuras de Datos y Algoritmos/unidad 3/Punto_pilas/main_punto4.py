@@ -7,5 +7,4 @@ while True:
     posicion_destino=int(input('ingrese la torre de destino: '))
     torre_hanoi.mover(posicion_inicio,posicion_destino)
     if torre_hanoi.verificar()==True:
-        print('ganastes')
         break
