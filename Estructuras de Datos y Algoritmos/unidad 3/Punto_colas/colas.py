@@ -30,8 +30,14 @@ class cola_secuencial:
         if self.__cantidad_elementos==0:
             print('cola vacia')
         else:
-            for i in range(self.__primero,self.__cantidad_elementos):
+            for i in range(self.__primero,self.__ultimo):
                 print(self.__items[i])
+    def get_cantidad(self):
+        return self.__cantidad_elementos
+    def suprimir_primero(self):
+        self.__items[self.__primero]=0
+        self.__primero+=1
+        self.__cantidad_elementos-=1
 #------------------nodo de cola enlazada----------------------#
 class nodo:
     __dato:object
