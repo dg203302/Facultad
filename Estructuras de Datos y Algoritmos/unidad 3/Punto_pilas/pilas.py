@@ -1,3 +1,4 @@
+#------------------pila secuencial----------------------#
 class pila_secuencial:
     __dimension:int
     __cantidad_elementos:int
@@ -35,7 +36,7 @@ class pila_secuencial:
         self.__tope-=1
     def ubicar(self,i):
         return self.__items[i]
-############################################################################################
+#------------------nodo de pila enlazada----------------------#
 class nodo:
     __datos:object
     __siguiente:object
@@ -50,6 +51,7 @@ class nodo:
         return self.__siguiente
     def __str__(self):
         return f'{self.__datos}'
+#------------------pila enlazada----------------------#
 class pila_enlazada:
     __tope:nodo
     __dimension:int
