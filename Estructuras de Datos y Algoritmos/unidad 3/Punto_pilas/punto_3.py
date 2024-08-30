@@ -1,4 +1,4 @@
-from pila_enlazada import *
+from pilas import *
 def calcular_factorial(pila,numero_a_calcular):
     if numero_a_calcular>0:
         numero_factorial=numero_a_calcular*(calcular_factorial(pila,numero_a_calcular-1))

@@ -1,4 +1,4 @@
-from pila_enlazada import *
+from pilas import *
 def pasar_a_numero_binario(pila,numero_a_dividir):
     if numero_a_dividir>=2:
         resto=numero_a_dividir%2
