@@ -37,7 +37,7 @@ class lista_secuencial:
         elif self.__items[posicion]==0:
                 self.__items[posicion]=elemento
                 self.__cantidad+=1
-                if self.__items[posicion]>self.__ultimo:
+                if posicion>self.__ultimo:
                     self.__ultimo=posicion
     def mostrar(self):
         for i in range(0,self.__cantidad):
@@ -98,6 +98,8 @@ class lista_enlazada:
                 aux.set_siguiente(nuevo_nodo)
                 nuevo_nodo.set_anterior(aux)
                 self.__primero.set_anterior(nuevo_nodo)
+                self.__ultimo=nuevo_nodo
+                self.__cantidad+=1
     def primer_elemento(self):
         if not(self.vacia()):
             return self.__primero.get_dato()
@@ -115,18 +117,96 @@ class lista_enlazada:
         while aux!=self.__primero:
             print(aux.get_dato())
             aux=aux.get_anterior()
-    '''def siguiente(self, posicion):
+        print(aux.get_dato())
+    def get_cantidad(self):
+        return self.__cantidad
+    def siguiente(self, posicion):
         if not(self.vacia()):
-            return self._
-    def anterior'''
-#lista con cursores
-lista_prueba=lista_enlazada()
-lista_prueba.insertar(12)
-lista_prueba.insertar(10)
-lista_prueba.insertar(213)
-lista_prueba.insertar(320)
-lista_prueba.insertar(3330)
-print('recorriendo desde el inicio')
-lista_prueba.recorrer_desde_el_principio()
-print('recorriendo desde el ultimo')
-lista_prueba.recorrer_desde_el_ultimo()
+            if posicion>self.__cantidad:
+                raise IndexError
+            else:
+                if posicion<=(self.__cantidad/2):
+                    i=0
+                    aux=self.__primero
+                    while aux!=None and i!=posicion:
+                        aux=aux.get_siguiente()
+                        i+=1
+                    if i==posicion:
+                        siguiente=aux.get_siguiente()
+                        print(f'dato ubicado en el nodo siguiente a la posicion: {i}: {siguiente.get_dato()}')
+                elif posicion>(self.__cantidad/2):
+                    i=self.__cantidad
+                    aux=self.__ultimo
+                    while aux!=None and i!=posicion:
+                        aux=aux.get_anterior()
+                        i-=1
+                    if i==posicion:
+                        siguiente=aux.get_siguiente()
+                        print(f'dato ubicado en el nodo siguiente a la posicion: {i}: {siguiente.get_dato()}')
+        else:
+            print('lista vacia!')
+    def anterior(self, posicion):
+        if not(self.vacia()):
+            if posicion>self.__cantidad:
+                raise IndexError
+            else:
+                if posicion<=(self.__cantidad/2):
+                    i=0
+                    aux=self.__primero
+                    while aux!=None and i!=posicion:
+                        aux=aux.get_siguiente()
+                        i+=1
+                    if i==posicion:
+                        anterior=aux.get_anterior()
+                        print(f'dato ubicado en el nodo anterior a la posicion: {i}: {anterior.get_dato()}')
+                elif posicion>(self.__cantidad/2):
+                    i=self.__cantidad
+                    aux=self.__ultimo
+                    while aux!=None and i!=posicion:
+                        aux=aux.get_anterior()
+                        i-=1
+                    if i==posicion:
+                        anterior=aux.get_anterior()
+                        print(f'dato ubicado en el nodo anterior a la posicion: {i}: {anterior.get_dato()}')
+        else:
+            print('lista vacia!')
+#PRUEBAS
+if __name__=='__main__':
+    print('pruebas para lista secuencial')
+    lista=lista_secuencial(5)
+    lista.insertar(1,0)
+    lista.insertar(2,1)
+    lista.insertar(3,2)
+    print('ingresando orden')
+    lista.mostrar()
+    lista.insertar(6,2)
+    print('ingresando en un lugar ocupado')
+    lista.mostrar()
+    lista.recuperar(2)
+    print('suprimir 1')
+    lista.suprimir(0)
+    lista.mostrar()
+    print('suprimir 2')
+    lista.suprimir(1)
+    lista.mostrar()
+    print('suprimir 3')
+    lista.suprimir(2)
+    lista.mostrar()
+    lista.buscar(6)
+    '''
+    lista_prueba=lista_enlazada()
+    lista_prueba.anterior(1)
+    lista_prueba.insertar(12)
+    lista_prueba.insertar(10)
+    lista_prueba.insertar(213)
+    lista_prueba.insertar(320)
+    lista_prueba.insertar(3330)
+    lista_prueba.insertar(3242342)
+    #print(f'cantidad de elementos: {lista_prueba.get_cantidad()}')
+    print('recorriendo desde el inicio')
+    lista_prueba.recorrer_desde_el_principio()
+    #print('recorriendo desde el ultimo')
+    #lista_prueba.recorrer_desde_el_ultimo()
+    lista_prueba.siguiente(2)
+    lista_prueba.anterior(2)
+    '''

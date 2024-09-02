@@ -12,8 +12,7 @@ class cola_secuencial:
         self.__cantidad_elementos=0
         self.__items=[0]*self.__dimension
     def verificar_cola(self):
-        if self.__cantidad_elementos==0:
-            return
+        return self.__cantidad_elementos==0
     def insertar(self,dato):
         if self.__cantidad_elementos<self.__dimension:
             self.__items[self.__ultimo]=dato
@@ -22,12 +21,12 @@ class cola_secuencial:
         else:
             raise IndexError
     def suprimir_todo(self):
-        for i in range(self.__primero,self.__cantidad_elementos):
+        for i in range(self.__primero,self.__ultimo):
             self.__items[i]=0
             self.__cantidad_elementos-=1
-            self.__ultimo-=0
+            self.__ultimo-=1
     def recorrer(self):
-        if self.__cantidad_elementos==0:
+        if self.verificar_cola():
             print('cola vacia')
         else:
             for i in range(self.__primero,self.__ultimo):
@@ -88,3 +87,18 @@ class cola_enlazada:
             del nodo_eliminar
     def get_dato(self):
         return self.__primero.get_dato()
+#PRUEBAS
+'''
+cola=cola_secuencial(3)
+cola.insertar(1)
+cola.insertar(2)
+cola.insertar(3)
+cola.recorrer()
+print(f'cantidad de elementos antes de suprimir: {cola.get_cantidad()}')
+print('ahora suprimo')
+cola.suprimir_primero()
+cola.recorrer()
+print(f'cantidad de elementos despues de suprimir: {cola.get_cantidad()}')
+cola.suprimir_todo()
+cola.recorrer()
+'''
