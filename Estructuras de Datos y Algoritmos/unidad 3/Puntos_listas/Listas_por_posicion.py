@@ -84,22 +84,42 @@ class lista_enlazada:
         self.__ultimo=ultimo
     def vacia(self):
         return self.__cantidad==0
-    def insertar(self,dato):
-        nuevo_nodo=nodo_lista_enlazada(dato)
-        if self.vacia():
-            self.__primero=nuevo_nodo
-            self.__ultimo=self.__primero
-            self.__cantidad+=1
-        else:
-            aux=self.__primero
-            while aux.get_siguiente()!=None:
-                aux=aux.get_siguiente()
-            if aux.get_siguiente()==None:
-                aux.set_siguiente(nuevo_nodo)
-                nuevo_nodo.set_anterior(aux)
-                self.__primero.set_anterior(nuevo_nodo)
-                self.__ultimo=nuevo_nodo
+    def insertar(self,dato, posicion):
+        nodo_insertar=nodo_lista_enlazada(dato)
+        if posicion==0:
+            if self.__cantidad==0:
+                self.__primero=nodo_insertar
+                self.__ultimo=nodo_insertar
+                nodo_insertar.set_siguiente(self.__ultimo)
+                nodo_insertar.set_anterior(self.__ultimo)
                 self.__cantidad+=1
+            else:
+                nodo_insertar.set_anterior(self.__ultimo)
+                nodo_insertar.set_siguiente(self.__primero)
+                self.__ultimo.set_anterior(nodo_insertar)
+                self.__primero.set_anterior(nodo_insertar)
+                self.__primero=nodo_insertar
+                self.__cantidad+=1
+        else:
+            if posicion>=self.__cantidad:
+                self.__ultimo.set_siguiente(nodo_insertar)
+                self.__primero.set_anterior(nodo_insertar)
+                nodo_insertar.set_anterior(self.__ultimo)
+                nodo_insertar.set_siguiente(self.__primero)
+                self.__ultimo=nodo_insertar
+                self.__cantidad+=1
+            else:
+                i=0
+                actual=self.__primero
+                while i<posicion:
+                    actual=actual.get_siguiente()
+                    i+=1
+                if i==posicion:
+                    actual.set_anterior(nodo_insertar)
+                    nodo_insertar.set_siguiente(actual)
+                    actual.get_anterior().set_siguiente(nodo_insertar)
+                    nodo_insertar.set_anterior(actual.get_anterior())
+                    self.__cantidad+=1
     def primer_elemento(self):
         if not(self.vacia()):
             return self.__primero.get_dato()
@@ -109,9 +129,10 @@ class lista_enlazada:
     def recorrer_desde_el_principio(self):
         if not(self.vacia()):
             aux=self.__primero
-            while aux!=None:
+            while aux!=self.__ultimo:
                 print(aux.get_dato())
                 aux=aux.get_siguiente()
+            print(aux.get_dato()) #para mostrar el ultimo que no sale
     def recorrer_desde_el_ultimo(self):
         aux=self.__ultimo
         while aux!=self.__primero:
@@ -172,6 +193,7 @@ class lista_enlazada:
             print('lista vacia!')
 #PRUEBAS
 if __name__=='__main__':
+    '''
     print('pruebas para lista secuencial')
     lista=lista_secuencial(5)
     lista.insertar(1,0)
@@ -195,18 +217,14 @@ if __name__=='__main__':
     lista.buscar(6)
     '''
     lista_prueba=lista_enlazada()
-    lista_prueba.anterior(1)
-    lista_prueba.insertar(12)
-    lista_prueba.insertar(10)
-    lista_prueba.insertar(213)
-    lista_prueba.insertar(320)
-    lista_prueba.insertar(3330)
-    lista_prueba.insertar(3242342)
-    #print(f'cantidad de elementos: {lista_prueba.get_cantidad()}')
+    lista_prueba.insertar(12,0)
+    lista_prueba.insertar(10,1)
+    lista_prueba.insertar(213,2)
+    lista_prueba.insertar(320,3)
+    print(f'cantidad de elementos: {lista_prueba.get_cantidad()}')
     print('recorriendo desde el inicio')
     lista_prueba.recorrer_desde_el_principio()
-    #print('recorriendo desde el ultimo')
-    #lista_prueba.recorrer_desde_el_ultimo()
-    lista_prueba.siguiente(2)
-    lista_prueba.anterior(2)
-    '''
+    print('recorriendo desde el ultimo')
+    lista_prueba.recorrer_desde_el_ultimo()
+    #lista_prueba.siguiente(2)
+    #lista_prueba.anterior(2)
