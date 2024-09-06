@@ -20,8 +20,8 @@ class lista_secuencial:
                 self.__ultimo+=1
                 self.__cantidad+=1
             else:
-                for i in range(posicion,self.__cantidad):
-                    self.__items[i+1]=self.__items[i]
+                for i in range(self.__cantidad,posicion,-1):
+                    self.__items[i]=self.__items[i-1]
                 self.__items[posicion]=elemento
                 self.__ultimo+=1
                 self.__cantidad+=1
@@ -193,12 +193,13 @@ class lista_enlazada:
             print('lista vacia!')
 #PRUEBAS
 if __name__=='__main__':
-    '''
+    
     print('pruebas para lista secuencial')
     lista=lista_secuencial(5)
     lista.insertar(1,0)
     lista.insertar(2,1)
     lista.insertar(3,2)
+    lista.insertar(4,0)
     print('ingresando orden')
     lista.mostrar()
     lista.insertar(6,2)
@@ -228,3 +229,4 @@ if __name__=='__main__':
     lista_prueba.recorrer_desde_el_ultimo()
     #lista_prueba.siguiente(2)
     #lista_prueba.anterior(2)
+    '''
