@@ -26,12 +26,7 @@ class pila_secuencial:
                 print(f'{self.__items[i]}')
         else:
             print('pila no cargada')
-    def suprimir(self):
-        for i in range(self.__tope,-1,-1):
-            self.__items[i]=0
-            self.__cantidad_elementos-=1
-            self.__tope-=1
-    def suprimir_tope(self):
+    def suprimir_tope(self):  #suprimir en realidad
         self.__items[self.__tope]=0
         self.__cantidad_elementos-=1
         self.__tope-=1
@@ -68,12 +63,10 @@ class pila_enlazada:
         self.__dimension+=1
     def suprimir(self):
         if not(self.verificar_pila()):
-            i=0
-            while self.__tope.get_siguiente()!=None and i<self.__dimension:
-                nodo_eliminar=self.__tope
-                self.__tope=self.__tope.get_siguiente()
-                i+=1
-                del nodo_eliminar
+            nodo_eliminar=self.__tope
+            self.__tope=self.__tope.get_siguiente()
+            self.__dimension-=1
+            del nodo_eliminar
     def mostrar(self):
         if not(self.verificar_pila()):
             i=0

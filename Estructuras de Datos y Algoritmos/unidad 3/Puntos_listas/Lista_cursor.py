@@ -67,8 +67,11 @@ class lista_cursor:
             print(f'CONTENIDO: {self.__elementos[i].get_dato()}\nSIGUIENTE: {self.__elementos[i].get_siguiente()}\n')
             i=self.__elementos[i].get_siguiente()
         print(f'CONTENIDO: {self.__elementos[i].get_dato()}\nSIGUIENTE: {self.__elementos[i].get_siguiente()}\ncantidad de elementos: {self.__cantidad_elementos}') #esto para que muestre el ultimo
-lista_prueba=lista_cursor(3)
-lista_prueba.insertar_en_posicion(21,0)
-lista_prueba.insertar_en_posicion(12,1)
-lista_prueba.insertar_en_posicion(31,0)
-lista_prueba.recorrer_rudimentario()
+if __name__=='__main__':
+    '''
+    lista_prueba=lista_cursor(3)
+    lista_prueba.insertar_en_posicion(21,0)
+    lista_prueba.insertar_en_posicion(12,1)
+    lista_prueba.insertar_en_posicion(31,0)
+    lista_prueba.recorrer_rudimentario()
+    '''
