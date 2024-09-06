@@ -35,22 +35,6 @@ class lista_cursor:
                 return True
             else:
                 return False
-    '''def insertar_al_final(self,dato):
-        if self.__cantidad_elementos<=self.__dimension:
-            nodo_insertar=nodo_cursor(dato)
-            if self.__cantidad_elementos==0:
-                self.__elementos[self.__primer_elemento]=nodo_insertar
-                self.__cantidad_elementos+=1
-            else:
-                actual=self.__primer_elemento
-                while self.__elementos[actual].get_siguiente()!=-1:
-                    actual=self.__elementos[actual].get_siguiente()
-                if self.__elementos[actual].get_siguiente()==-1:
-                    self.__elementos[actual+1]=nodo_insertar
-                    self.__elementos[actual].set_siguiente(actual+1)
-                    self.__cantidad_elementos+=1
-                    REEEMPLAZADO POR EL INSERTAR POR POSICION
-                    '''
     def insertar_en_posicion(self,dato,indice_insertar):
         if self.__cantidad_elementos<self.__dimension and self.buscar_vacio():
             nodo_a_insertar=nodo_cursor(dato)
