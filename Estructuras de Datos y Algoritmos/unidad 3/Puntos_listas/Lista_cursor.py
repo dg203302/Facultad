@@ -42,14 +42,15 @@ class lista_cursor:
                 self.__primer_elemento=self.__disponible
                 self.__cantidad_elementos+=1
             else:
-                actual=self.__primer_elemento
+                anterior=self.__primer_elemento
                 for j in range(indice_insertar-1):
-                    actual=self.__elementos[actual].get_siguiente()
-                nodo_a_insertar.set_siguiente(self.__elementos[actual].get_siguiente())
-                self.__elementos[actual].set_siguiente(self.__disponible)
+                    anterior=self.__elementos[anterior].get_siguiente()
+                nodo_a_insertar.set_siguiente(self.__elementos[anterior].get_siguiente())
+                self.__elementos[anterior].set_siguiente(self.__disponible)
                 self.__cantidad_elementos+=1
         else:
             print('lista llena!')
+        #ingresar por dato / comparar y en la busqueda ver que sea menor / si es menor al principio y asi
     def recorrer(self):
         if self.__cantidad_elementos!=0:
             cabeza = self.__primer_elemento
