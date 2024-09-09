@@ -96,7 +96,7 @@ class lista_enlazada:
             else:
                 nodo_insertar.set_anterior(self.__ultimo)
                 nodo_insertar.set_siguiente(self.__primero)
-                self.__ultimo.set_anterior(nodo_insertar)
+                self.__ultimo.set_siguiente(nodo_insertar)
                 self.__primero.set_anterior(nodo_insertar)
                 self.__primero=nodo_insertar
                 self.__cantidad+=1
@@ -193,7 +193,7 @@ class lista_enlazada:
             print('lista vacia!')
 #PRUEBAS
 if __name__=='__main__':
-    
+    '''
     print('pruebas para lista secuencial')
     lista=lista_secuencial(5)
     lista.insertar(1,0)
@@ -229,4 +229,4 @@ if __name__=='__main__':
     lista_prueba.recorrer_desde_el_ultimo()
     #lista_prueba.siguiente(2)
     #lista_prueba.anterior(2)
-    '''
+    
