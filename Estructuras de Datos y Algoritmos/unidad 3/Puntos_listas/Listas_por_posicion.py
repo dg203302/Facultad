@@ -12,33 +12,31 @@ class lista_secuencial:
     def vacia(self):
         return self.__ultimo==-1
     def insertar(self,elemento,posicion):
-        if posicion>self.__tamano:
-            raise IndexError
-        elif posicion==0:
-            if self.vacia():
-                self.__items[posicion]=elemento
+        if self.__cantidad<self.__tamano:
+            if posicion==0:
+                if self.vacia():
+                    self.__items[posicion]=elemento
+                    self.__ultimo+=1
+                else:
+                    for i in range(self.__ultimo,posicion,-1):
+                        self.__items[i]=self.__items[i-1]
+                    self.__items[posicion]=elemento
+                    self.__ultimo+=1
+            elif posicion>self.__ultimo:
                 self.__ultimo+=1
-                self.__cantidad+=1
+                self.__items[self.__ultimo]=elemento
             else:
-                for i in range(self.__cantidad,posicion,-1):
-                    self.__items[i]=self.__items[i-1]
-                self.__items[posicion]=elemento
-                self.__ultimo+=1
-                self.__cantidad+=1
-        elif self.__items[posicion]!=0:
-            if self.__cantidad+1>self.__tamano:
-                raise IndexError
-            else:
-                for i in range(posicion,self.__cantidad):
-                    self.__items[i+1]=self.__items[i]
-                self.__items[posicion]=elemento
-                self.__ultimo+=1
-                self.__cantidad+=1
-        elif self.__items[posicion]==0:
-                self.__items[posicion]=elemento
-                self.__cantidad+=1
-                if posicion>self.__ultimo:
-                    self.__ultimo=posicion
+                i=0
+                while i<posicion:
+                    i+=1
+                if i==posicion:
+                    for j in range(self.__ultimo,posicion,-1):
+                        self.__items[j]=self.__items[j-1]
+                    self.__items[posicion]=elemento
+                    self.__ultimo+=1
+            self.__cantidad+=1
+        else:
+            print('lista llena!')
     def mostrar(self):
         for i in range(0,self.__cantidad):
             print(self.__items[i])
@@ -193,7 +191,7 @@ class lista_enlazada:
             print('lista vacia!')
 #PRUEBAS
 if __name__=='__main__':
-    '''
+    
     print('pruebas para lista secuencial')
     lista=lista_secuencial(5)
     lista.insertar(1,0)
@@ -229,4 +227,4 @@ if __name__=='__main__':
     lista_prueba.recorrer_desde_el_ultimo()
     #lista_prueba.siguiente(2)
     #lista_prueba.anterior(2)
-    
+    '''
