@@ -73,7 +73,27 @@ class lista_cursor:
             self.__cantidad_elementos+=1
         else:
             print('lista llena!')
-        #ingresar por dato / comparar y en la busqueda ver que sea menor / si es menor al principio y asi
+    def eliminar(self,posicion):
+        if posicion==0:
+            indice_eliminar=self.__primer_elemento
+            self.__primer_elemento=self.__elementos[self.__primer_elemento].get_siguiente()
+            self.__elementos[indice_eliminar]=None
+            self.__cantidad_elementos-=1
+        else:
+            i=0
+            anterior=self.__primer_elemento
+            while i<posicion-1:
+                anterior=self.__elementos[anterior].get_siguiente()
+                i+=1
+            if i==(posicion-1):
+                nodo_eliminar=self.__elementos[anterior].get_siguiente()
+                self.__elementos[anterior].set_siguiente(self.__elementos[nodo_eliminar].get_siguiente())
+                self.__elementos[nodo_eliminar]=None
+                self.__cantidad_elementos-=1
+            else:
+                self.__elementos[anterior.get_siguiente()]=None
+                self.__elementos[anterior].set_siguiente(-1)
+                self.__cantidad_elementos-=1
     def recorrer(self):
         if self.__cantidad_elementos!=0:
             cabeza = self.__primer_elemento
@@ -97,6 +117,8 @@ if __name__=='__main__':
     lista_prueba.insertar_por_elemento(12)
     lista_prueba.insertar_por_elemento(31)
     lista_prueba.insertar_por_elemento(231)
+    lista_prueba.recorrer()
+    lista_prueba.eliminar(0)
     lista_prueba.recorrer()
     '''
     lista_prueba.insertar_en_posicion(21,0)
