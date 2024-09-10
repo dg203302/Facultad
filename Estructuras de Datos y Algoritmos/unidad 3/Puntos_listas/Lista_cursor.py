@@ -50,6 +50,29 @@ class lista_cursor:
                 self.__cantidad_elementos+=1
         else:
             print('lista llena!')
+    def insertar_por_elemento(self,dato):
+        if self.__cantidad_elementos<self.__dimension and self.buscar_vacio():
+            nodo_insertar=nodo_cursor(dato)
+            self.__elementos[self.__disponible]=nodo_insertar
+            if self.__cantidad_elementos==0:
+                self.__primer_elemento=self.__disponible
+            elif dato<self.__elementos[self.__primer_elemento].get_dato():
+                nodo_insertar.set_siguiente(self.__primer_elemento)
+                self.__primer_elemento=self.__disponible
+            else:
+                anterior=self.__primer_elemento
+                i=0
+                while i<self.__cantidad_elementos-1 and dato>self.__elementos[anterior].get_dato():
+                    anterior=self.__elementos[anterior].get_siguiente()
+                    i+=1
+                if dato<self.__elementos[anterior].get_dato():
+                    nodo_insertar.set_siguiente(self.__elementos[anterior].get_siguiente())
+                    self.__elementos[anterior].set_siguiente(self.__disponible)
+                else:
+                    self.__elementos[anterior].set_siguiente(self.__disponible)
+            self.__cantidad_elementos+=1
+        else:
+            print('lista llena!')
         #ingresar por dato / comparar y en la busqueda ver que sea menor / si es menor al principio y asi
     def recorrer(self):
         if self.__cantidad_elementos!=0:
@@ -70,9 +93,15 @@ class lista_cursor:
 if __name__=='__main__':
     
     lista_prueba=lista_cursor(5)
+    lista_prueba.insertar_por_elemento(21)
+    lista_prueba.insertar_por_elemento(12)
+    lista_prueba.insertar_por_elemento(31)
+    lista_prueba.insertar_por_elemento(231)
+    lista_prueba.recorrer()
+    '''
     lista_prueba.insertar_en_posicion(21,0)
     lista_prueba.insertar_en_posicion(12,1)
     lista_prueba.insertar_en_posicion(31,0)
     lista_prueba.insertar_en_posicion(231,2)
     lista_prueba.recorrer()
-    
+    '''
