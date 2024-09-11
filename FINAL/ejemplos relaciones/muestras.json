@@ -1,0 +1,24 @@
+{
+    "gestor_objetos": [
+        {
+            "nombre": "Juan",
+            "apellido": "Pjuares",
+            "dni": "12312424123"
+        },
+        {
+            "nombre": "diego",
+            "apellido": "jose",
+            "dni": "1231242213214123"
+        },
+        {
+            "nombre": "jose",
+            "apellido": "miguel",
+            "dni": "1231242412232131233"
+        },
+        {
+            "nombre": "kosesda",
+            "apellido": "dasda",
+            "dni": "12312424123123213"
+        }
+    ]
+}

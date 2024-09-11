@@ -1,0 +1,71 @@
+{
+    "calefactores": [
+        {
+            "tipo": "gas",
+            "atributos": {
+                "tipo": "gas",
+                "modelo": "WP4000",
+                "paisfabric": "Mexico",
+                "precio": 15000.0,
+                "formpago": "cuotas",
+                "cantcout": 12,
+                "promo": false,
+                "matricu": "GN01-00001-06-058",
+                "calorias": 4500
+            }
+        },
+        {
+            "tipo": "electrico",
+            "atributos": {
+                "marca": "pija",
+                "modelo": "caca",
+                "paisfabric": "mexico",
+                "precio": 5000.0,
+                "formpago": "efectivo",
+                "cantcout": 1,
+                "promo": true,
+                "maxpote": "4000"
+            }
+        },
+        {
+            "tipo": "electrico",
+            "atributos": {
+                "marca": "Samsung",
+                "modelo": "SAM3000",
+                "paisfabric": "Chile",
+                "precio": 9000.0,
+                "formpago": "contado",
+                "cantcout": 1,
+                "promo": true,
+                "maxpote": 2000
+            }
+        },
+        {
+            "tipo": "gas",
+            "atributos": {
+                "tipo": "gas",
+                "modelo": "LG2000",
+                "paisfabric": "Brasil",
+                "precio": 12000.0,
+                "formpago": "cuotas",
+                "cantcout": 12,
+                "promo": false,
+                "matricu": "GN01-00001-06-057",
+                "calorias": 4000
+            }
+        },
+        {
+            "tipo": "electrico",
+            "atributos": {
+                "marca": "Philips",
+                "modelo": "PH1000",
+                "paisfabric": "Argentina",
+                "precio": 8000.0,
+                "formpago": "contado",
+                "cantcout": 1,
+                "promo": true,
+                "maxpote": 1500
+            }
+        }
+    ]
+}
