@@ -30,6 +30,14 @@ class lista_secuencial_contenido:
                     self.__cantidad_elementos+=1
         else:
             print('lista llena!')
+    def eliminar(self,posicion):
+        if posicion>=0 and posicion<self.__cantidad_elementos:
+            for i in range(posicion,self.__cantidad_elementos-1):
+                self.__items[i]=self.__items[i+1]
+            self.__cantidad_elementos-=1
+            self.__ultimo-=1
+        else:
+            print('posicion fuera de rango')
     def recorrer(self):
         for i in range(0,self.__cantidad_elementos):
             print(self.__items[i])
@@ -86,4 +94,6 @@ if __name__=='__main__':
     lista.insertar(3)
     lista.recorrer()
     lista.insertar(0)
+    lista.recorrer()
+    lista.eliminar(2)
     lista.recorrer()

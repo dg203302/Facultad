@@ -85,39 +85,38 @@ class lista_enlazada:
     def insertar(self,dato, posicion):
         nodo_insertar=nodo_lista_enlazada(dato)
         if posicion==0:
-            if self.__cantidad==0:
+            if self.vacia():
                 self.__primero=nodo_insertar
                 self.__ultimo=nodo_insertar
-                nodo_insertar.set_siguiente(self.__ultimo)
-                nodo_insertar.set_anterior(self.__ultimo)
-                self.__cantidad+=1
+                self.__primero.set_siguiente(self.__ultimo)
+                self.__ultimo.set_anterior(self.__primero)
+                self.__primero.set_anterior(self.__ultimo)
+                self.__ultimo.set_siguiente(self.__primero)
             else:
-                nodo_insertar.set_anterior(self.__ultimo)
                 nodo_insertar.set_siguiente(self.__primero)
-                self.__ultimo.set_siguiente(nodo_insertar)
+                nodo_insertar.set_anterior(self.__ultimo)
                 self.__primero.set_anterior(nodo_insertar)
+                self.__ultimo.set_siguiente(nodo_insertar)
                 self.__primero=nodo_insertar
-                self.__cantidad+=1
         else:
-            if posicion>=self.__cantidad:
-                self.__ultimo.set_siguiente(nodo_insertar)
-                self.__primero.set_anterior(nodo_insertar)
-                nodo_insertar.set_anterior(self.__ultimo)
-                nodo_insertar.set_siguiente(self.__primero)
-                self.__ultimo=nodo_insertar
-                self.__cantidad+=1
-            else:
-                i=0
-                actual=self.__primero
-                while i<posicion:
-                    actual=actual.get_siguiente()
-                    i+=1
-                if i==posicion:
-                    actual.set_anterior(nodo_insertar)
-                    nodo_insertar.set_siguiente(actual)
-                    actual.get_anterior().set_siguiente(nodo_insertar)
-                    nodo_insertar.set_anterior(actual.get_anterior())
-                    self.__cantidad+=1
+            i=0
+            anterior=self.__primero
+            while i<(posicion-1):
+                i+=1
+                anterior=anterior.get_siguiente()
+            if i==(posicion-1):
+                if anterior.get_siguiente()!=self.__primero:
+                    nodo_insertar.set_siguiente(anterior.get_siguiente())
+                    nodo_insertar.set_anterior(anterior)
+                    anterior.get_siguiente().set_anterior(nodo_insertar)
+                    anterior.set_siguiente(nodo_insertar)
+                else:
+                    anterior.set_siguiente(nodo_insertar)
+                    self.__primero.set_anterior(nodo_insertar)
+                    nodo_insertar.set_anterior(anterior)
+                    nodo_insertar.set_siguiente(self.__primero)
+                    self.__ultimo=nodo_insertar
+        self.__cantidad+=1
     def primer_elemento(self):
         if not(self.vacia()):
             return self.__primero.get_dato()
@@ -191,7 +190,7 @@ class lista_enlazada:
             print('lista vacia!')
 #PRUEBAS
 if __name__=='__main__':
-    
+    '''
     print('pruebas para lista secuencial')
     lista=lista_secuencial(5)
     lista.insertar(1,0)
@@ -220,6 +219,7 @@ if __name__=='__main__':
     lista_prueba.insertar(10,1)
     lista_prueba.insertar(213,2)
     lista_prueba.insertar(320,3)
+    lista_prueba.insertar(21,1)
     print(f'cantidad de elementos: {lista_prueba.get_cantidad()}')
     print('recorriendo desde el inicio')
     lista_prueba.recorrer_desde_el_principio()
@@ -227,4 +227,4 @@ if __name__=='__main__':
     lista_prueba.recorrer_desde_el_ultimo()
     #lista_prueba.siguiente(2)
     #lista_prueba.anterior(2)
-    '''
+    
