@@ -74,18 +74,15 @@ class lista_enlazada:
             self.__ultimo.set_siguiente(self.__primero)
             self.__primero.set_anterior(self.__ultimo)
             self.__ultimo.set_anterior(self.__primero)
-        elif dato<self.__primero.get_dato():
+        elif dato<self.__primero.get_dato() or dato>self.__ultimo.get_dato():
             nodo_insertar.set_siguiente(self.__primero)
             nodo_insertar.set_anterior(self.__ultimo)
             self.__ultimo.set_siguiente(nodo_insertar)
             self.__primero.set_anterior(nodo_insertar)
-            self.__primero=nodo_insertar
-        elif dato>self.__ultimo.get_dato():
-            nodo_insertar.set_siguiente(self.__primero)
-            nodo_insertar.set_anterior(self.__ultimo)
-            self.__primero.set_anterior(nodo_insertar)
-            self.__ultimo.set_siguiente(nodo_insertar)
-            self.__ultimo=nodo_insertar
+            if dato<self.__primero.get_dato():
+                self.__primero=nodo_insertar
+            else:
+                self.__ultimo=nodo_insertar
         else:
             i=0
             actual=self.__primero
@@ -97,12 +94,6 @@ class lista_enlazada:
                 nodo_insertar.set_anterior(actual.get_anterior())
                 actual.get_anterior().set_siguiente(nodo_insertar)
                 actual.set_anterior(nodo_insertar)
-            else:
-                nodo_insertar.set_siguiente(actual.get_siguiente())
-                nodo_insertar.set_anterior(actual)
-                actual.get_siguiente().set_anterior(nodo_insertar)
-                actual.set_siguiente(nodo_insertar)
-                self.__ultimo=nodo_insertar
         self.__cantidad+=1
     def recorrer(self):
         actual=self.__primero
