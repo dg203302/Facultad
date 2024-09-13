@@ -8,26 +8,21 @@ class lista_secuencial_contenido:
         self.__cantidad_elementos=0
         self.__dimension=dimension
         self.__items=[0]*dimension
-        self.__ultimo=0
+        self.__ultimo=-1
     def insertar(self,dato):
         if self.__cantidad_elementos<self.__dimension:
-            if self.__cantidad_elementos==0:
-                self.__items[self.__ultimo]=dato
+            i=0
+            while dato>self.__items[i] and i<self.__cantidad_elementos:
+                i+=1
+            if dato<self.__items[i]:
+                for j in range(self.__cantidad_elementos,i,-1):
+                    self.__items[j]=self.__items[j-1]
+                self.__items[i]=dato
                 self.__cantidad_elementos+=1
-            elif dato>self.__items[self.__ultimo]:
+            else:
                 self.__ultimo+=1
                 self.__items[self.__ultimo]=dato
                 self.__cantidad_elementos+=1
-            elif dato<self.__items[self.__ultimo]:
-                i=0
-                while dato>self.__items[i]:
-                    i+=1
-                if dato<self.__items[i]:
-                    for j in range(self.__cantidad_elementos, i, -1):      #importante //asi se desplaza si el elemento sobreescribe el de la primera posicion, tanto para lista por posicion como por elemento
-                        self.__items[j] = self.__items[j-1]
-                    self.__items[i]=dato
-                    self.__ultimo+=1
-                    self.__cantidad_elementos+=1
         else:
             print('lista llena!')
     def eliminar(self,posicion):
@@ -71,29 +66,70 @@ class lista_enlazada:
     def vacia(self):
         return self.__cantidad==0
     def insertar(self,dato):
-        nuevo_nodo=nodo_lista_enlazada(dato)
+        nodo_insertar=nodo_lista_enlazada(dato)
         if self.vacia():
-            self.__primero=nuevo_nodo
-            self.__ultimo=self.__primero
-            self.__cantidad+=1
+            self.__primero=nodo_insertar
+            self.__ultimo=nodo_insertar
+            self.__primero.set_siguiente(self.__ultimo)
+            self.__ultimo.set_siguiente(self.__primero)
+            self.__primero.set_anterior(self.__ultimo)
+            self.__ultimo.set_anterior(self.__primero)
+        elif dato<self.__primero.get_dato():
+            nodo_insertar.set_siguiente(self.__primero)
+            nodo_insertar.set_anterior(self.__ultimo)
+            self.__ultimo.set_siguiente(nodo_insertar)
+            self.__primero.set_anterior(nodo_insertar)
+            self.__primero=nodo_insertar
+        elif dato>self.__ultimo.get_dato():
+            nodo_insertar.set_siguiente(self.__primero)
+            nodo_insertar.set_anterior(self.__ultimo)
+            self.__primero.set_anterior(nodo_insertar)
+            self.__ultimo.set_siguiente(nodo_insertar)
+            self.__ultimo=nodo_insertar
         else:
-            aux=self.__primero
-            while aux.get_siguiente()!=None:
-                aux=aux.get_siguiente()
-            if aux.get_siguiente()==None:
-                aux.set_siguiente(nuevo_nodo)
-                nuevo_nodo.set_anterior(aux)
-                self.__primero.set_anterior(nuevo_nodo)
-                self.__ultimo=nuevo_nodo
-                self.__cantidad+=1
+            i=0
+            actual=self.__primero
+            while dato>actual.get_dato() and i<self.__cantidad:
+                i+=1
+                actual=actual.get_siguiente()
+            if dato<actual.get_dato():
+                nodo_insertar.set_siguiente(actual)
+                nodo_insertar.set_anterior(actual.get_anterior())
+                actual.get_anterior().set_siguiente(nodo_insertar)
+                actual.set_anterior(nodo_insertar)
+            else:
+                nodo_insertar.set_siguiente(actual.get_siguiente())
+                nodo_insertar.set_anterior(actual)
+                actual.get_siguiente().set_anterior(nodo_insertar)
+                actual.set_siguiente(nodo_insertar)
+                self.__ultimo=nodo_insertar
+        self.__cantidad+=1
+    def recorrer(self):
+        actual=self.__primero
+        while actual.get_siguiente()!=self.__primero:
+            print(f'dato: {actual.get_dato()}')
+            actual=actual.get_siguiente()
+        print(f'dato: {actual.get_dato()}')
 #PRUEBAS
 if __name__=='__main__':
+    '''
     lista=lista_secuencial_contenido(5)
     lista.insertar(1)
     lista.insertar(2)
     lista.insertar(3)
+    print('--------------------')
     lista.recorrer()
-    lista.insertar(0)
+    #lista.insertar(0)
+    print('--------------------')
     lista.recorrer()
     lista.eliminar(2)
+    print('--------------------')
+    lista.recorrer()
+    '''
+    lista=lista_enlazada()
+    lista.insertar(1)
+    lista.insertar(2)
+    lista.insertar(3)
+    lista.insertar(0)
+    lista.insertar(4)
     lista.recorrer()
