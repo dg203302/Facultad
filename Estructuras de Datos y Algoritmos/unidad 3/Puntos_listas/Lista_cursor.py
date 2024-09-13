@@ -36,18 +36,21 @@ class lista_cursor:
             self.__elementos[self.__disponible]=nodo_a_insertar
             if self.__cantidad_elementos==0:
                 self.__primer_elemento=self.__disponible
-                self.__cantidad_elementos+=1
             elif indice_insertar==0:
                 self.__elementos[self.__disponible].set_siguiente(self.__primer_elemento)
                 self.__primer_elemento=self.__disponible
-                self.__cantidad_elementos+=1
             else:
+                i=0
                 anterior=self.__primer_elemento
-                for j in range(indice_insertar-1):
+                while i<indice_insertar-1 and i<self.__cantidad_elementos:
+                    i+=1
                     anterior=self.__elementos[anterior].get_siguiente()
-                nodo_a_insertar.set_siguiente(self.__elementos[anterior].get_siguiente())
-                self.__elementos[anterior].set_siguiente(self.__disponible)
-                self.__cantidad_elementos+=1
+                if i==indice_insertar-1:
+                    nodo_a_insertar.set_siguiente(self.__elementos[anterior].get_siguiente())
+                    self.__elementos[anterior].set_siguiente(self.__disponible)
+                else:
+                    self.__elementos[anterior].set_siguiente(self.__disponible)
+            self.__cantidad_elementos+=1
         else:
             print('lista llena!')
     def insertar_por_elemento(self,dato):
