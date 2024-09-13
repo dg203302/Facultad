@@ -36,18 +36,21 @@ class lista_cursor:
             self.__elementos[self.__disponible]=nodo_a_insertar
             if self.__cantidad_elementos==0:
                 self.__primer_elemento=self.__disponible
-                self.__cantidad_elementos+=1
             elif indice_insertar==0:
                 self.__elementos[self.__disponible].set_siguiente(self.__primer_elemento)
                 self.__primer_elemento=self.__disponible
-                self.__cantidad_elementos+=1
             else:
+                i=0
                 anterior=self.__primer_elemento
-                for j in range(indice_insertar-1):
+                while i<indice_insertar-1 and i<self.__cantidad_elementos:
+                    i+=1
                     anterior=self.__elementos[anterior].get_siguiente()
-                nodo_a_insertar.set_siguiente(self.__elementos[anterior].get_siguiente())
-                self.__elementos[anterior].set_siguiente(self.__disponible)
-                self.__cantidad_elementos+=1
+                if i==indice_insertar-1:
+                    nodo_a_insertar.set_siguiente(self.__elementos[anterior].get_siguiente())
+                    self.__elementos[anterior].set_siguiente(self.__disponible)
+                else:
+                    self.__elementos[anterior].set_siguiente(self.__disponible)
+            self.__cantidad_elementos+=1
         else:
             print('lista llena!')
     def insertar_por_elemento(self,dato):
@@ -94,6 +97,29 @@ class lista_cursor:
                 self.__elementos[anterior.get_siguiente()]=None
                 self.__elementos[anterior].set_siguiente(-1)
                 self.__cantidad_elementos-=1
+    def eliminar_dato(self,dato):
+        if dato==self.__elementos[self.__primer_elemento].get_dato():
+            indice_eliminar=self.__primer_elemento
+            self.__primer_elemento=self.__elementos[self.__primer_elemento].get_siguiente()
+            self.__elementos[indice_eliminar]=None
+        else:
+            i=0
+            anterior=self.__primer_elemento
+            while i<self.__cantidad_elementos and dato!=self.__elementos[self.__elementos[anterior].get_siguiente()].get_dato():
+                anterior=self.__elementos[anterior].get_siguiente()
+                i+=1
+            if dato==self.__elementos[self.__elementos[anterior].get_siguiente()].get_dato():
+                indice_eliminar=self.__elementos[anterior].get_siguiente()
+                self.__elementos[anterior].set_siguiente(self.__elementos[indice_eliminar].get_siguiente())
+                self.__elementos[indice_eliminar]=None
+            elif self.__elementos[self.__elementos[anterior].get_siguiente()].get_siguiente()==-1:
+                nodo_elimnar=self.__elementos[anterior].get_siguiente()
+                self.__elementos[anterior].set_siguiente(-1)
+                self.__elementos[nodo_elimnar]=None
+            else:
+                print('dato no encontrado!')
+                return
+        self.__cantidad_elementos-=1
     def recorrer(self):
         if self.__cantidad_elementos!=0:
             cabeza = self.__primer_elemento
@@ -118,7 +144,8 @@ if __name__=='__main__':
     lista_prueba.insertar_por_elemento(31)
     lista_prueba.insertar_por_elemento(231)
     lista_prueba.recorrer()
-    lista_prueba.eliminar(0)
+    lista_prueba.eliminar_dato(231)
+    #lista_prueba.eliminar(0)
     lista_prueba.recorrer()
     '''
     lista_prueba=lista_cursor(5)
