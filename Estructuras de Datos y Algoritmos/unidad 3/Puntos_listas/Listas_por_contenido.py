@@ -9,6 +9,8 @@ class lista_secuencial_contenido:
         self.__dimension=dimension
         self.__items=[0]*dimension
         self.__ultimo=-1
+    def vacia(self):
+        return self.__cantidad_elementos==0
     def insertar(self,dato):
         if self.__cantidad_elementos<self.__dimension:
             i=0
@@ -25,14 +27,27 @@ class lista_secuencial_contenido:
                 self.__cantidad_elementos+=1
         else:
             print('lista llena!')
-    def eliminar(self,posicion):
-        if posicion>=0 and posicion<self.__cantidad_elementos:
-            for i in range(posicion,self.__cantidad_elementos-1):
-                self.__items[i]=self.__items[i+1]
+    def eliminar(self,dato):
+        if not(self.vacia()):
+            if dato==self.__items[0]:
+                for i in range(0,self.__ultimo):
+                    self.__items[i]=self.__items[i+1]
+                self.__ultimo-=1
+            elif dato==self.__items[self.__ultimo]:
+                self.__items[self.__ultimo]=0
+                self.__ultimo-=1
+            else:
+                i=0
+                while dato!=self.__items[i] and i<self.__cantidad_elementos:
+                    i+=1
+                if dato==self.__items[i]:
+                    for j in range(i,self.__ultimo):
+                        self.__items[j]=self.__items[j+1]
+                    self.__ultimo-=1
+                else:
+                    print('dato no encontrado!')
+                    return
             self.__cantidad_elementos-=1
-            self.__ultimo-=1
-        else:
-            print('posicion fuera de rango')
     def recorrer(self):
         for i in range(0,self.__cantidad_elementos):
             print(self.__items[i])
@@ -103,7 +118,6 @@ class lista_enlazada:
         print(f'dato: {actual.get_dato()}')
 #PRUEBAS
 if __name__=='__main__':
-    '''
     lista=lista_secuencial_contenido(5)
     lista.insertar(1)
     lista.insertar(2)
@@ -124,3 +138,4 @@ if __name__=='__main__':
     lista.insertar(0)
     lista.insertar(4)
     lista.recorrer()
+    '''

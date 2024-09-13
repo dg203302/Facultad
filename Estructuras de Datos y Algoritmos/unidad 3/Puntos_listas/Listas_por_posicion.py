@@ -41,7 +41,7 @@ class lista_secuencial:
     def suprimir(self,posicion):
         if posicion>=0 and posicion<=self.__ultimo:
             for i in range(posicion,self.__ultimo):
-                self.__items[i-1]=self.__items[i]
+                self.__items[i]=self.__items[i+1]
             self.__cantidad-=1
             self.__ultimo-=1
     def buscar(self,elemento):
@@ -214,18 +214,19 @@ class lista_enlazada:
             self.__cantidad-=1
 #PRUEBAS
 if __name__=='__main__':
-    '''
+    
     print('pruebas para lista secuencial')
     lista=lista_secuencial(5)
     lista.insertar(1,0)
     lista.insertar(2,1)
     lista.insertar(3,2)
     lista.insertar(4,0)
-    print('ingresando orden')
-    lista.mostrar()
     lista.insertar(6,2)
-    print('ingresando en un lugar ocupado')
     lista.mostrar()
+    print('-----------------')
+    lista.suprimir(2)
+    lista.mostrar()
+    '''
     lista.recuperar(2)
     print('suprimir 1')
     lista.suprimir(0)
@@ -237,7 +238,7 @@ if __name__=='__main__':
     lista.suprimir(2)
     lista.mostrar()
     lista.buscar(6)
-    '''
+   
     lista_prueba=lista_enlazada()
     lista_prueba.insertar(12,0)
     lista_prueba.insertar(10,1)
@@ -249,3 +250,4 @@ if __name__=='__main__':
     lista_prueba.recorrer_desde_el_principio()
     lista_prueba.eliminar(2)
     lista_prueba.recorrer_desde_el_principio()
+    '''
