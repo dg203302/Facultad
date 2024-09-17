@@ -137,7 +137,7 @@ class lista_cursor:
             i=self.__elementos[i].get_siguiente()
         print(f'CONTENIDO: {self.__elementos[i].get_dato()}\nSIGUIENTE: {self.__elementos[i].get_siguiente()}\ncantidad de elementos: {self.__cantidad_elementos}') #esto para que muestre el ultimo
 if __name__=='__main__':
-    
+    '''
     lista_prueba=lista_cursor(5)
     lista_prueba.insertar_por_elemento(21)
     lista_prueba.insertar_por_elemento(12)
@@ -148,9 +148,10 @@ if __name__=='__main__':
     #lista_prueba.eliminar(0)
     lista_prueba.recorrer()
     '''
+    lista_prueba=lista_cursor(5)
     lista_prueba.insertar_en_posicion(21,0)
     lista_prueba.insertar_en_posicion(12,1)
     lista_prueba.insertar_en_posicion(31,0)
     lista_prueba.insertar_en_posicion(231,2)
     lista_prueba.recorrer()
-    '''
+    
