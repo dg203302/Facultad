@@ -1,0 +1,106 @@
+* {
+    background-color: lightslategray;
+}
+.titulos_y_subtitulos{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 10px 10px 10px black;
+}
+.cuerpo{
+    background-color:blanchedalmond;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    flex-wrap: wrap;
+    box-shadow: 5px 5px 5px black;
+}
+.cuerpo {
+    transition: background-color 0.5s ease;
+}
+.cuerpo:hover {
+    background-color: grey;
+}
+.cuerpo div{
+    padding: 5px;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px black;
+    margin: 20px;
+}
+.cuerpo div table{
+    color: black;
+    border-collapse: collapse;
+    width: 100%;
+}
+.cuerpo div table, .cuerpo div th, .cuerpo div td {
+    border: 1px solid white;
+    padding: 8px;
+    text-align: left;
+}
+.cuerpo div th {
+    background-color: darkslategray;
+    color: white;
+}
+.cuerpo div form label{
+    color: black;
+    font-size: large;
+    justify-content: center;
+    display:flex;
+    margin-bottom: 5px;
+}
+.cuerpo div form input{
+    justify-content:center;
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.cuerpo div form input[type="submit"]{
+    justify-content: center;
+    display:flex;
+    margin-bottom: 5px;
+    background-color: darkslategray;
+    color: aliceblue;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+.cuerpo div form input[type="submit"]:hover{
+    background-color: black;
+    transition: background-color 0.3s ease;
+}
+.cuerpo div a{
+    text-decoration: none;
+    font-size:larger;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+.cuerpo div a:hover{
+    color: black;
+    transition: color 0.3s ease;
+}
+.cuerpo div input[type='button']{
+    font-size: medium;
+    color: aliceblue;
+    border-radius: 5px;
+    background-color: darkslategray;
+}
+.cuerpo div input[type='button']:hover{
+    background-color: black;
+    transition: background-color 0.3s ease;
+}
+.cuerpo div img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20%;
+    box-shadow: 5px 5px 5px black;
+    object-fit: cover;
+}

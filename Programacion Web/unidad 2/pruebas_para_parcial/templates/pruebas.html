@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejemplos de prueba</title>
+        <link rel="stylesheet" href="../static/estilos.css">
+    </head>
+    <body>
+        <div class="titulos_y_subtitulos">
+            <h1>Mejor Pagina Web 2024</h1>
+        </div>
+        <div class="cuerpo">
+            <div>
+                <img id="billie" src="../static/images/GXiB0v5XUAET-tT.jpeg" alt="Billie">
+            </div>
+            <div>
+                <form action="../receptor.py" method="post">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" pattern="[A-Za-z]+" title="Solo se permiten letras" required>
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellido" pattern="[A-Za-z]+" title="Solo se permiten letras" required>
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                    </tr>
+                    <tr>
+                        <td>JOSE</td>
+                        <td>JULIAN</td>
+                    </tr>
+                    <tr>
+                        <td>LUIS</td>
+                        <td>PEREZ</td>
+                    </tr>
+                </table>
+            </div>
+            <div> <!--urls-->
+                <a href="https://www.youtube.com">YouTube</a>
+                <a href="https://www.instagram.com">Instagram</a>
+                <a href="https://www.x.com">X</a>
+                <input type="button" value="toca para sorpresa" onclick="window.location.href='sorpresa.html'">
+            </div>
+            <div>
+                <img id="sydney" src="../static/images/GXhHtmGbUAAQQ-u.jpeg" alt="Sydney">
+            </div>
+        </div>
+</body>
+</html>
