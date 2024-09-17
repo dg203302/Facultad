@@ -54,22 +54,3 @@ class ArbolBinario:
         if valor < nodo.get_valor():
             return self.__buscar_recursivo(nodo.get_izquierdo(), valor)
         return self.__buscar_recursivo(nodo.get_derecho(), valor)
-    def recorrer_inorden(self):
-        elementos = []
-        self.__recorrer_inorden_recursivo(self.__raiz, elementos)
-        return elementos
-
-    def __recorrer_inorden_recursivo(self, nodo, elementos):
-        if nodo is not None:
-            self.__recorrer_inorden_recursivo(nodo.get_izquierdo(), elementos)
-            elementos.append(nodo.get_valor())
-            self.__recorrer_inorden_recursivo(nodo.get_derecho(), elementos)
-arbol=ArbolBinario()
-arbol.insertar(20)
-arbol.insertar(10)
-arbol.insertar(30)
-arbol.insertar(5)
-arbol.insertar(15)
-arbol.insertar(25)
-arbol.insertar(35)
-print(arbol.recorrer_inorden())
