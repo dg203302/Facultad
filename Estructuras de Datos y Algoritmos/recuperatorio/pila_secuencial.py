@@ -1,4 +1,4 @@
-class pila_secuencial:
+class pila:
     __dimension:int
     __cantidad:int
     __tope:int
