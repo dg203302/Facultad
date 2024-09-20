@@ -42,9 +42,24 @@ class lista_secuencial:
         for i in range(0,self.__cantidad):
             print(self.__items[i],end=' ')
     def suprimir_por_posicion(self,posicion):
-        pass
+        if not self.vacia():
+            for i in range(posicion,self.__cantidad):
+                self.__items[i]=self.__items[i+1]
+            self.__cantidad-=1
+        else:
+            print('lista vacia')
     def suprimir_por_contenido(self,dato):
-        pass
+        if not self.vacia():
+            if dato==self.__items[self.__tope]:
+                self.__tope-=1
+            else:
+                i=0
+                while dato!=self.__items[i]:
+                    i+=1
+                for j in range(i,self.__cantidad):
+                    self.__items[j]=self.__items[j+1]
+                self.__tope-=1
+            self.__cantidad-=1
     def get_primero(self):
         pass
     def get_ultimo(self):
@@ -60,7 +75,10 @@ if __name__ == "__main__":
     lista.insertar_por_posicion(5, 0)
     lista.insertar_por_posicion(10, 1)
     lista.insertar_por_posicion(15, 2)
-    lista.insertar_por_posicion(100,0)
+    lista.insertar_por_posicion(100,3)
+    lista.recorrer()
+    lista.suprimir_por_contenido(100)
+    lista.suprimir_por_posicion(1)
     '''
     lista.insertar_por_contenido(5)
     lista.insertar_por_contenido(10)
