@@ -52,87 +52,72 @@ class lista_secuencial:
             print(f'ubicacion del elemento {elemento}: {i}')
 #lista encadenada
 class nodo_lista_enlazada:
-    __anterior:object
-    __siguiente:object
     __dato:object
-    def __init__(self,dato=None,siguiente=None,anterior=None):
-        self.__anterior=anterior
-        self.__siguiente=siguiente
+    __siguiente:object
+    def __init__(self,dato=None,siguiente=None):
         self.__dato=dato
+        self.__siguiente=siguiente
     def get_dato(self):
         return self.__dato
     def set_siguiente(self, siguiente):
         self.__siguiente=siguiente
-    def set_anterior(self,anterior):
-        self.__anterior=anterior
     def get_siguiente(self):
         return self.__siguiente
-    def get_anterior(self):
-        return self.__anterior
 class lista_enlazada:
     __cantidad:int
     __primero:nodo_lista_enlazada
-    __ultimo:nodo_lista_enlazada
-    def __init__(self,primero=None,ultimo=None):
+    def __init__(self,primero=None):
         self.__cantidad=0
         self.__primero=primero
-        self.__ultimo=ultimo
     def vacia(self):
         return self.__cantidad==0
     def insertar(self,dato, posicion):
         nodo_insertar=nodo_lista_enlazada(dato)
         if posicion==0:
-            if self.vacia():
-                self.__primero=nodo_insertar
-                self.__ultimo=nodo_insertar
-                self.__primero.set_siguiente(self.__ultimo)
-                self.__ultimo.set_anterior(self.__primero)
-                self.__primero.set_anterior(self.__ultimo)
-                self.__ultimo.set_siguiente(self.__primero)
-            else:
-                nodo_insertar.set_siguiente(self.__primero)
-                nodo_insertar.set_anterior(self.__ultimo)
-                self.__primero.set_anterior(nodo_insertar)
-                self.__ultimo.set_siguiente(nodo_insertar)
-                self.__primero=nodo_insertar
+            self.__primero=nodo_insertar
         else:
             i=0
             anterior=self.__primero
-            while i<(posicion-1):
+            while i<posicion-1:
                 i+=1
                 anterior=anterior.get_siguiente()
             if i==(posicion-1):
-                if anterior.get_siguiente()!=self.__primero:
+                if anterior.get_siguiente()!=None:
                     nodo_insertar.set_siguiente(anterior.get_siguiente())
-                    nodo_insertar.set_anterior(anterior)
-                    anterior.get_siguiente().set_anterior(nodo_insertar)
                     anterior.set_siguiente(nodo_insertar)
                 else:
-                    nodo_insertar.set_siguiente(anterior.get_siguiente())
-                    nodo_insertar.set_anterior(anterior)
-                    anterior.get_siguiente().set_anterior(nodo_insertar)
                     anterior.set_siguiente(nodo_insertar)
-                    self.__ultimo=nodo_insertar
         self.__cantidad+=1
+    def recorrer(self):
+        actual=self.__primero
+        i=0
+        while actual!=None:
+            print(f'elemento en posicion: {i}\nvalor: {actual.get_dato()}')
+            i+=1
+            actual=actual.get_siguiente()
+    def buscar(self,indice):
+        if self.vacia():
+            print('lista_vacia')
+        else:
+            if indice==0:
+                return self.__primero.get_dato()
+            else:
+                i=0
+                actual=self.__primero
+                while i!=indice:
+                    i+=1
+                    actual=actual.get_siguiente()
+                if i==indice:
+                    return actual.get_dato()
     def primer_elemento(self):
         if not(self.vacia()):
-            return self.__primero.get_dato()
-    def ultimo_elemento(self, posicion):
+            return self.__primero #o enviar el nodo
+    def ultimo_elemento(self):
         if not(self.vacia()):
-            return self.__ultimo.get_dato()
-    def recorrer_desde_el_principio(self):
-        if not(self.vacia()):
-            aux=self.__primero
-            while aux!=self.__ultimo:
-                print(aux.get_dato())
-                aux=aux.get_siguiente()
-            print(aux.get_dato()) #para mostrar el ultimo que no sale
-    def recorrer_desde_el_ultimo(self):
-        aux=self.__ultimo
-        while aux!=self.__primero:
-            print(aux.get_dato())
-            aux=aux.get_anterior()
-        print(aux.get_dato())
+            actual=self.__primero
+            while actual.get_siguiente() is not None:
+                actual=actual.get_siguiente()
+            return actual #o enviar el nodo
     def get_cantidad(self):
         return self.__cantidad
     def siguiente(self, posicion):
@@ -140,24 +125,13 @@ class lista_enlazada:
             if posicion>self.__cantidad:
                 raise IndexError
             else:
-                if posicion<=(self.__cantidad/2):
-                    i=0
-                    aux=self.__primero
-                    while aux!=None and i!=posicion:
-                        aux=aux.get_siguiente()
-                        i+=1
-                    if i==posicion:
-                        siguiente=aux.get_siguiente()
-                        print(f'dato ubicado en el nodo siguiente a la posicion: {i}: {siguiente.get_dato()}')
-                elif posicion>(self.__cantidad/2):
-                    i=self.__cantidad
-                    aux=self.__ultimo
-                    while aux!=None and i!=posicion:
-                        aux=aux.get_anterior()
-                        i-=1
-                    if i==posicion:
-                        siguiente=aux.get_siguiente()
-                        print(f'dato ubicado en el nodo siguiente a la posicion: {i}: {siguiente.get_dato()}')
+                i=0
+                actual=self.__primero
+                while i<posicion:
+                    i+=1
+                    actual=actual.get_siguiente()
+                if i==posicion:
+                    print(actual.get_siguiente().get_dato())
         else:
             print('lista vacia!')
     def anterior(self, posicion):
@@ -165,56 +139,35 @@ class lista_enlazada:
             if posicion>self.__cantidad:
                 raise IndexError
             else:
-                if posicion<=(self.__cantidad/2):
-                    i=0
-                    aux=self.__primero
-                    while aux!=None and i!=posicion:
-                        aux=aux.get_siguiente()
-                        i+=1
-                    if i==posicion:
-                        anterior=aux.get_anterior()
-                        print(f'dato ubicado en el nodo anterior a la posicion: {i}: {anterior.get_dato()}')
-                elif posicion>(self.__cantidad/2):
-                    i=self.__cantidad
-                    aux=self.__ultimo
-                    while aux!=None and i!=posicion:
-                        aux=aux.get_anterior()
-                        i-=1
-                    if i==posicion:
-                        anterior=aux.get_anterior()
-                        print(f'dato ubicado en el nodo anterior a la posicion: {i}: {anterior.get_dato()}')
+                i=0
+                anterior=self.__primero
+                while i<posicion-1:
+                    i+=1
+                    anterior=anterior.get_siguiente()
+                if i==(posicion-1):
+                    print(anterior.get_dato())
         else:
             print('lista vacia!')
     def eliminar(self,posicion):
         if not(self.vacia()):
             if posicion==0:
-                nodo_eliminar=self.__primero
-                self.__ultimo.set_siguiente(nodo_eliminar.get_siguiente())
-                nodo_eliminar.get_siguiente().set_anterior(self.__ultimo)
-                self.__primero=nodo_eliminar.get_siguiente()
-                del nodo_eliminar
+                nodo_elim=self.__primero
+                self.__primero=self.__primero.get_siguiente()
+                del nodo_elim
             else:
                 i=0
-                actual=self.__primero
-                while i<posicion:
+                anterior=self.__primero
+                while i<posicion-1:
                     i+=1
-                    actual=actual.get_siguiente()
-                if i==posicion:
-                    if actual.get_siguiente()!=self.__primero:
-                        nodo_eliminar=actual
-                        actual.get_anterior().set_siguiente(nodo_eliminar.get_siguiente())
-                        actual.get_siguiente().set_anterior(nodo_eliminar.get_anterior())
-                        del nodo_eliminar
-                    else:
-                        nodo_eliminar=actual
-                        actual.get_siguiente().set_anterior(nodo_eliminar.get_anterior())
-                        actual.get_anterior().set_siguiente(nodo_eliminar.get_siguiente())
-                        self.__ultimo=actual.get_anterior()
-                        del nodo_eliminar
-            self.__cantidad-=1
+                    anterior=anterior.get_siguiente()
+                if i==posicion-1:
+                    nodo_elim=anterior.get_siguiente()
+                    anterior.set_siguiente(nodo_elim.get_siguiente())
+                    del nodo_elim
+        self.__cantidad-=1
 #PRUEBAS
 if __name__=='__main__':
-    
+    '''
     print('pruebas para lista secuencial')
     lista=lista_secuencial(5)
     lista.insertar(1,0)
@@ -226,7 +179,6 @@ if __name__=='__main__':
     print('-----------------')
     lista.suprimir(2)
     lista.mostrar()
-    '''
     lista.recuperar(2)
     print('suprimir 1')
     lista.suprimir(0)
@@ -238,16 +190,19 @@ if __name__=='__main__':
     lista.suprimir(2)
     lista.mostrar()
     lista.buscar(6)
-   
+    '''
     lista_prueba=lista_enlazada()
     lista_prueba.insertar(12,0)
     lista_prueba.insertar(10,1)
     lista_prueba.insertar(213,2)
     lista_prueba.insertar(320,3)
-    lista_prueba.insertar(21,1)
+    lista_prueba.insertar(21,4)
+    lista_prueba.recorrer()
     print(f'cantidad de elementos: {lista_prueba.get_cantidad()}')
-    print('recorriendo desde el inicio')
-    lista_prueba.recorrer_desde_el_principio()
-    lista_prueba.eliminar(2)
-    lista_prueba.recorrer_desde_el_principio()
-    '''
+    # The modified $SELECTION_PLACEHOLDER$ code with ``` is:
+    # lista_prueba.primer_elemento()
+    # lista_prueba.ultimo_elemento()
+    # lista_prueba.siguiente(2)
+    # lista_prueba.anterior(2)
+    lista_prueba.recorrer()
+    #lista_prueba.recorrer_desde_el_principio()
