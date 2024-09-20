@@ -1,0 +1,61 @@
+{
+    "gestorclientes": [
+        {
+            "tipo": "local",
+            "datos": {
+                "nombre": "Juan",
+                "apellido": "P\u00c3\u00a9rez",
+                "email": "juan.perez@example.com",
+                "contrasena": "password123",
+                "direccionpostal": "Calle Falsa 123",
+                "telefono": "+54 9 11 1234 5678"
+            }
+        },
+        {
+            "tipo": "local",
+            "datos": {
+                "nombre": "Mar\u00c3\u00ada",
+                "apellido": "G\u00c3\u00b3mez",
+                "email": "maria.gomez@example.com",
+                "contrasena": "securepassword",
+                "direccionpostal": "Avenida Siempre Viva 742",
+                "telefono": "+54 9 11 8765 4321"
+            }
+        },
+        {
+            "tipo": "nacional",
+            "datos": {
+                "nombre": "Carlos",
+                "apellido": "L\u00c3\u00b3pez",
+                "email": "carlos.lopez@example.com",
+                "contrasena": "mypassword",
+                "provincia": "Buenos Aires",
+                "localidad": "La Plata",
+                "codigopostal": "1900"
+            }
+        },
+        {
+            "tipo": "nacional",
+            "datos": {
+                "nombre": "Ana",
+                "apellido": "Mart\u00c3\u00adnez",
+                "email": "ana.martinez@example.com",
+                "contrasena": "anotherpassword",
+                "provincia": "C\u00c3\u00b3rdoba",
+                "localidad": "C\u00c3\u00b3rdoba",
+                "codigopostal": "5000"
+            }
+        },
+        {
+            "tipo": "local",
+            "datos": {
+                "nombre": "jose",
+                "apellido": "julian",
+                "email": "12423423",
+                "contrasena": "3423423",
+                "direccionpostal": "dfasdas",
+                "telefono": "24235"
+            }
+        }
+    ]
+}

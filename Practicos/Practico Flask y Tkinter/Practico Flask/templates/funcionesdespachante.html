@@ -1,0 +1,9 @@
+{%extends "base.html"%}
+{%block title%}ACCIONES DE DESPACHANTE{%endblock%}
+{%block content%}
+<h1 id="titulos">SUCURSAL SELECCIONADA: {{sucursal.provincia}} {{sucursal.localidad}} </h1>
+<a href="{{url_for('registrarrecepcion')}}" id="opcion_despachante">Registrar la recepcion de un paquete</a>
+<a href="{{url_for('registrarsalida')}}" id="opcion_despachante">Registrar la salida de un transporte</a>
+<a href="{{url_for('registrarllegada')}}" id="opcion_despachante">Regsitrar la llegada de un transporte</a>
+<a href="{{url_for('accesodesp')}}" id="botones_volver">Volver a seleccion de sucursal</a>
+{%endblock%}

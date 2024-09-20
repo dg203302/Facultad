@@ -1,0 +1,31 @@
+{
+    "servicios": [
+        {
+            "tipo": "transporte",
+            "atributos": {
+                "nome": "Mudanzas Rapidas",
+                "nomc": "Sofia Perez",
+                "direc": "Calle 123",
+                "fec": "2023/05/15",
+                "comi": 10,
+                "precxhora": 50,
+                "pesocar": 800,
+                "direcdes": "Calle Principal",
+                "canthora": 8
+            }
+        },
+        {
+            "tipo": "embalaje",
+            "atributos": {
+                "nome": "Empaque Seguro",
+                "nomc": "Juan Rodriguez",
+                "direc": "Avenida 456",
+                "fec": "2023/05/20",
+                "comi": 15,
+                "precuni": 5,
+                "peso": 60,
+                "canti": 20
+            }
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+  "personal": [
+    {
+      "tipo": "docente",
+      "datos": {
+        "cuil": "123456789",
+        "apellido": "Gomez",
+        "nombre": "Maria",
+        "sueldo_basico": 50000,
+        "antiguedad": 5,
+        "carrera": "Ingenieria Informatica",
+        "cargo": "exclusivo",
+        "catedra": "Programacion Avanzada"
+      }
+    },
+    {
+      "tipo": "personal_de_apoyo",
+      "datos": {
+        "cuil": "987654321",
+        "apellido": "Rodriguez",
+        "nombre": "Juan",
+        "sueldo_basico": 35000,
+        "antiguedad": 3,
+        "categoria": "5"
+      }
+    },
+    {
+      "tipo": "investigador",
+      "datos": {
+        "cuil": "543216789",
+        "apellido": "Lopez",
+        "nombre": "Carlos",
+        "sueldo_basico": 60000,
+        "antiguedad": 8,
+        "area_investigacion": "Inteligencia Artificial",
+        "tipo_investigacion": "Aplicada"
+      }
+    },
+    {
+      "tipo": "docente_investigador",
+      "datos": {
+        "cuil": "987612345",
+        "apellido": "Martinez",
+        "nombre": "Laura",
+        "sueldo_basico": 55000,
+        "antiguedad": 6,
+        "carrera": "Ciencias de la Computacion",
+        "cargo": "semiexclusivo",
+        "catedra": "Algoritmos Avanzados",
+        "area_investigacion": "Redes Neuronales",
+        "tipo_investigacion": "Experimental",
+        "categoria_incentivos": "A",
+        "importe_extra": 2000
+      }
+    }
+  ]
+}
