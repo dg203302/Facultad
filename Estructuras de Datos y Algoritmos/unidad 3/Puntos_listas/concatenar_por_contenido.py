@@ -25,6 +25,19 @@ def concatenar(lista1, lista2, lista3):
     
     #O(n+m) aproximado O(n)
 
+
+    #1
+    #(2n)-1
+        #(2n)
+            #2n^2
+        #n^2
+    #2n-1
+    
+    #2n-1+2n+n^2+n^2
+    #2n^2+4n-1
+    #orden O(n^2)
+    
+    #eficiencia final 3n+2m+3
 if __name__ == '__main__':
     lista1=lista_enlazada()
     lista2=lista_enlazada()

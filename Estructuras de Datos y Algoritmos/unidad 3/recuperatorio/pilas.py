@@ -23,7 +23,7 @@ class pila_secuencial:
     def mostrar(self):
         if not(self.verificar_pila()):
             for i in range(self.__tope,-1,-1):
-                print(f'{self.__items[i]}')
+                print(f'{self.__items[i]}', end='')
         else:
             print('pila no cargada')
     def suprimir_tope(self):  #suprimir en realidad
