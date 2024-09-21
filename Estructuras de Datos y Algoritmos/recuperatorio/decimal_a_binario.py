@@ -9,7 +9,20 @@ def decimal_a_binario(numero_ingresado):
             numero_binario=str(numero%2)+numero_binario
             pila.insertar(numero//2)
         else:
-            print(numero_binario)
+            return numero_binario
+        
+#calculo de eficiencia
+#T(n)=O(n)
+#2
+#1
+#n
+    #2
+    #1
+    #3
+    #2
+
+#8n+3
+#orden O(n)
 if __name__=='__main__':
     for i in range(1,5):
         numero=i
