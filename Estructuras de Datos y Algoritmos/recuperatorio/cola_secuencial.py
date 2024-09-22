@@ -37,6 +37,7 @@ class cola_secuencial:
             return elem_suprimir
         else:
             print('cola vacia!')
+'''
 # Crear una instancia de la cola
 cola = cola_secuencial(dimension=5)
 # Insertar elementos en la cola
@@ -52,3 +53,4 @@ cola.recorrer()
 print(f'elemento suprimido: {cola.suprimir()}')
 print(f'elemento suprimido: {cola.suprimir()}')
 cola.recorrer()
+'''
