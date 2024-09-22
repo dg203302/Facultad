@@ -34,8 +34,6 @@ class lista:
             if i==posicion-1:
                 nodo_nuevo.set_siguiente(anterior.get_siguiente())
                 anterior.set_siguiente(nodo_nuevo)
-            else:
-                anterior.set_siguiente(nodo_nuevo)
         self.__cantidad+=1
 #------------------------------------------------IMPORTANTE POR CONTENIDO-----------------------------------------------------------#
     def insertar_por_contenido(self,dato):
@@ -197,14 +195,18 @@ class lista:
                     return anterior.get_dato()
                 else:
                     print('dato no encontrado')
+    def get_dimension(self):
+        return self.__cantidad
 if __name__=='__main__':
+    
     lista_enlazada = lista()
-    '''
+    
     lista_enlazada.insertar_por_posicion(10, 0)
     lista_enlazada.insertar_por_posicion(20, 1)
     lista_enlazada.insertar_por_posicion(30, 2)
     lista_enlazada.insertar_por_posicion(15, 1)
-    
+    lista_enlazada.mostrar()
+    '''
     lista_enlazada.insertar_por_contenido(10)
     lista_enlazada.insertar_por_contenido(20)
     lista_enlazada.insertar_por_contenido(30)

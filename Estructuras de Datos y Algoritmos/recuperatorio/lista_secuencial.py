@@ -98,14 +98,16 @@ class lista_secuencial:
             i+=1
         if dato==self.__items[i]:
             return self.__items[i-1]
+    def get_dimension(self):
+        return self.__dimension
 if __name__ == "__main__":
-    lista = lista_secuencial(dimension=10)
     '''
+    lista = lista_secuencial(dimension=10)
+    
     lista.insertar_por_posicion(5, 0)
     lista.insertar_por_posicion(10, 1)
     lista.insertar_por_posicion(15, 2)
     lista.insertar_por_posicion(100,0)
-    '''
     lista.insertar_por_contenido(5)
     lista.insertar_por_contenido(10)
     lista.insertar_por_contenido(15)
@@ -117,3 +119,4 @@ if __name__ == "__main__":
     lista.suprimir_por_posicion(0)
     lista.suprimir_por_contenido(15)
     lista.recorrer()
+    '''
