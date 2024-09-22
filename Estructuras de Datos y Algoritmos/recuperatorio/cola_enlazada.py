@@ -26,7 +26,6 @@ class cola:
             self.__primero=nodo_nuevo
             self.__ultimo=self.__primero
         else:
-            nodo_nuevo.set_siguiente(self.__primero)
             self.__ultimo.set_siguiente(nodo_nuevo)
             self.__ultimo=nodo_nuevo
         self.__cantidad+=1
