@@ -18,10 +18,12 @@ class datos:
 def suma_matrices(matriz1:lista,matriz2:lista):
     if matriz1.get_dimension()==matriz2.get_dimension():
         matriz_suma=lista()
-        for i in range(matriz1.get_dimension()):                                                                                                                         #n
-            for j in range(matriz2.get_dimension()):                                                                                                                     #n
-                if i==j:                                                                                                                                                 #n
-                    matriz_suma.insertar_por_posicion(datos(matriz1.buscar_por_posicion(i).get_componente()+matriz2.buscar_por_posicion(j).get_componente(),i,j),i)      #3n
+        i=0
+        j=0
+        while i<matriz1.get_dimension():                                                                                                                                      #n
+            matriz_suma.insertar_por_posicion(datos(matriz1.buscar_por_posicion(i).get_componente()+matriz2.buscar_por_posicion(j).get_componente(),i,j),i)      #3n
+            i+=1
+            j+=1
         matriz_suma.mostrar()
     else:
         print('las matrices no tienen la misma dimension')

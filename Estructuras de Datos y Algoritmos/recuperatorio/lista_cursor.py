@@ -41,22 +41,21 @@ class lista:
         if self.__cantidad<self.__dimension and self.get_disponible():
             nodo_nuevo=nodo(dato)
             self.__elementos[self.__disponible]=nodo_nuevo
-            if posicion==0:
-                if self.vacia():
-                    self.__primero=self.__disponible
-                else:
-                    nodo_nuevo.set_siguiente(self.__primero)
-                    self.__primero=self.__disponible
+            if self.vacia():
+                self.__primero=self.__disponible
             else:
                 i=0
-                anterior=self.__primero
-                while i<self.__cantidad and i<posicion-1:
-                    anterior=self.__elementos[anterior].get_siguiente()
+                anterior=None
+                actual=self.__primero
+                while i<self.__cantidad and i<posicion:
+                    anterior=actual
+                    actual=self.__elementos[anterior].get_siguiente()
                     i+=1
-                if i==posicion-1:
-                    nodo_nuevo.set_siguiente(self.__elementos[anterior].get_siguiente())
-                    self.__elementos[anterior].set_siguiente(self.__disponible)
+                if anterior==None:
+                    nodo_nuevo.set_siguiente(self.__primero)
+                    self.__primero=self.__disponible
                 else:
+                    nodo_nuevo.set_siguiente(actual)
                     self.__elementos[anterior].set_siguiente(self.__disponible)
             self.__cantidad+=1
     def insertar_por_contenido(self,dato):
@@ -159,23 +158,24 @@ class lista:
 
 if __name__=='__main__':
     lista_obj = lista(dimension=10)
-    '''
+    
     # Insert elements by position
     lista_obj.insertar_por_posicion(10, 0)
     lista_obj.insertar_por_posicion(20, 1)
     lista_obj.insertar_por_posicion(15, 1)
+    lista_obj.recorrer()
     '''
     # Insert elements by content
     lista_obj.insertar_por_contenido(5)
     lista_obj.insertar_por_contenido(25)
     lista_obj.insertar_por_contenido(17)
-    lista_obj.recorrer()
-    '''
+    
+   
     print(f'elemento de la posicion 1: {lista_obj.suprimir_por_posicion(1)}')
     print(f'posicion del elemento 17: {lista_obj.suprimir_por_contenido(25)}')
     lista_obj.recorrer()
-    '''
-    '''
+    
+    
     print(f'elemento de la posicion 1: {lista_obj.buscar_por_posicion(1)}')
     print(f'posicion del elemento 17: {lista_obj.buscar_por_contenido(17)}')
     '''

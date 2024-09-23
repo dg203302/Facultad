@@ -17,10 +17,12 @@ class dato:
         return f'({self.__fila}, {self.__columna}) = {self.__valor}'
 def suma_matrices(matriz1,matriz2):
     matriz_suma=lista_secuencial(4)
-    for i in range(4):         #n
-        for j in range(4):     #n
-            if i==j:            #n
-                matriz_suma.insertar_por_posicion(dato(matriz1.buscar_por_posicion(i).get_valor()+matriz2.buscar_por_posicion(j).get_valor(),i,j),i)   #3
+    i=0
+    j=0
+    while i<matriz1.get_dimension():
+        matriz_suma.insertar_por_posicion(dato(matriz1.buscar_por_posicion(i).get_valor()+matriz2.buscar_por_posicion(j).get_valor(),i,j),i)
+        i+=1
+        j+=1
     matriz_suma.recorrer()
 if __name__=='__main__':
     matriz1 = lista_secuencial(4)

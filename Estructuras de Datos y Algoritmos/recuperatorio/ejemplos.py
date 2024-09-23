@@ -32,18 +32,20 @@ def insertar_por_posicion(self,dato,posicion):
         self.__elementos[self.__disponible]=nodo_insertar
         if self.vacia():
             self.__primero=self.__disponible
-        elif posicion==0:
-            nodo_insertar.set_proximo(self.__primero)
-            self.__primero=self.__disponible
         else:
             i=0
-            anterior=self.__primero
-            while i<posicion-1:
-                anterior=self.__elementos[anterior].get_proximo()
+            actual=self.__primero
+            anterior=None
+            while i<posicion and i<self.__cantidad:
                 i+=1
-            if i==posicion-1:
-                nodo_insertar.set_proximo(self.__elementos[anterior].get_proximo())
-                self.__elementos[anterior].set_proximo(self.__disponible)
+                anterior=actual
+                actual=self.__elementos[actual].get_siguiente()
+            if anterior==None:
+                nodo_insertar.set_siguiente(self.__primero)
+                self.__primero=self.__disponible
+            else:
+                nodo_insertar.set_siguiente(actual)
+                self.__elementos[anterior].set_siguiente(self.__disponible)
         self.__cantidad+=1
 #inserciones por contenido
 def insertar_por_contenido(self,dato):
@@ -96,3 +98,81 @@ def insertar_por_contenido(self,dato):
                 nodo_insertar.set_proximo(actual)
                 self.__elementos[anterior].set_proximo(self.__disponible)
         self.__cantidad+=1
+#suprimir
+def suprimir_por_posicion(self,posicion):
+    if not self.vacia() and posicion<=0 and posicion<=self.__tope:
+        dato_recuperar=self.__elementos[posicion]
+        for i in range(posicion,self.__cantidad):
+            self.__items[i]=self.__items[i+1]
+        self.__tope-=1
+        self.__cantidad-=1
+        return dato_recuperar
+def suprimir_por_contenido(self,dato):
+    if not self.vacia():
+        i=0
+        while dato!=self.__elementos[i] and i<self.__cantidad:
+            i+=1
+        if dato==self.__elementos[i]:
+            dato_recuperar=self.__elementos[i]
+            for j in range(i,self.__cantidad):
+                self.__elementos[j]=self.__elementos[j+1]
+            self.__tope-=1
+            self.__cantidad-=1
+            return dato_recuperar
+def suprimir_por_posicion(self,posicion):
+    if not self.vacia():
+        if posicion==0:
+            dato_recuperar=self.__primero.get_dato()
+            self.__primero=self.__primero.get_siguiente()
+            self.__cantidad-=1
+        else:
+            i=0
+            anterior=None
+            actual=self.__primero
+            while i!=posicion:
+                anterior=actual
+                actual=actual.get_siguiente()
+                i+=1
+            if i==posicion:
+                dato_recuperar=actual.get_dato()
+                anterior.set_siguiente(actual.get_siguiente())
+                self.__cantidad-=1
+                return dato_recuperar
+def suprimir_por_contenido(self,dato):
+    if not self.vacia():
+        if dato==self.__primero.get_dato():
+            dato_recuperar=self.__primero.get_dato()
+            self.__primero=self.__primero.get_siguiente()
+            self.__cantidad-=1
+            return dato_recuperar
+        else:
+            anterior=None
+            actual=self.__primero
+            while dato!=actual.get_dato():
+                anterior=actual
+                actual=actual.get_siguiente()
+            if dato==actual.get_dato():
+                dato_recuperar=actual.get_dato()
+                anterior.set_siguiente(actual.get_siguiente())
+                self.__cantidad-=1
+                return dato_recuperar
+def suprimir_por_posicion(self,posicion):
+    if not self.vacia():
+        if posicion==0:
+            dato_recuperar=self.__elementos[self.__primero].get_dato()
+            self.__primero=self.__elementos[self.__primero].get_siguiente()
+            self.__cantidad-=1
+            return dato_recuperar
+        else:
+            i=0
+            anterior=None
+            actual=self.__primero
+            while i<posicion:
+                anterior=actual
+                actual=self.__elementos[actual].get_siguiente()
+                i+=1
+            if i==posicion:
+                dato_recuperar=self.__elementos[actual].get_dato()
+                self.__elementos[anterior].set_siguiente(self.__elementos[actual].get_siguiente())
+                self.__cantidad-=1
+                return dato_recuperar
