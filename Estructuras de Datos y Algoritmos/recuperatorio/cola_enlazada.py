@@ -32,7 +32,6 @@ class cola:
     def suprimir(self):
         if not self.vacia():
             dato_recuperado=self.__primero.get_dato()
-            self.__ultimo.set_siguiente(self.__primero.get_siguiente())
             self.__primero=self.__primero.get_siguiente()
             self.__cantidad-=1
             return dato_recuperado

@@ -8,5 +8,5 @@ def ipv():
         elif Ts % 15 == 0:
             cola.suprimir()
         Ts += 1
-    print('el tiempo mayor del no atendido', cola.suprimir())
+    print('el tiempo mayor del no atendido', cola.suprimir(), 'minutos')
 ipv()

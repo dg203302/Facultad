@@ -22,17 +22,19 @@ class lista:
         nodo_nuevo=nodo(dato)
         if self.vacia():
             self.__primero=nodo_nuevo
-        elif posicion==0:
-            nodo_nuevo.set_siguiente(self.__primero)
-            self.__primero=nodo_nuevo
         else:
             i=0
-            anterior=self.__primero
-            while i<self.__cantidad and i<posicion-1:
-                anterior=anterior.get_siguiente()
+            anterior=None
+            actual=self.__primero
+            while i<self.__cantidad and i<posicion:
+                anterior=actual
+                actual=actual.get_siguiente()
                 i+=1
-            if i==posicion-1:
-                nodo_nuevo.set_siguiente(anterior.get_siguiente())
+            if anterior==None:
+                nodo_nuevo.set_siguiente(self.__primero)
+                self._primero=nodo_nuevo
+            else:
+                nodo_nuevo.set_siguiente(actual)
                 anterior.set_siguiente(nodo_nuevo)
         self.__cantidad+=1
 #------------------------------------------------IMPORTANTE POR CONTENIDO-----------------------------------------------------------#
@@ -200,7 +202,7 @@ class lista:
 if __name__=='__main__':
     
     lista_enlazada = lista()
-    
+    '''
     lista_enlazada.insertar_por_posicion(10, 0)
     lista_enlazada.insertar_por_posicion(20, 1)
     lista_enlazada.insertar_por_posicion(30, 2)
@@ -223,4 +225,3 @@ if __name__=='__main__':
     #print(f'elemento siguiente a 20 :{lista_enlazada.get_elemento_siguiente_por_contenido(20)}')
     #print(f'elemento anterior a la posicion 1 :{lista_enlazada.get_elemento_anterior_por_posicion(1)}')
     #print(f'elemento anterior a 20 :{lista_enlazada.get_elemento_anterior_por_contenido(20)}')
-    '''
