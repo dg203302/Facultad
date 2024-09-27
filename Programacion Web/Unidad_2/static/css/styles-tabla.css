@@ -1,0 +1,28 @@
+@import url('../css/styles.css');
+table{
+    margin: 2% 0%;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    border-radius: 0px 0px 10px 10px;
+}
+table caption{
+    font-size: large;
+    border: 1px solid black;
+    border-radius: 10px 10px 0px 0px;
+}
+table tr{
+    border: 1px solid black;
+}
+table tr, th{
+    border: 1px solid black;
+    color:black;
+}
+table tr, td{
+    border: 1px solid black;
+    color:black;
+}
+table, th, td, caption{
+    height: 30px;
+}

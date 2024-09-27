@@ -12,6 +12,7 @@ header p{
     font-size: 1.5em;
 }
 main{
+    display: grid;
     grid-row: 3;
     grid-column: 1/2;
     text-align: center;
@@ -22,6 +23,7 @@ main{
     border: black 1px solid;
 }
 section{
+    display: grid;
     grid-row: 3;
     grid-column: 2/4;
     border: 1px solid black;
@@ -46,6 +48,7 @@ section a:hover{
     border-radius: 20px;
 }
 footer{
+    display: grid;
     grid-row: 4;
     grid-column: 1/4;
     grid-template-columns: repeat(2,auto);
