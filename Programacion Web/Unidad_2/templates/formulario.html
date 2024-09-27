@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles-formulario.css">
+    <title>Formulario</title>
+</head>
+<body>
+    <nav>
+        <a href="../templates/index.html">Inicio</a>
+        <a href="../templates/texto.html">Texto</a>
+        <a href="../templates/tabla.html">Tabla</a>
+        <a href="../templates/multimedia.html">Multimedia</a>
+        <a href="../templates/formulario.html">Formulario</a>
+    </nav>
+    <main>
+        <h1>Formulario Inscripcion</h1>
+        <div>
+            <form action="datos_personales.php">
+                <div class="datos_personales">
+                    <p>Datos Personales</p>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" pattern="[A-Za-z\s]+" title="solo letras y espacios" required>
+                    <label for="apellido">Apelido:</label>
+                    <input type="text" name="apellido" pattern="[A-Za-z\s]+" title="solo letras y espacios" required>
+                    <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" name="fecha-nacimiento" required>
+                    <label>Genero:</label>
+                    <label>
+                        <input type="radio" name="genero" required>
+                        Masculino
+                    </label>
+                    <label>
+                        <input type="radio" name="genero">
+                        Femenino
+                    </label>
+                    <label>
+                        <input type="radio" name="genero">
+                        Otro
+                    </label>
+                </div>
+                <div class="informacion-contacto">
+                    <p>Informacion de Contacto</p>
+                    <label for="email">Direccion de Correo:</label>
+                    <input type="email" name="email" placeholder="direccion@dominio.com/.ar" required>
+                    <label for="numero-telefono">Numero de Telefono:</label>
+                    <input type="tel" name="numero-telefono" placeholder="+54XXXXXXXXXX" pattern="\+54[0-9]{10}" required>
+                    <label for="direccion">Direccion:</label>
+                    <textarea name="direccion" name="direccion" placeholder="Ingrese su direcion: " required></textarea>
+                </div>
+                <div class="informacion-cuenta">
+                    <p>Informacion de Cuenta</p>
+                    <!---hacer mas grande este div-->
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" name="usuario" pattern="[A-Za-z0-9]+" title="solo letras y numeros" required>
+                    <label for="contrasenia">Contraseña:</label>
+                    <input type="password" name="contrasenia" pattern="[A-Za-z0-9]+" title="solo letras y numeros" required>
+                    <label for="confirmar-contrasenia">Confirmar Contraseña:</label>
+                    <input type="password" name="confirmar-contrasenia" pattern="[A-Za-z0-9]+" title="solo letras y numeros" required>
+                </div>
+                <div class="preferencias">
+                    <p>Preferencias</p>
+                    <label for="color">Selecciona tu Color Preferido</label>
+                    <select name="color" required>
+                        <option value="rojo">Rojo</option>
+                        <option value="azul">Azul</option>
+                        <option value="verde">Verde</option>
+                        <option value="amarillo">Amarillo</option>
+                    </select>
+                    <input type="checkbox" required>Acepto los terminos y condiciones
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
