@@ -54,3 +54,37 @@ class ArbolBinario:
         if valor < nodo.get_valor():
             return self.__buscar_recursivo(nodo.get_izquierdo(), valor)
         return self.__buscar_recursivo(nodo.get_derecho(), valor)
+    def eliminar(self, valor):
+        self.__raiz = self.__eliminar_recursivo(self.__raiz, valor)
+
+    def __eliminar_recursivo(self, nodo, valor):
+        if nodo is None:
+            return nodo
+
+        if valor < nodo.get_valor():
+            nodo.set_izquierdo(self.__eliminar_recursivo(nodo.get_izquierdo(), valor))
+        elif valor > nodo.get_valor():
+            nodo.set_derecho(self.__eliminar_recursivo(nodo.get_derecho(), valor))
+        else:
+            if nodo.get_izquierdo() is None:
+                return nodo.get_derecho()
+            elif nodo.get_derecho() is None:
+                return nodo.get_izquierdo()
+
+            temp = self.__min_value_node(nodo.get_derecho())
+            nodo.__valor = temp.get_valor()
+            nodo.set_derecho(self.__eliminar_recursivo(nodo.get_derecho(), temp.get_valor()))
+
+        return nodo
+
+    def __min_value_node(self, nodo):
+        current = nodo
+        while current.get_izquierdo() is not None:
+            current = current.get_izquierdo()
+        return current
+    
+    def get_grado(self,nodo):
+        if nodo is None:
+            return 0
+        else:
+            return 1 + self.get_grado(nodo.get_izquierdo()) + self.get_grado(nodo.get_derecho())
