@@ -23,10 +23,7 @@ class nodo:
         self.__izq=nodo
     def set_der(self,nodo):
         self.__der=nodo
-    def get_grado(self):
-        return self.__grado
-    def set_grado(self,grado):
-        self.__grado=grado
+
 #______________________________________ARBOL__________________________________________________________#
 class arbol:
     __raiz:nodo
@@ -35,7 +32,7 @@ class arbol:
 #----------------------------------------------------------------------------------------#
     def insertar(self,dato):
         if self.__raiz is None:
-            self.__raiz=nodo(dato)
+            self.__raiz=nodo(dato,0)
         else:
             self.insertar_recursivo(self.__raiz,dato,0)
     def insertar_recursivo(self, nodo_actual, dato, grado):
@@ -110,7 +107,6 @@ class arbol:
         while nodo.get_izq() is not None:
             nodo=nodo.get_izq()
         return nodo
-
 #------------------------------------------------------------------------------------------#
     def get_altura(self):
         return self.get_altura_recursivo(self.__raiz)

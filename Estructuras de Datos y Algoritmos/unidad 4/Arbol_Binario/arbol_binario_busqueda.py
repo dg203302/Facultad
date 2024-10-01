@@ -3,8 +3,9 @@ class nodo:
     __dato:object
     __izq:object
     __der:object
-    def __init__(self,dato=None,izq=None,der=None):
+    def __init__(self,dato=None,grado=0,izq=None,der=None):
         self.__dato=dato
+        self.__grado=grado
         self.__izq=izq
         self.__der=der
     def get_dato(self):
@@ -19,31 +20,36 @@ class nodo:
         self.__izq=nodo
     def set_der(self,nodo):
         self.__der=nodo
+    def get_grado(self):
+            return self.__grado
+    def set_grado(self,grado):
+        self.__grado=grado
 #______________________________________ARBOL__________________________________________________________#
 class arbol:
     __raiz:nodo
     def __init__(self,raiz=None):
         self.__raiz=raiz
 #----------------------------------------------------------------------------------------#
+    def get_raiz(self):
+        return self.__raiz
+#----------------------------------------------------------------------------------------#
     def insertar(self,dato):
         if self.__raiz is None:
-            self.__raiz=nodo(dato)
+            self.__raiz=nodo(dato,0)
         else:
-            self.insertar_recursivo(self.__raiz,dato)
-    def insertar_recursivo(self,nodo_actual,dato):
-        if dato>nodo_actual.get_dato():
+            self.insertar_recursivo(self.__raiz,dato,0)
+    def insertar_recursivo(self, nodo_actual, dato, grado):
+        if dato > nodo_actual.get_dato():
             if nodo_actual.get_der() is None:
-                nodo_actual.set_der(nodo(dato))
-                #print(f'nodo insertado: {nodo_actual.get_dato()}')
+                nodo_actual.set_der(nodo(dato, grado + 1))
             else:
-                self.insertar_recursivo(nodo_actual.get_der(),dato)
-        elif dato<nodo_actual.get_dato():
+                self.insertar_recursivo(nodo_actual.get_der(), dato, grado + 1)
+        elif dato < nodo_actual.get_dato():
             if nodo_actual.get_izq() is None:
-                nodo_actual.set_izq(nodo(dato))
-                #print(f'nodo insertado: {nodo_actual.get_dato()}')
+                nodo_actual.set_izq(nodo(dato, grado + 1))
             else:
-                self.insertar_recursivo(nodo_actual.get_izq(),dato)
-        elif dato==nodo_actual.get_dato():
+                self.insertar_recursivo(nodo_actual.get_izq(), dato, grado + 1)
+        elif dato == nodo_actual.get_dato():
             print('ya esta ingresado el nodo!')
             raise ValueError
 #-----------------------------------------------------------------------------------------#
@@ -53,17 +59,25 @@ class arbol:
     def recorrer_recursivo(self,nodo_actual):
         if nodo_actual is not None:
             self.recorrer_recursivo(nodo_actual.get_izq())
-            print(f'nodo actual: {nodo_actual.get_dato()}')
+            print(f'nodo actual: {nodo_actual.get_dato()}, con grado {nodo_actual.get_grado()}')
             self.recorrer_recursivo(nodo_actual.get_der())
 #-----------------------------------------------------------------------------------------#
-    def recorrer_inverso(self):
+    def recorrer_preorden(self):
         print(f'raiz: {self.__raiz.get_dato()}')
         self.recorrer_recursivo_inverso(self.__raiz)
     def recorrer_recursivo_inverso(self,nodo_actual):
         if nodo_actual is not None:
-            self.recorrer_recursivo_inverso(nodo_actual.get_der())
-            print(f'nodo actual: {nodo_actual.get_dato()}')
+            print(f'nodo actual: {nodo_actual.get_dato()}, con grado {nodo_actual.get_grado()}')
             self.recorrer_recursivo_inverso(nodo_actual.get_izq())
+            self.recorrer_recursivo_inverso(nodo_actual.get_der())
+#-----------------------------------------------------------------------------------------#
+    def recorrer_postorden(self):
+        return self.recorrer_recursivo_postorden(self.__raiz)
+    def recorrer_postorden_recursivo(self,nodo_actual):
+        if nodo_actual is not None:
+            self.recorrer_postorden_recursivo(nodo_actual.get_izq())
+            self.recorrer_postorden_recursivo(nodo_actual.get_der())
+            print(f'nodo actual: {nodo_actual.get_dato()}, con grado {nodo_actual.get_grado()}')
 #-----------------------------------------------------------------------------------------#
     def buscar(self,valor):
         return self.buscar_recursivo(self.__raiz,valor)
@@ -149,21 +163,51 @@ class arbol:
         else:
             return self.get_grado_recursivo(self.__raiz,dato)
     def get_grado_recursivo(self,nodo,dato):
-        if nodo is None:
-            return 0
-        elif nodo.get_dato()==dato:
-            return 1+self.get_grado_recursivo(nodo.get_izq(),dato)+self.get_grado_recursivo(nodo.get_der(),dato)
+        if dato==nodo.get_dato():
+            return nodo.get_grado()
+        elif dato<nodo.get_dato():
+            return self.get_grado_recursivo(nodo.get_izq(),dato)
         else:
-            return self.get_grado_recursivo(nodo.get_izq(),dato)+self.get_grado_recursivo(nodo.get_der(),dato)
+            return self.get_grado_recursivo(nodo.get_der(),dato)
+#------------------------------------------------------------------------------------------#
+    def get_camino_nodo_a_nodo(self,valor_nodo1,valor_nodo2):
+        try:
+            if valor_nodo1==self.__raiz.get_dato():
+                return self.get_camino_recursivo(self.__raiz,valor_nodo2)
+            else:
+                return self.get_camino_recursivo(self.buscar(valor_nodo1),valor_nodo2)
+        except AttributeError:
+            print('no se encontro el valor')
+            return
+    def get_camino_recursivo(self,nodo_actual,valor):
+        if nodo_actual.get_dato()==valor:
+            print(nodo_actual.get_dato())
+        else:
+            if valor<nodo_actual.get_dato():
+                print(nodo_actual.get_dato())
+                return self.get_camino_recursivo(nodo_actual.get_izq(),valor)
+            else:
+                print(nodo_actual.get_dato())
+                return self.get_camino_recursivo(nodo_actual.get_der(),valor)
+#------------------------------------------------------------------------------------------#
+    def get_hoja_hijo(self,valor):
+        if self.__raiz is not None:
+            nodo_actual=self.buscar(valor)
+            if nodo_actual is None:
+                print('no se encontro el valor')
+            elif nodo_actual is not None and nodo_actual.get_izq() is None and nodo_actual.get_der() is None:
+                print('es hoja')
+            else:
+                print('es hijo')
 #______________________________________MAIN__________________________________________________________#
 if __name__=="__main__":
     mi_arbol=arbol()
     nodos=[15, 10, 20, 8, 12, 17, 25, 6, 11, 16]
     for valor in nodos:
         mi_arbol.insertar(valor)
-    mi_arbol.recorrer_inverso()
+    mi_arbol.recorrer_en_orden()
     #valor=int(input('ingrese el valor a buscar: '))
-    #nodo_buscado=mi_arbol.buscar(valor)
+    nodo_buscado=mi_arbol.buscar(valor)
     #if nodo_buscado is not None:
     #    print(f'el valor {nodo_buscado.get_dato()} fue encontrado')
     #valor=int(input('ingrese el valor a eliminar: '))
@@ -173,3 +217,6 @@ if __name__=="__main__":
     print(f'cantidad de hojas: {mi_arbol.get_hojas(15)}')
     print(f'grado: {mi_arbol.get_grado(11)}')
     print(f'cantidad de hijos: {mi_arbol.get_hijos(25)}')
+    print(f'camino:')
+    mi_arbol.get_camino_nodo_a_nodo(15,25)
+    mi_arbol.get_hoja_hijo(6)
