@@ -21,7 +21,7 @@ class hashing_abierto:
                 self.__cantidad_elementos+=1
             else:
                 i=0
-                while self.__items[self.hasheo_modulo((self.hasheo_modulo(valor)+i))]!=None and i<self.__tamano:
+                while self.__items[self.hasheo_modulo((self.hasheo_modulo(valor)+i))%self.__tamano]!=None and i<self.__tamano:
                     i+=1
                 print('colisiones en la insercion:',i)
                 self.__items[self.hasheo_modulo(self.hasheo_modulo(valor)+i)]=valor
@@ -61,10 +61,10 @@ class hashing_abierto:
 #---------------------------------------------------------------#
     def hasheo_plegado(self,valor):
         str_valor = str(valor)
-        ac=0
-        for i in range(0, len(str_valor), 2):
-            ac+=int(str_valor[i:i+2])
-        return ac%self.__tamano
+        ac = 0
+        for char in str_valor:
+            ac += int(char)
+        return ac % self.__tamano
     def insertar_plegado(self,valor):
         if self.__cantidad_elementos==self.__tamano:
             print('Tabla llena')
@@ -86,8 +86,8 @@ class hashing_abierto:
     def hasheo_extraccion(self, valor):
         str_valor = str(valor)
         ac = 0
-        for char in str_valor:    #esto para plegado, para extraccion es lo mismo pero con la mitad de caracteres.
-            ac += int(char)
+        for i in range(0,int(len(str_valor)/2)):    #esto para plegado, para extraccion es lo mismo pero con la mitad de caracteres.
+            ac += int(str_valor[i])
         return ac % self.__tamano
     def insertar_extraccion(self, valor):
         if self.__cantidad_elementos == self.__tamano:
