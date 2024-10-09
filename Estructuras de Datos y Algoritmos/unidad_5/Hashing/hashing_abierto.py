@@ -60,6 +60,7 @@ class hashing_abierto:
     #implementar busqueda cuadrado medio
 #---------------------------------------------------------------#
     def hasheo_plegado(self,valor):
+        #for con paso 3
         str_valor = str(valor)
         ac = 0
         for char in str_valor:

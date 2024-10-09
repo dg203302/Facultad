@@ -21,6 +21,7 @@ class sub_lista:
     def get_cantidad(self):
         return self.__cantidad_columnas
 #-----------------------------------------FILAS-----------------------------------------#
+#agregar area de overflow
 class hash_bucket:
     __items_filas: list
     __tamano_filas: int
@@ -66,7 +67,8 @@ class hash_bucket:
             print(f'{i} --> {cadena}')
 #---------------------------------------------MAIN---------------------------------------------#
 if __name__=='__main__':
-    hasheo_bucket=hash_bucket(2,2)
+    hasheo_bucket=hash_bucket(2,2)  #cambiar esto
+    #caculo dimension+columnas + porcentaje overflow, rehacer todo
     hasheo_bucket.insertar(10)
     hasheo_bucket.insertar(20)
     hasheo_bucket.insertar(30)
