@@ -11,7 +11,13 @@ class sub_lista:
         return self.__cantidad_columnas == self.__tamano_columnas
     def cargar(self, valor):
         if self.verificar():
-            print('columna llena')
+            i=int(self.__tamano_columnas * 0.2)
+            while i < self.__tamano_columnas:
+                if self.__items_columnas[i] is None:
+                    self.__items_columnas[i] = valor
+                    self.__cantidad_columnas += 1
+                    return
+                i += 1
             return
         else:
             self.__items_columnas[self.__cantidad_columnas] = valor
@@ -67,8 +73,9 @@ class hash_bucket:
             print(f'{i} --> {cadena}')
 #---------------------------------------------MAIN---------------------------------------------#
 if __name__=='__main__':
-    hasheo_bucket=hash_bucket(2,2)  #cambiar esto
-    #caculo dimension+columnas + porcentaje overflow, rehacer todo
+    cantidad_elementos=10#int(input('Ingrese la cantidad de elementos: '))
+    cantidad_columnas=3#int(input('Ingrese la cantidad de columnas: '))
+    hasheo_bucket = hash_bucket(int((cantidad_elementos / cantidad_columnas) * 1.2), cantidad_columnas)
     hasheo_bucket.insertar(10)
     hasheo_bucket.insertar(20)
     hasheo_bucket.insertar(30)
