@@ -33,9 +33,10 @@ class hash_bucket:
     __tamano_filas: int
     __cantidad_filas: int
 
-    def __init__(self, tamano_filas, tamano_columnas):
-        self.__items_filas = [sub_lista(tamano_columnas) for _ in range(tamano_filas)]
-        self.__tamano_filas = tamano_filas
+    def __init__(self, cantidad_elementos, tamano_columnas):
+        filas=int((cantidad_elementos / tamano_columnas) * 1.2)
+        self.__items_filas = [sub_lista(tamano_columnas) for _ in range(filas)]
+        self.__tamano_filas = filas
         self.__cantidad_filas = 0
 
     def hasheo_modulo(self, clave):
@@ -75,7 +76,7 @@ class hash_bucket:
 if __name__=='__main__':
     cantidad_elementos=10#int(input('Ingrese la cantidad de elementos: '))
     cantidad_columnas=3#int(input('Ingrese la cantidad de columnas: '))
-    hasheo_bucket = hash_bucket(int((cantidad_elementos / cantidad_columnas) * 1.2), cantidad_columnas)
+    hasheo_bucket = hash_bucket(cantidad_elementos, cantidad_columnas)
     hasheo_bucket.insertar(10)
     hasheo_bucket.insertar(20)
     hasheo_bucket.insertar(30)
