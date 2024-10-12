@@ -77,6 +77,7 @@ if __name__=='__main__':
     cantidad_elementos=10#int(input('Ingrese la cantidad de elementos: '))
     cantidad_columnas=3#int(input('Ingrese la cantidad de columnas: '))
     hasheo_bucket = hash_bucket(cantidad_elementos, cantidad_columnas)
+    #probar despues el overflow a ver si anda
     hasheo_bucket.insertar(10)
     hasheo_bucket.insertar(20)
     hasheo_bucket.insertar(30)
