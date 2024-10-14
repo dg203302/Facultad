@@ -43,18 +43,9 @@ class hash_bucket:
         return clave % self.__tamano_filas
 
     def insertar(self, valor):
-        if self.__tamano_filas == self.__cantidad_filas:
-            print('Tabla llena')
-            return
-        else:
-            indice = self.hasheo_modulo(valor)
-            if self.__items_filas[indice].verificar():
-                print('columna llena')
-                return
-            else:
-                self.__items_filas[indice].cargar(valor)
-                self.__cantidad_filas += 1
-
+        indice = self.hasheo_modulo(valor)
+        self.__items_filas[indice].cargar(valor)
+        self.__cantidad_filas += 1
     def buscar(self, valor):
         indice = self.hasheo_modulo(valor)
         i = 0
@@ -81,4 +72,8 @@ if __name__=='__main__':
     hasheo_bucket.insertar(10)
     hasheo_bucket.insertar(20)
     hasheo_bucket.insertar(30)
+    hasheo_bucket.insertar(40)
+    hasheo_bucket.insertar(50)
+    hasheo_bucket.insertar(60)
+    hasheo_bucket.insertar(70)
     hasheo_bucket.recorrer()
