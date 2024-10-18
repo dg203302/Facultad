@@ -57,10 +57,9 @@ class hashing_abierto:
                 print('colisiones en la insercion:',i)
                 self.__items[(self.hasheo_cuadrado_medio(valor)+i) % self.__tamano]=valor
                 self.__cantidad_elementos+=1
-    #implementar busqueda cuadrado medio
+    #implementar busqdo medioueda cuadra
 #---------------------------------------------------------------#
     def hasheo_plegado(self,valor):
-        #for con paso 3
         str_valor = str(valor)
         ac = 0
         for char in str_valor:
@@ -87,7 +86,7 @@ class hashing_abierto:
     def hasheo_extraccion(self, valor):
         str_valor = str(valor)
         ac = 0
-        for i in range(0,int(len(str_valor)/2)):    #esto para plegado, para extraccion es lo mismo pero con la mitad de caracteres.
+        for i in range(0,int(len(str_valor)/2)):
             ac += int(str_valor[i])
         return ac % self.__tamano
     def insertar_extraccion(self, valor):

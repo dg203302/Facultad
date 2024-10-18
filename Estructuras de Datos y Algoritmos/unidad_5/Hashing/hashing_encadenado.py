@@ -20,6 +20,7 @@ class hashing_encadenado:
         self.__items=[None]*tamano
         self.__tamano=tamano
         self.__cantidad_elementos=0
+#---------------------------------------------------------#
     def hasheo_modulo(self, clave):
         return clave%self.__tamano
     def insertar_modulo(self,valor):
@@ -37,6 +38,7 @@ class hashing_encadenado:
                     actual = actual.get_siguiente()
                 actual.set_siguiente(nodo(valor))
                 self.__cantidad_elementos+=1
+#---------------------------------------------------------------#
     def buscar(self,valor):
         indice=self.hasheo_modulo(valor)
         actual=self.__items[indice]
@@ -46,6 +48,7 @@ class hashing_encadenado:
             return False
         else:
             return True
+#---------------------------------------------------------------#
     def mostrar(self):
         for i in range(0,self.__tamano):
             cadena='['
