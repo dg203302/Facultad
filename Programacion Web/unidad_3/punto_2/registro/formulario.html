@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <main>
+        <form id="Formulario">
+            <label for="usuario">Usuario:</label>
+            <br><input type="text" name="usuario" id="ingreso_usuario" required><br>
+            <label for="email">Email:</label>
+            <br><input type="email" name="mail" id="ingreso_correo" required><br>
+            <label for="contrasena">Contraseña:</label>
+            <br><input type="password" name="contrasena" id="ingreso_contra" required><br>
+            <label for="repetir_contrasena">Repetir Contraseña:</label> 
+            <br><input type="password" name="repetir_contrasena" id="ingreso_repetir_contra" required>
+            <br><br><input type="submit" value="Enviar">
+        </form>
+        <p id="mensaje_usuario"></p>
+    </main>
+    <script src="validacion.js"></script>
+</body>
+</html>
