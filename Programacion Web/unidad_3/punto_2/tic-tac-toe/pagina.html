@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>TATETI</title>
+</head>
+<body>
+    <main>
+        <h1>TATETI</h1>
+        <p id="jugador_actual"></p>
+        <table>
+            <tr>
+                <td><button onclick="jugar(0)" id="boton_0"></button></td>
+                <td><button onclick="jugar(1)" id="boton_1"></button></td>
+                <td><button onclick="jugar(2)" id="boton_2"></button></td>
+            </tr>
+            <tr>
+                <td><button onclick="jugar(3)" id="boton_3"></button></td>
+                <td><button onclick="jugar(4)" id="boton_4"></button></td>
+                <td><button onclick="jugar(5)" id="boton_5"></button></td>
+            </tr>
+            <tr>
+                <td><button onclick="jugar(6)" id="boton_6"></button></td>
+                <td><button onclick="jugar(7)" id="boton_7"></button></td>
+                <td><button onclick="jugar(8)" id="boton_8"></button></td>
+            </tr>
+        </table>
+        <button onclick="reiniciar()">Reiniciar</button>
+    </main>
+    <script src="tateti.js"></script>
+</body>
+</html>
