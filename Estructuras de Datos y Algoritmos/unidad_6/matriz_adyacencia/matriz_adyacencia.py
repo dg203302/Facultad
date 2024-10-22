@@ -9,7 +9,7 @@ class matriz_adyacencia:
     def agregar_arista_no_dirigido(self,nodo1,nodo2):
         if (nodo1>=0 and nodo1<self.__n_nodos) and (nodo2>=0 and nodo2<self.__n_nodos):
             self.__matriz[nodo1][nodo2]=1
-    def agregar_arista_no_dirigido(self,nodo1,nodo2):
+    def agregar_arista_dirigido(self,nodo1,nodo2):
         if (nodo1>=0 and nodo1<self.__n_nodos) and (nodo2>=0 and nodo2<self.__n_nodos):
             self.__matriz[nodo1][nodo2]=1
             self.__matriz[nodo2][nodo1]=1
@@ -103,25 +103,42 @@ class matriz_adyacencia:
             print('el grafo no tiene ciclo')
 #-------------------------------------------#
     def grado_entrada(self,nodo):
-        pass
+        if nodo>=0 and nodo<self.__n_nodos:
+            ac=0
+            for i in range(self.__n_nodos):
+                if self.__matriz[i][nodo]==1:
+                    ac+=1
+            return ac
 #-------------------------------------------#
     def grado_salida(self,nodo):
-        pass
+        if nodo>=0 and nodo<self.__n_nodos:
+            ac=0
+            for i in range(self.__n_nodos):
+                if self.__matriz[nodo][i]==1:
+                    ac+=1
+            return ac
 #-------------------------------------------#
     def nodo_fuente(self,nodo):
-        pass
+        if nodo>=0 and nodo<self.__n_nodos:
+            if self.grado_entrada(nodo)==0:
+                print(f'el nodo {nodo+1} es fuente')
+            else:
+                print(f'el nodo {nodo+1} no es fuente')
 #-------------------------------------------#
     def nodo_sumidero(self,nodo):
-        pass
+        if nodo>=0 and nodo<self.__n_nodos:
+            if self.grado_salida(nodo)==0:
+                print(f'el nodo {nodo+1} es sumidero')
+            else:
+                print(f'el nodo {nodo+1} no es sumidero')
 #-------------------------------------------#
 if __name__=='__main__':
     matriz_adyacencia=matriz_adyacencia(5)
-    matriz_adyacencia.agregar_arista_no_dirigido(0,1)
     matriz_adyacencia.agregar_arista_no_dirigido(0,2)
     matriz_adyacencia.agregar_arista_no_dirigido(1,2)
     matriz_adyacencia.agregar_arista_no_dirigido(2,3)
     matriz_adyacencia.agregar_arista_no_dirigido(3,4)
-    matriz_adyacencia.agregar_arista_no_dirigido(4,0)
+    #matriz_adyacencia.agregar_arista_no_dirigido(4,1)
     matriz_adyacencia.imprimir()
     matriz_adyacencia.adyacentes(0)
     matriz_adyacencia.numero_adyacentes(0)
@@ -134,3 +151,11 @@ if __name__=='__main__':
     print('recorrido en profundidad')
     matriz_adyacencia.REP(0)
     print()
+    matriz_adyacencia.grado_entrada(0)
+    matriz_adyacencia.grado_salida(0)
+    print('------------------------------------------')
+    for i in range(5):
+        matriz_adyacencia.nodo_fuente(i)
+        matriz_adyacencia.nodo_sumidero(i)
+        print('------------------------------------------')
+    print('------------------------------------------')
