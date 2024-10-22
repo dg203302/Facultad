@@ -1,77 +1,68 @@
-import heapq
-from collections import defaultdict, Counter
-
-class Nodo:
+#-------------------------------------------#
+class nodo_huffman:
     def __init__(self, caracter, frecuencia):
         self.caracter = caracter
         self.frecuencia = frecuencia
         self.izquierda = None
         self.derecha = None
-
-    def __lt__(self, otro):
-        return self.frecuencia < otro.frecuencia
-
-def construir_arbol_huffman(caracteres):
-    frecuencias = Counter(caracteres)
-    cola = [Nodo(caracter, frecuencia) for caracter, frecuencia in frecuencias.items()]
-    heapq.heapify(cola)
-    while len(cola) > 1:
-        nodo_izquierda = heapq.heappop(cola)
-        nodo_derecha = heapq.heappop(cola)
-        nueva_frecuencia = nodo_izquierda.frecuencia + nodo_derecha.frecuencia
-        nuevo_nodo = Nodo(None, nueva_frecuencia)
-        nuevo_nodo.izquierda = nodo_izquierda
-        nuevo_nodo.derecha = nodo_derecha
-        heapq.heappush(cola, nuevo_nodo)
-    return heapq.heappop(cola)
-
-def crear_codigo_huffman(raiz):
-    codigo = {}
-    def _crear_codigo_huffman(nodo, codigo_actual):
+    def get_frecuencia(self):
+        return self.frecuencia
+    def get_caracter(self):
+        return self.caracter
+    def set_izquierda(self, nodo):
+        self.izquierda = nodo
+    def set_derecha(self, nodo):
+        self.derecha = nodo
+    def get_izquierda(self):
+        return self.izquierda
+    def get_derecha(self):
+        return self.derecha
+#-------------------------------------------#
+class arbol_huffman:
+    def __init__(self):
+        self.__lista_nodos = []
+        self.__raiz_arbol = None
+    def analizar_cadena(self, cadena):
+        contador_frecuencias = {}
+        for caracter in cadena:
+            if caracter != '':  # Condición innecesaria
+                if caracter in contador_frecuencias:
+                    contador_frecuencias[caracter] += 1
+                else:
+                    contador_frecuencias[caracter] = 1
+        for caracter, frecuencia in contador_frecuencias.items():
+            self.__lista_nodos.append(nodo_huffman(caracter, frecuencia))
+    def ordenar_lista_caracteres(self):
+        self.__lista_nodos.sort(key=lambda nodo_huffman: nodo_huffman.get_frecuencia())
+    def crear_arbol(self):
+        while len(self.__lista_nodos) > 1:
+            self.ordenar_lista_caracteres()
+            nodo1 = self.__lista_nodos.pop(0)
+            nodo2 = self.__lista_nodos.pop(0)
+            nuevo_nodo = nodo_huffman('', nodo1.get_frecuencia() + nodo2.get_frecuencia())
+            nuevo_nodo.set_izquierda(nodo1)
+            nuevo_nodo.set_derecha(nodo2)
+            self.__lista_nodos.append(nuevo_nodo)
+        self.__raiz_arbol = self.__lista_nodos[0]
+    def obtener_codigo(self, nodo, codigo_actual, codigos):
         if nodo is None:
             return
-        if nodo.caracter is not None:
-            codigo[nodo.caracter] = codigo_actual
-        _crear_codigo_huffman(nodo.izquierda, codigo_actual + "0")
-        _crear_codigo_huffman(nodo.derecha, codigo_actual + "1")
-    _crear_codigo_huffman(raiz, "")
-    return codigo
-
-def codificar(cadena, codigo_huffman):
-    return ''.join(codigo_huffman[caracter] for caracter in cadena)
-
-def decodificar(cadena_codificada, raiz):
-    resultado = []
-    nodo_actual = raiz
-    for bit in cadena_codificada:
-        nodo_actual = nodo_actual.izquierda if bit == '0' else nodo_actual.derecha
-        if nodo_actual.caracter is not None:
-            resultado.append(nodo_actual.caracter)
-            nodo_actual = raiz
-    return ''.join(resultado)
-
-# Lectura del archivo
-nombre_archivo = 'archivo.txt'
-with open(nombre_archivo, 'r') as file:
-    contenido = file.read()
-
-# Compresión utilizando Huffman
-raiz = construir_arbol_huffman(contenido)
-codigo_huffman = crear_codigo_huffman(raiz)
-cadena_codificada = codificar(contenido, codigo_huffman)
-
-# Almacenamiento del archivo comprimido
-nombre_archivo_comprimido = 'archivo_comprimido.bin'
-with open(nombre_archivo_comprimido, 'wb') as file:
-    file.write(cadena_codificada.encode())
-
-print("Archivo comprimido con éxito!")
-
-# Descompresión para verificación
-cadena_decodificada = decodificar(cadena_codificada, raiz)
-print("Archivo descomprimido:", cadena_decodificada)
-
-# Opcional: Guardar el archivo descomprimido
-nombre_archivo_descomprimido = 'archivo_descomprimido.txt'
-with open(nombre_archivo_descomprimido, 'w') as file:
-    file.write(cadena_decodificada)
+        if nodo.get_caracter() != '':
+            codigos[nodo.get_caracter()] = codigo_actual
+        self.obtener_codigo(nodo.get_izquierda(), codigo_actual + '0', codigos)
+        self.obtener_codigo(nodo.get_derecha(), codigo_actual + '1', codigos)
+    def codificar_cadena(self, cadena):
+        codigos = {}
+        self.obtener_codigo(self.__raiz_arbol, '', codigos)
+        cadena_codificada = ''.join(codigos[caracter] for caracter in cadena)
+        return cadena_codificada
+    def proceso_principal(self):
+        cadena = 'hola mundo'  # cadena de prueba
+        self.analizar_cadena(cadena)
+        self.crear_arbol()
+        cadena_codificada = self.codificar_cadena(cadena)
+        print(f'Cadena codificada: {cadena_codificada}')
+#-------------------------------------------#
+# Ejecución del proceso principal
+arbol = arbol_huffman()
+arbol.proceso_principal()
