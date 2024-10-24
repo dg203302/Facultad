@@ -62,24 +62,23 @@ class matriz_adyacencia:
                             j=i
 #-------------------------------------------#
     def conexidad(self):
-        pass #primero hacer recorridos
+        if all(self.REP(0)):
+            print('el grafo es conexo')
+        else:
+            print('el grafo no es conexo')
 #-------------------------------------------#
     def REA(self,nodo_inicio):#recorrido en anchura
         if nodo_inicio>=0 and nodo_inicio<self.__n_nodos:
             visitados=[False]*self.__n_nodos
-            cola=[0]*self.__n_nodos
-            cola[0]=nodo_inicio
+            cola=[]
+            cola.append(nodo_inicio)
             visitados[nodo_inicio]=True
-            frente=0
-            final=1
-            while frente<final:
-                nodo_while=cola[frente]
-                frente+=1
+            while cola:
+                nodo_while=cola.pop(0)
                 print(nodo_while+1,end=' ')
                 for j in range(self.__n_nodos):
                     if self.__matriz[nodo_while][j]==1 and visitados[j]==False:
-                        cola[final]=j
-                        final+=1
+                        cola.append(j)
                         visitados[j]=True
 #-------------------------------------------#
     def REP(self, nodo_inicio, visitados=None):#recorrido en profundidad
@@ -91,6 +90,7 @@ class matriz_adyacencia:
             for i in range(self.__n_nodos):
                 if self.__matriz[nodo_inicio][i]==1 and visitados[i]==False:
                     self.REP(i,visitados)
+            return visitados
 #-------------------------------------------#
     def aciclico(self):
         band=False
@@ -149,6 +149,10 @@ if __name__=='__main__':
     matriz_adyacencia.agregar_arista_no_dirigido(4,1)
     matriz_adyacencia.agregar_arista_no_dirigido(4,3)
     matriz_adyacencia.imprimir()
+    matriz_adyacencia.conexidad()
+    print('recorrido en anchura')
+    matriz_adyacencia.REA(0)
+    print()
     '''
     #matriz_adyacencia.agregar_arista_no_dirigido(4,1)
     matriz_adyacencia.adyacentes(0)
@@ -156,9 +160,6 @@ if __name__=='__main__':
     print('camino del nodo 1 al nodo 5: ', matriz_adyacencia.camino(0,3))
     #matriz_adyacencia.agregar_arista_no_dirigido(1,1)
     matriz_adyacencia.aciclico()
-    print('recorrido en anchura')
-    matriz_adyacencia.REA(0)
-    print()
     print('recorrido en profundidad')
     matriz_adyacencia.REP(0)
     print()
