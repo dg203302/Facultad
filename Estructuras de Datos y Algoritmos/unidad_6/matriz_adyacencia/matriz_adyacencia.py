@@ -98,9 +98,9 @@ class matriz_adyacencia:
             if self.__matriz[i][i]==1:
                 band=True
         if band==True:
-            print('el grafo tiene ciclo')
+            print('el matriz_adyacencia agregar_arista_no_dirigido ciclo')
         else:
-            print('el grafo no tiene ciclo')
+            print('el matriz_adyacencia agregar_arista_no_dirigido tiene ciclo')
 #-------------------------------------------#
     def grado_entrada(self,nodo):
         if nodo>=0 and nodo<self.__n_nodos:
@@ -134,12 +134,23 @@ class matriz_adyacencia:
 #-------------------------------------------#
 if __name__=='__main__':
     matriz_adyacencia=matriz_adyacencia(5)
+    matriz_adyacencia.agregar_arista_no_dirigido(0,1)
     matriz_adyacencia.agregar_arista_no_dirigido(0,2)
+    matriz_adyacencia.agregar_arista_no_dirigido(0,3)
+    matriz_adyacencia.agregar_arista_no_dirigido(1,0)
     matriz_adyacencia.agregar_arista_no_dirigido(1,2)
+    matriz_adyacencia.agregar_arista_no_dirigido(1,4)
+    matriz_adyacencia.agregar_arista_no_dirigido(2,0)
+    matriz_adyacencia.agregar_arista_no_dirigido(2,1)
     matriz_adyacencia.agregar_arista_no_dirigido(2,3)
+    matriz_adyacencia.agregar_arista_no_dirigido(3,0)
+    matriz_adyacencia.agregar_arista_no_dirigido(3,2)
     matriz_adyacencia.agregar_arista_no_dirigido(3,4)
-    #matriz_adyacencia.agregar_arista_no_dirigido(4,1)
+    matriz_adyacencia.agregar_arista_no_dirigido(4,1)
+    matriz_adyacencia.agregar_arista_no_dirigido(4,3)
     matriz_adyacencia.imprimir()
+    '''
+    #matriz_adyacencia.agregar_arista_no_dirigido(4,1)
     matriz_adyacencia.adyacentes(0)
     matriz_adyacencia.numero_adyacentes(0)
     print('camino del nodo 1 al nodo 5: ', matriz_adyacencia.camino(0,3))
@@ -159,3 +170,4 @@ if __name__=='__main__':
         matriz_adyacencia.nodo_sumidero(i)
         print('------------------------------------------')
     print('------------------------------------------')
+    '''
